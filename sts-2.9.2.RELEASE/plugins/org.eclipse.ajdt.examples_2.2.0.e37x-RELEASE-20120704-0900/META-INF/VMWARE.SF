@@ -1,0 +1,50 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: +dC9GPIaKN8jBt4isyq/eYVfkms=
+Created-By: 1.6.0_27 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: BYa1ld7b0ek6+zlBPF+FOKTHyUE=
+
+Name: archive/spacewar.jar
+SHA1-Digest: 67iKHxTrdmi2LCDzESl5Pi6mZnU=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: QdryQvJlVywlE0MGLuwYCkmkyWk=
+
+Name: archive/bean.jar
+SHA1-Digest: x/kZjWcZzrgONtjqG47v2fH56i8=
+
+Name: archive/introduction.jar
+SHA1-Digest: Ip5rRINIfsk+vZrxPjPyArNwOP4=
+
+Name: archive/tjp.jar
+SHA1-Digest: 3KLeaOuONnyV+7OrNh3EHxAUAPo=
+
+Name: plugin.properties
+SHA1-Digest: BcXj0PCC8EB5xJa4aaCZVTMaAG4=
+
+Name: schema/projectsetup.exsd
+SHA1-Digest: jul1SXZCqMnbOxZ7iWGytRuVuKM=
+
+Name: plugin.xml
+SHA1-Digest: B5cp7jfMmZNf79zs40zUuMDNde4=
+
+Name: about.html
+SHA1-Digest: px02CKbKGZKNMYbB0m1gJDJtR8Q=
+
+Name: archive/tracing.jar
+SHA1-Digest: JpvinJDHiiWTHyAyv9OEXiZhDkk=
+
+Name: icons/newajprj_wiz.gif
+SHA1-Digest: gimhih/FxtiMKnpcSPYhr7b0WlY=
+
+Name: ajdtExamples.jar
+SHA1-Digest: yFEUyRmQSGd13gyiU9Pary2R7pA=
+
+Name: archive/telecom.jar
+SHA1-Digest: K6rs77Wdx8eCBsfwJx3Hbjh5RS4=
+
+Name: archive/org.eclipse.ajdt.examples.progressmon.jar
+SHA1-Digest: u5WDGLD7NsOxG5IO/KVZPncKwdU=
+
+Name: archive/observer.jar
+SHA1-Digest: 0kAd9bB2pRrMn7Zer/ljiwvFGTk=
+

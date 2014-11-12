@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.springsource.sts.server.tc"
+      label="%featureName"
+      version="2.9.2.201205071000-RELEASE"
+      provider-name="%providerName"
+      plugin="com.springsource.sts">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseUrl">
+      %license
+   </license>
+
+   <plugin
+         id="com.springsource.sts.server.tc.core"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.sts.server.tc.ui"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+         
+   <plugin
+         id="com.springsource.sts.server.tc.reloading"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="true"/>
+
+   <plugin
+         id="com.springsource.sts.server.insight.ui"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+
+   <!-- <plugin
+         id="com.springsource.sts.server.ams.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.sts.server.ams.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>-->
+
+</feature>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="/Applications/spring-web-3.1.0.RELEASE/vfabric-tc-server-developer-2.7.0.RELEASE/spring-insight-instance/wtpwebapps/web-security" path="/websecurity" reloadable="true" source="org.eclipse.jst.jee.server:web-security"/>

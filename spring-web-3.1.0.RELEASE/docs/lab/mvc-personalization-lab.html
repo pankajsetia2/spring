@@ -1,0 +1,77 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>mvc-personalization: Enable Site Personalization Through Locale And Theme Switching</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.70.0"><link rel="start" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="up" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="prev" href="mvc-forms-lab.html" title="mvc-forms: Building Forms in Spring MVC"><link rel="next" href="rest-ws-1-lab.html" title="rest-ws-1: Building RESTful Clients with Spring MVC"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns="http://www.w3.org/TR/xhtml1/transitional" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="http://www.springframework.org/" title="The Spring Framework"><img style="border:none;" src="images/xdev-spring_logo.jpg"></img></a><a style="border:none;" href="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="images/springsource-banner-rhs.jpg"></img></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="mvc-personalization-lab"></a>mvc-personalization: Enable Site Personalization Through Locale And Theme Switching</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mvc-personalization-lab-introduction"></a>1.&nbsp;Introduction</h2></div></div></div><p>
+            In this lab you will give users the ability to change the look-and-feel of the site and also provide support for using a different language.
+        </p><div class="orderedlist"><p class="title"><b>What you will learn:</b></p><ol type="1"><li><p>How to use themes to control the look-and-feel of a website</p></li><li><p>How to configure locale switching in Spring MVC</p></li></ol></div><p>Estimated time to complete: 30 minutes</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mvc-personalization-lab-instructions"></a>2.&nbsp;Instructions</h2></div></div></div><p>
+            This instructions for this lab are divided in 2 parts. First you will experiment with switching themes and then do the same for locales.
+        </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="mvc-personalization-lab-themes"></a>2.1.&nbsp;Configure Theme Switching</h3></div></div></div><p>
+                Notice the link called "Green" at the top of the home page.
+                If you click on it the page is reloaded with an extra query parameter "theme=green". 
+                Try reloading the page with "theme=blue".
+                This should have caused a switch to the theme called blue but that doesn't work yet. 
+            </p><p>
+                In your workspace find the <code class="filename">src/main/webapp/WEB-INF/classes</code> directory located under Web App Libraries (or use Ctrl+Shift+R). 
+                Here you'll find the property files for the blue and the green themes.
+                Have a quick look inside.
+                Now that you know the theme properties are in place you need to configure Spring MVC to use them.
+            </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1498"></a>2.1.1.&nbsp;Configure a ThemeChangeinterceptor</h4></div></div></div><p>
+                    Open <code class="filename">mvc-config.xml</code> (Ctrl+Shift+R) and find the <code class="code">mvc:interceptors</code> element. 
+                    Interceptors defined here will be applied to all HandlerMapping instances in the application. 
+                    Currently there is one interceptor for preventing caching. 
+                    Go ahead and add another interceptor of type <code class="classname">ThemeChangeInterceptor</code>.
+                </p><p>
+					When the server has redeployed the changes, try switching to the "blue" theme again. 
+					This time you will get an exception.
+					Verify the exception occurred because the new interceptor detected the theme and tried to store it but failed to do so. 
+					This is because the default <code class="classname">FixedThemeResolver</code> does not support storing and hence switching themes.
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1517"></a>2.1.2.&nbsp;Add a CookieThemeResolver</h4></div></div></div><p>
+                    In <code class="filename">mvc-config.xml</code> add a <code class="classname">CookieThemeResolver</code> bean and set its "defaultThemeName" property to "green".
+                    Remember that the bean should have a specific id in order for it to be discovered by the DispatcherServlet.
+                </p><p>
+               		By default, cookies created by the <code class="classname">CookieThemeResolver</code> will be <span class="emphasis"><em>non-persistent</em></span> - they will be deleted as soon as the browser shuts down.
+               		To make cookies that outlast the browser, set the resolver's "cookieMaxAge" property to a value in seconds.
+               	</p><p>
+                    In a few moments the changes will be redeployed.
+                    If you now click the link multiple times you'll notice the theme parameter is alternating between "blue" and "green".
+                    Open <code class="filename">standard.jsp</code> (Ctrl+Shift+R) and verify the code that renders the link.
+                    You'll see that the code is inspecting the current theme to do the alternating.
+                    That means we're successfully switching themes even though there are no visual changes yet.
+                </p><p>
+                     Another way to verify this is to inspect the cookie created by the <code class="classname">CookieThemeResolver</code>. 
+                     In Firefox make sure the Web Developer toolbar is displayed (View - Toolbars - Web Developer). 
+                     On the Web Developer toolbar find the menu called "Cookies" and then click the "View Cookie Information" item.
+                    </p><div class="mediaobject" align="center"><img src="images/mvc-personalization/view-cookies.jpg" align="middle"><div class="caption"><p>
+                                Figure 1: Viewing Cookie Information in Web Developer
+                            </p></div></div><p>
+                    If there are many cookies you can search (Ctrl+F) for "THEME" or otherwise just scroll down and verify the cookie value. 
+                    Change the theme one more time and verify the cookie value has also changed. 
+		        </p><p>
+                    All that remains now is to use the Spring theme tag to resolve and use theme properties.
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1557"></a>2.1.3.&nbsp;Update standard.jsp To Use The Theme Tag</h4></div></div></div><p>
+                    Open <code class="filename">standard.jsp</code> (Ctrl+Shift+R) and find the link to the "richweb-green.css" stylesheet. 
+                    This is a theme-specific stylesheet and its location needs to be obtained through the Spring &lt;theme&gt; tag. 
+                    Go ahead and do that now.
+		        </p><p>
+                    When done do the same for SpringSource banner image at the top of the page. 
+                    Find the line that loads the "springsource_banner_green.png" image and make its path dynamic by using the theme tag.
+		        </p><p>
+                    When done try reloading the page. 
+                    You should now be able to switch themes and see the visual changes take effect.
+                </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="mvc-personalization-lab-locales"></a>2.2.&nbsp;Add Locale Switching</h3></div></div></div><p>
+                The configuration required for changing locales is very similar to themes. 
+                Before starting out, open <code class="filename">web.xml</code> (Ctrl+Shift+R) and verify the presence of the <code class="classname">CharacterEncodingFilter</code>.
+                This filter ensures the response is encoded as UTF-8 enabling the display of international characters.
+            </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1580"></a>2.2.1.&nbsp;Configure a LocaleChangeInterceptor</h4></div></div></div><p>
+                    Go to <code class="filename">mvc-config.xml</code> and add a third interceptor of type <code class="classname">LocaleChangeInterceptor</code>. 
+                    When the changes have published, navigate to the home page and attempt to change the locale by pressing the "Fran&ccedil;ais" link. 
+                    You will again see an exception because the default <code class="classname">AcceptHeaderLocaleResolver</code> does not allow storing locales other than the one that comes from the browser.
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1594"></a>2.2.2.&nbsp;Configure a CookieLocaleResolver</h4></div></div></div><p>
+                    In <code class="filename">mvc-config.xml</code> add a bean of type <code class="classname">CookieLocaleResolver</code> and set its "defaultLocale" property to "en".
+                    Remember that this bean must have a specific id for it to be discovered by the DispatcherServlet.
+                    When the changes have published test the language link at the top. 
+                    You should be able to successfully switch between English and French.
+                </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+                		If you want locale cookies to outlive the browser, the "cookieMaxAge" property can be used here as well.
+                	</p></td></tr></table></div></div><p>
+                    Once you can change the locale to French and back to English, you've completed this lab.
+	    </p></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="mvc-forms-lab.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="rest-ws-1-lab.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">mvc-forms: Building Forms in Spring MVC&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="http://www.springsource.com/" title="SpringSource">By SpringSource</a></span></td><td width="40%" align="right" valign="top">&nbsp;rest-ws-1: Building RESTful Clients with Spring MVC</td></tr></table></div></body></html>

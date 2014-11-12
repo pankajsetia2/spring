@@ -1,0 +1,169 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>mvc-views: Views in Spring MVC</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.70.0"><link rel="start" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="up" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="prev" href="mvc-layout-lab.html" title="mvc-layout: Using Tiles Layouts in Spring MVC"><link rel="next" href="mvc-forms-lab.html" title="mvc-forms: Building Forms in Spring MVC"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns="http://www.w3.org/TR/xhtml1/transitional" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="http://www.springframework.org/" title="The Spring Framework"><img style="border:none;" src="images/xdev-spring_logo.jpg"></img></a><a style="border:none;" href="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="images/springsource-banner-rhs.jpg"></img></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="mvc-views-lab"></a>mvc-views: Views in Spring MVC</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mvc-views-lab-introduction"></a>1.&nbsp;Introduction</h2></div></div></div><p>
+			In this lab, you will add support for downloading content in Microsoft Excel format.
+        </p><div class="orderedlist"><p class="title"><b>What you will learn:</b></p><ol type="1"><li><p>How to render data in Microsoft Excel format using Apache POI</p></li><li><p>How to configure Spring MVC for use with multiple view technologies</p></li></ol></div><p>Estimated time to complete: 30 minutes</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mvc-views-lab-instructions"></a>2.&nbsp;Instructions</h2></div></div></div><p>
+            The instructions for this lab are divided into several steps. 
+            Initially you see how to submit requests for different content types.
+            Next you will use a <code class="classname">BeanNameViewResolver</code> to route requests to a custom Excel view.
+            Lastly you will configure a <code class="classname">ContentNegotiatingViewResolver</code> for detecting content types.
+            The "extra credit" section demonstrates returning JSON.
+        </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="mvc-views-excel"></a>2.1.&nbsp;Return Accounts in Microsoft Excel format</h3></div></div></div><p>
+				Most web applications primarily generate HTML content, but for some use cases they also need to generate other content representations such as Adobe PDF or Microsoft Excel.
+				In this section, you will enhance the RewardsOnline application to also be capable of rendering an Account listing as a Microsoft Excel spreadsheet.
+             </p><p>
+				Get started by accessing the welcome page and navigating to the Accounts page.
+				From there, select the "Show as Excel" link.
+				Notice selecting this link just reloads the HTML page; it should instead download an Excel document.
+				You need to first understand what is going on.
+			</p><p>
+				First, notice that the "Show as Excel" URL ends in "/accounts.xls".
+				In your browser's address bar, try removing the ".xls" extension or replacing it with another extension like ".html" or ".pdf".
+				This makes no difference, and the HTML page reloads each time.
+				In fact, all of these URLs are handled by the same method of <code class="classname">AccountsController</code> because its @RequestMapping rule ignores the extension. 
+				This is to your advantage because it is possible to reuse the AccountsController.list() method to load the same model data, while varying the view rendering technology.
+				Basically, when /accounts is requested, the list should be rendered in the default content type, HTML. 
+				When /accounts.xls is requested, the same list should be rendered in Microsoft Excel format.
+				In essence, the client should use the file extension to request the desired representation of the resource.
+				The same list() Controller method should execute for both representations; what varies is the view.
+             </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e883"></a>2.1.1.&nbsp;Plug in the AccountsExcelView</h4></div></div></div><p>
+					Open <code class="classname">AccountsExcelView</code> (Ctrl+Shift+T).
+					This class extends from Spring MVC's <code class="classname">AbstractExcelView</code>, which uses the Apache POI library to generate Excel documents.
+					Take a few moments to study the code.
+					Notice how the accountList model is retrieved and the Apache POI API is used to generate the document.
+					The base class takes care of writing the document to the HTTP response stream for you.
+                 </p><p>
+                    Fortunately, this class is already complete.
+					All you need to do is to plug it in so when the "accounts.xls" view is selected, your AccountsExcelView is rendered.
+				 	To do this, edit <code class="filename">mvc-config.xml</code> and configure a view resolver chain that involves a <code class="classname">BeanNameViewResolver</code>, a <code class="classname">TilesViewResolver</code>, and the <code class="classname">AccountsExcelView</code>.
+				</p><p>
+					You're done when the "Show as Excel" link returns a Microsoft Excel representation of the account list.
+					If your computer has a program for displaying Excel documents you will be able to open the document.
+					If not, you will be prompted to save the document to a file on the local disk.
+				</p><p>
+					Next remove the .xls extension in the URL and try loading the Accounts Listing page.
+					You should get Excel content one more time.
+					This because you probably had to configure the BeanNameViewResolver first in the order of priority so it always does the rendering.
+					What you really want is the ability to alternate based on the file extension in the URL.  
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e912"></a>2.1.2.&nbsp;Configure the ContentNegotiatingViewResolver</h4></div></div></div><p>
+					Spring 3.0 introduced the <code class="classname">ContentNegotiatingViewResolver</code>, a view resolver which can delegate to other resolvers based on the type of content to be rendered. 
+					We'll use this resolver to render the view properly as either HTML or Excel content.  
+				 </p><p>
+					Open <code class="filename">mvc-config.xml</code> and add an instance of the <code class="classname">ContentNegotiatingViewResolver</code>.  
+					This will use file extensions by default to determine the type to render, which matches your goal.  
+					Add media type mappings for Excel and HTML and set the default content type of text/html. Also add a viewResolvers property and add set it to a list containing the bean resolvers configured in the previous step.  The order is not important.
+				</p><p>
+				 	Once your <code class="classname">ContentNegotiatingViewResolver</code> has been configured, try the Accounts Listing page and the "Show as Excel" link again.
+				 	This time you should get the right content for each request.
+                 </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+                    Note that if you type the URLs ending in "/accounts.html" and "/accounts.htm" directly into your browser, the HTML page will be rendered, using the <code class="classname">TilesView</code>. 
+                    The "/accounts.html" URL is explicitly mapped to the "text/html" content type in the CNVR. 
+                    The ".htm" extension also is resolved correctly because internally the CNVR uses standard file type associations configured in the Java Activation Framework (JAF). 
+                    As configured, the CNVR will fail to resolve a view for any other file extension. 
+                    For example  "/accounts.do" will result in an exception and display an HTTP Status 500 error page. As of Spring 3.0.3, you can disable JAF by setting the CNVR property
+                    <code class="literal">useJaf</code> to <code class="literal">true</code>. This will cause random file extensions to render HTML (the default content type) which is usually preferable.
+                  </p><p>
+                    Also, as of Spring 3.0.2, you can also set the CNVR property
+                    <code class="literal">useNotAcceptableStatusCode</code> to true. 
+                    This will result in an HTTP response with a status code 406 if no view is
+                    found in which case the application can be configured to handle it
+                    appropriately (see also extra credit step below).   
+                 </p></td></tr></table></div><p>
+					Congratulations! You have completed this lab.
+        		</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="mvc-views-extra-credit"></a>2.2.&nbsp;EXTRA CREDIT: Return Accounts as JSON</h3></div></div></div><p>
+			This section shows how to return Account data in JavaScript Object Notation format (JSON).  We will be using the
+			MappingJacksonJsonView which always converts the content of the Model to JSON data using the Jackson object to JSON
+			marshalling tool.  This is one way to support REST using Spring MVC.
+        </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e957"></a>2.2.1.&nbsp;What happens when a format is not supported?</h4></div></div></div><p>
+            	First of all navigate to any individual account and click on the "View as JSON"
+            	link.  You should get an HTTP 500 error message.
+            </p><p>
+				In the servlet configuration file <code class="literal">mvc-config.xml</code>,
+				modify the CNVR bean definition and set the <code class="literal">useNotAcceptableStatusCode</code>
+				property to true. Restart the server and refresh the page. You should now
+				get an HTTP 406 error instead.  Now let's add JSON support.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e970"></a>2.2.2.&nbsp;Setting up the JSON View Resolver</h4></div></div></div><p>
+				This is exactly the same as in the notes and we have written it for you - it is
+				<code class="classname">rewardsonline.accounts.JsonViewResolver</code>.  Now we need to
+				use it.
+			</p><p>
+				In the servlet configuration file <code class="literal">mvc-config.xml</code>,
+				modify the CNVR bean definition to support JSON as a media type.
+				If you look at the <code class="classname">MappingJacksonJsonView</code> you
+				will see the content-type that it returns.
+			</p><p>
+				Now add the <code class="classname">JsonViewResolver</code> as another resolver.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e991"></a>2.2.3.&nbsp;Configuring the Jackson Mapper</h4></div></div></div><p>
+				The mapper tries its best to work out how to convert objects to and from JSON,
+				but sometimes it needs help.  When you make Spring create beans automatically
+				you have to add annotations to your class so it knows which constructors and
+				setters to use.  Jackson has the same problem.  If you refresh the accounts.json
+				page again, you will get a Jackson error saying it doesn't know how to convert the
+				Percentage class to JSON data.
+			</p><p>
+				We need to tell Jackson how to convert our <code class="classname">Percentage</code>
+				class to JSON data. To do that we need to annotate the constructor 
+				that takes a <code class="literal">BigDecimal</code> with
+				<code class="literal">@JsonCreator</code>.  We also need to
+				tell it which getter to use by annotating the
+				<code class="literal">asBigDecimal</code> method with
+				<code class="literal">@JsonValue</code>.  Jackon now
+				knows how to create a Percentage object and how to get the value inside it.
+				If you are not sure what to do, look at
+				<code class="classname">MonetaryAmount</code> as we have already done this class for you.
+			</p><p>
+				Refresh that web-page yet again and you should see account details in
+				JSON format.
+			</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1018"></a>2.2.4.&nbsp;Hibernate Lazy Loading Errors</h4></div></div></div><p>
+				Return to the page that lists all accounts and click on the "View as JSON"
+				link.  You should get an exception with the message "failed to lazily initialize
+				a collection of role: rewardsonline.accounts.Account.beneficiaries, no session or
+				session was closed".  You should also find a Hibernate
+				<code class="literal">LazyInitializationException</code> exception in the stack-trace.
+				Do you know why this is happening?
+			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note: Lazy Loading in Hibernate"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Lazy Loading in Hibernate</th></tr><tr><td align="left" valign="top"><p>
+				Hibernate uses a technique called lazy-loading which is essentially "fetch on
+				demand".  When the accounts were fetched, their beneficiaries were not.
+				When we listed the accounts in an HTML page, we didn't use the beneficiary
+				information, so it didn't matter.  When we try to convert the list of accounts
+				to JSON, the Jackson mapper does a deep conversion, trying to convert all the
+				beneficiaries of each account to JSON too.  Unfortunately they are not there.
+			</p><p>
+				Normally this doesn't matter.  Hibernate replaces all references to related data
+				(including collections of references) by a proxy.  When you try to access the data
+				for the first time, the proxy goes to the Hibernate session and asks it to
+				load the related data.  However if there is no session because the transaction
+				has finished, a lazy-loading error occurs.  Since most data is fetched via a 
+				transactional service (in our case the <code class="classname">HibernateAccounbtManager</code>,
+				lazy-loading errors most commonly occur in the view-layer
+			</p></td></tr></table></div><p>
+				To fix this problem quickly, we are going to force the
+				<code class="classname">HibernateAccounbtManager</code> to also fetch the beneficiaries
+				when it fetches the accounts.  Open the class file and find the
+				<code class="literal">findAllAccounts()</code> method.  Modify the code to use the
+				<code class="literal">eagerQuery</code> instead of the <code class="literal">accountQuery</code>.
+				The "join fetch" clause forces the query to fetch the beneficiaries,
+				as well as the accounts, all in the same query (the underlying
+				SQL will involve a JOIN of the Account and Beneficiary tables).
+			</p><p>
+				Refresh the accounts.json page and you should now see them all as JSON
+				format text.
+			</p><p>
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+					This solution should be USED CAREFULLY in a real system as it forces all
+					the beneficiaries to be loaded every time an account is fetched,
+					regardless of whether they are needed.  There is no quick fix to this problem.
+					Your options are:
+					</p><div class="orderedlist"><ol type="1"><li><p>Use a "join fetch" if the related objects are almost
+                			always needed.</p></li><li><p>Add a boolean parameter to the <code class="literal">findAllAccounts()</code>
+                			method - allowing beneficiary fetching to be requested, or not.
+                			The code runs the appropriate query.</p></li><li><p>Use the DTO pattern - return a Data Transfer Object that
+                			contains only the account data needed by the view layer.  If the
+                			beneficiaries are needed, the act of copying them into the DTO will
+                			force the lazy fetch inside a transaction, so all is well. DTOs
+                			are tedious to write initially but in the long run thay allow your
+                			view layer to be independent of your domain objects.  Thus if a
+                			domain object changes, the DTOs derived from it need not, limiting
+                			the effect of change in the system.  This is often the best approach
+                			but it is not a "quick fix".</p></li></ol></div></td></tr></table></div><p>
+			</p></div></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="mvc-layout-lab.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="mvc-forms-lab.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">mvc-layout: Using Tiles Layouts in Spring MVC&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="http://www.springsource.com/" title="SpringSource">By SpringSource</a></span></td><td width="40%" align="right" valign="top">&nbsp;mvc-forms: Building Forms in Spring MVC</td></tr></table></div></body></html>

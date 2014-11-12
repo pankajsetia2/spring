@@ -1,0 +1,290 @@
+Manifest-Version: 1.0
+Export-Package: com.springsource.sts.ide.ui,com.springsource.sts.inter
+ nal.ide.ui,com.springsource.sts.internal.ide.ui.actions,com.springsou
+ rce.sts.internal.ide.ui.discovery,com.springsource.sts.internal.ide.u
+ i.editors,com.springsource.sts.internal.ide.ui.perspective,com.spring
+ source.sts.internal.ide.ui.preferences,com.springsource.sts.internal.
+ ide.ui.util,com.springsource.sts.internal.ide.ui.wizards
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: library.jar
+Bundle-Name: %Bundle-Name
+Created-By: 1.5.0_19-b02 (Sun Microsystems Inc.)
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.core.resources,org.eclipse.core.runtime,or
+ g.eclipse.debug.ui,org.eclipse.jface.text,org.eclipse.mylyn.commons.c
+ ore;bundle-version="[3.7.0,4.0.0)",org.eclipse.mylyn.commons.ui;bundl
+ e-version="[3.7.0,4.0.0)",org.eclipse.mylyn.commons.net;bundle-versio
+ n="[3.7.0,4.0.0)",org.eclipse.mylyn.commons.workbench;bundle-version=
+ "[3.7.0,4.0.0)",org.eclipse.mylyn.discovery.core;bundle-version="[3.7
+ .0,4.0.0)",org.eclipse.mylyn.discovery.ui;bundle-version="[3.7.0,4.0.
+ 0)",org.eclipse.mylyn.tasks.bugs;bundle-version="[3.7.0,4.0.0)",org.e
+ clipse.mylyn.tasks.core;bundle-version="[3.7.0,4.0.0)",org.eclipse.my
+ lyn.tasks.ui;bundle-version="[3.7.0,4.0.0)",org.eclipse.pde.runtime,o
+ rg.eclipse.ui,org.eclipse.ui.console,org.eclipse.ui.editors,org.eclip
+ se.ui.forms,org.eclipse.ui.cheatsheets,org.eclipse.ui.ide,org.eclipse
+ .ui.intro,org.eclipse.wst.server.core,com.springsource.sts.core,com.s
+ pringsource.sts.config.core,com.springsource.sts.ui,org.springframewo
+ rk.ide.eclipse.beans.core;bundle-version="2.8.0",org.springframework.
+ ide.eclipse.beans.ui;bundle-version="2.8.0",org.eclipse.wst.sse.ui,or
+ g.eclipse.wst.sse.core,org.eclipse.core.expressions,org.eclipse.wst.x
+ ml.core,org.eclipse.core.databinding,org.eclipse.jface.databinding,or
+ g.eclipse.core.databinding.beans,org.eclipse.core.net,org.eclipse.jdt
+ .ui,org.eclipse.ajdt.ui,org.eclipse.core.net,org.eclipse.jdt.ui,org.e
+ clipse.ui.ide,org.eclipse.debug.ui,org.eclipse.ui.console,org.eclipse
+ .search,org.eclipse.ui.workbench.texteditor,com.sun.syndication,org.j
+ dom
+Ant-Version: Apache Ant 1.7.1
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Version: 2.9.2.201205071000-RELEASE
+Bundle-Activator: com.springsource.sts.internal.ide.ui.IdeUiPlugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.springsource.sts.ide.ui;singleton:=true
+Import-Package: org.springframework.util;version="[3.0.5.RELEASE,3.2.0
+ )"
+
+Name: icons/view16/welcome16.gif
+SHA1-Digest: lCVsqUKwrazRDOWbtiyQR6PzEio=
+
+Name: icons/rss/springsource.png
+SHA1-Digest: razsvXMAL0RvcItQ6Hy14N0AQzs=
+
+Name: content/comparison.png
+SHA1-Digest: 8AXY9v4Alj/hJ3MKjlGhR0BIA0Q=
+
+Name: icons/rss/webinar.png
+SHA1-Digest: nsGZPaVbcXHZnFjNIzcc/Z1xgmQ=
+
+Name: content/author-terms.html
+SHA1-Digest: gJkwAO0tCKAS+l2fUwyA0er2MPE=
+
+Name: icons/wizban/template_project.png
+SHA1-Digest: i1ZwGyVanLeld71udv77EjUj34U=
+
+Name: icons/wizban/project.png
+SHA1-Digest: 0Z5g0PjzDKKjT6p2kSZZ+AX0r4I=
+
+Name: dtd/log4j-1.2.dtd
+SHA1-Digest: k5idw6opUQ+wT9TPaES7FwYsm38=
+
+Name: library.jar
+SHA1-Digest: TuNq45OMEiBQj3AM2QHAhkM8gZc=
+
+Name: icons/rss/spring-16.png
+SHA1-Digest: agMOU+FnPTSWI6yUT0q55esu6DU=
+
+Name: icons/obj16/rss_configure.png
+SHA1-Digest: XEQhhPPWGCQAfebzDt+GroVfu1Y=
+
+Name: icons/rss/feed.png
+SHA1-Digest: RKN5oGNvF3dzXViYKcxuWsCafIw=
+
+Name: icons/rss/download.png
+SHA1-Digest: tykYS3nrYK0upAJvQHIZr2CMQW0=
+
+Name: icons/wizban/namespace.png
+SHA1-Digest: JOKMfwkm5VVedbCA8jcwe3R0RMc=
+
+Name: icons/rss/event.png
+SHA1-Digest: xLGCiAhe2akwg4Lp4XUgiTlV5IE=
+
+Name: icons/etool16/report-bug.gif
+SHA1-Digest: 2Ov8AUOndwwIIniSywOwE49bYS8=
+
+Name: icons/rss/blank.png
+SHA1-Digest: Zmp6KhRq0Q32e62E1R03kStnMAM=
+
+Name: icons/view16/xmlfile.gif
+SHA1-Digest: nCTYn5SbpkC5/gEZ+Vq476DmJUU=
+
+Name: icons/rss/springide.png
+SHA1-Digest: jhfD5xZ+KsS8fyzC88Ba7xehw+A=
+
+Name: rss/spring-webinars.xml
+SHA1-Digest: 479FWcPN86XrSPr1dQXfB4m2MI4=
+
+Name: content/logo_title.png
+SHA1-Digest: 7fW7ntT/Tqdknz4Qxkw7Un8f7Iw=
+
+Name: content/dashboard.png
+SHA1-Digest: TX7lWna1dSbm2r6Y0ovWtwDR0lg=
+
+Name: content/copyright.png
+SHA1-Digest: 80JovygshS3o2qjFVKZxxRj/00Q=
+
+Name: icons/view16/welcome.png
+SHA1-Digest: p2x2EXq24Wqcuu8PRMGP4Y9pydk=
+
+Name: OSGI-INF/l10n/bundle.properties
+SHA1-Digest: eiWsBEE8THadWGX6lOLqLTCF8FQ=
+
+Name: icons/obj16/warning.png
+SHA1-Digest: 82kuesg0COIuesarZ6ZJWoJ+SqE=
+
+Name: content/logo_upper_left.png
+SHA1-Digest: 46I+R6Yz175sL5ZnyaD10Pka73k=
+
+Name: icons/prod/vmware_logo.png
+SHA1-Digest: 76MDZak96x2EeOfrbOehCy47enE=
+
+Name: icons/view16/info.png
+SHA1-Digest: uUrVaQ3dYI5Xisct48gfkdNlkY8=
+
+Name: icons/obj16/configure.png
+SHA1-Digest: 3B+lHKTo0qm34czWEe0+hp5+jOk=
+
+Name: icons/prod/springsource_logo_transparent.png
+SHA1-Digest: FRu7f4fh8uCW0vGB2aCkiRZ3zp4=
+
+Name: rss/vmware-news.xml
+SHA1-Digest: cjAQnTsqIJIlAxfR/Nia8c1H7Ms=
+
+Name: icons/view16/springide.png
+SHA1-Digest: L/PvPyHiPQ2GY9pvk7TJ4cW3JHk=
+
+Name: icons/obj16/cheatsheet_task.gif
+SHA1-Digest: fy/9wim+IuiDDy48w4ElFWsgces=
+
+Name: icons/obj16/new_spring_project.gif
+SHA1-Digest: kdInSNsd/xvWs5QF+W8dCQq55ww=
+
+Name: icons/obj16/tutorials.png
+SHA1-Digest: i2tAwI/AV2AL9+0LBrkT2facrps=
+
+Name: icons/rss/star.png
+SHA1-Digest: EL7VV19RQB57W5rRkgYRWClhDk8=
+
+Name: icons/obj16/new_template_project.png
+SHA1-Digest: KfcNS8IxLapq048kjx7y8HrJrGk=
+
+Name: content/root.xhtml
+SHA1-Digest: VKcQFEhNG5mWxxs7FvZOSIydvTE=
+
+Name: icons/view16/mylyn.gif
+SHA1-Digest: za+9tEFsW9XSS94ZhWUdhLJwcVc=
+
+Name: icons/obj16/new_ajdt_project.gif
+SHA1-Digest: XIYT9G5ElFiUxjVxnPafKnh2DkI=
+
+Name: icons/obj16/new_java_project.gif
+SHA1-Digest: G+28pDlalgkGC+1lqeBnc0eNZcs=
+
+Name: content/shared.css
+SHA1-Digest: Y9qVBRZp6skFmR9kK9v1dL82+Bw=
+
+Name: content/ov_springsource_48.png
+SHA1-Digest: 4iWD2SzqtTV/lwv8LHw1FqgQRTI=
+
+Name: icons/wizban/grails_project.png
+SHA1-Digest: eUsHyGd7EnTxC8LBSEEYj9foTvs=
+
+Name: rss/spring-news.xml
+SHA1-Digest: MC6BaCUCXtq7ACL0dEXZgqpfWIA=
+
+Name: icons/obj16/download_overlay.png
+SHA1-Digest: d6Paekj1bs5CcpEG3J6/VFEHIhs=
+
+Name: rss/spring-research.xml
+SHA1-Digest: /cijKfyNVsMRTq0dl/H8KORrdpQ=
+
+Name: icons/rss/news.png
+SHA1-Digest: v5NtFNQ74Hp5yN1p3ECFHohijv0=
+
+Name: rss/spring-downloads.xml
+SHA1-Digest: FZy2l6cfH0N5WOn8iPJcIlPCaPk=
+
+Name: icons/wizban/support.png
+SHA1-Digest: b2I0l0CR8Yocp37GDNcDutNB9sQ=
+
+Name: icons/rss/overlay-incoming.png
+SHA1-Digest: b6E9kaO99pcNIF+l4iTHdRvTBq4=
+
+Name: content/logo_lower_right.png
+SHA1-Digest: kUyjzHF665Sj1FPVgSXIHls55d8=
+
+Name: icons/obj16/rss.png
+SHA1-Digest: cZTNVJZjr2NsSSa0k21yQuXfMZ0=
+
+Name: icons/obj16/new_grails_project.png
+SHA1-Digest: mjheg0iGSltK72h7MmTbpr2xdJA=
+
+Name: content/install-extension.png
+SHA1-Digest: Dwi2UHX29gsApud0AtwcVpUlftU=
+
+Name: content/overviewExtensionContent.xml
+SHA1-Digest: Aa7dDBPID9a0zAw8DLGOXzFRUlE=
+
+Name: content/manage-runtime.png
+SHA1-Digest: w7ta/qU6P68mpefgybmK3PyQcNc=
+
+Name: about.html
+SHA1-Digest: IC9qBNJRTFkRA8xTM2oVnCGCaiA=
+
+Name: rss/spring-events.xml
+SHA1-Digest: c7fbsuOX6rQO6TD2czeIoQqcBiQ=
+
+Name: icons/view16/error.png
+SHA1-Digest: vhw1lstXnmovLpDLS8gdQQ+el+g=
+
+Name: icons/obj16/priority-1.png
+SHA1-Digest: +37l+jJDiU0GDWh+dybyhQpMflY=
+
+Name: icons/prod/springsource_32.png
+SHA1-Digest: lXmA6iF64H8Pgy1KRBVGiO3snTU=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: icons/etool16/home.gif
+SHA1-Digest: Dq2UKsUUN8MdTi0jZTklz/ScfyM=
+
+Name: content/overview.css
+SHA1-Digest: XMtxbimGT/BWjuCf8VniNB3w1BI=
+
+Name: content/welcome.png
+SHA1-Digest: Ypnqmb3EL64Y7wywD3a4fm1ttLk=
+
+Name: icons/wizban/java_project.png
+SHA1-Digest: X6Y4tR41mimEvi5tW3oxsbnRa9g=
+
+Name: content/welcome.gif
+SHA1-Digest: xueeWU+jLENoi1+3t0T+tueYhuE=
+
+Name: icons/view16/spring_perspective.gif
+SHA1-Digest: JNUrQ0nzGPRkVel2Adn4mwiGqvw=
+
+Name: content/standby.xhtml
+SHA1-Digest: fk+Z1TvNqqf7EIc8ai+JTdGyiEg=
+
+Name: icons/obj16/new_roo_project.png
+SHA1-Digest: vJvb+z2SNdWzzNLNhY/02xa++qM=
+
+Name: introContent.xml
+SHA1-Digest: /EZS82T9rm3u2SPzH0X1cyB1teU=
+
+Name: icons/view16/sts.png
+SHA1-Digest: R/zLI33nCxEVxqh3esrU5whc0X8=
+
+Name: content/background.png
+SHA1-Digest: AYgO0pccJO/YrVgf5mIqBB6SnhQ=
+
+Name: icons/view16/springsource_not_transparent.png
+SHA1-Digest: vQf4gRCrt/3NTqNGg6M2WzYEA1w=
+
+Name: icons/wizban/more.png
+SHA1-Digest: tnuQ5Ikq3EyYIVMvhrMNQRVXoo8=
+
+Name: icons/view16/eclipse.gif
+SHA1-Digest: qqPgXl0Cuu7J+oyLI7KYJzKh5GQ=
+
+Name: plugin.xml
+SHA1-Digest: RZ1HBkxYUStJwUcJ4MeAAvAwjTU=
+
+Name: content/new.png
+SHA1-Digest: CSUYSTSRRO9cOI1HLl9qg1ODQo4=
+
+Name: icons/rss/research.png
+SHA1-Digest: i/dTsJ5ELJ7+GgsHSLqSwoua8ug=
+
+Name: icons/view16/springsource.png
+SHA1-Digest: MQDZ4kQ9dMS/OTvfBnJ5KQyS4qk=
+

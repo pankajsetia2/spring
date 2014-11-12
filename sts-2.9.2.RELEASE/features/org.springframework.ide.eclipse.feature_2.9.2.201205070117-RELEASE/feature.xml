@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*******************************************************************************
+ * Copyright (c) 2005, 2010 Spring IDE Developers
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Spring IDE Developers - initial API and implementation
+ *******************************************************************************/
+ -->
+<feature
+      id="org.springframework.ide.eclipse.feature"
+      label="%featureName"
+      version="2.9.2.201205070117-RELEASE"
+      provider-name="%providerName"
+      plugin="org.springframework.ide.eclipse">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseUrl">
+      %license
+   </license>
+
+   <includes
+         id="org.springframework.ide.eclipse.uaa.feature"
+         version="2.9.2.201205070117-RELEASE"
+         optional="true"/>
+
+   <requires>
+      <import feature="org.eclipse.wst.xml_ui.feature" match="greaterOrEqual"/>
+      <import feature="org.eclipse.jdt" version="3.3.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.springframework.ide.eclipse"
+         download-size="16"
+         install-size="36"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.core"
+         download-size="1556"
+         install-size="2082"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.doc"
+         download-size="7"
+         install-size="7"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.ui"
+         download-size="163"
+         install-size="338"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.beans.core"
+         download-size="378"
+         install-size="874"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.beans.core.metadata"
+         download-size="40"
+         install-size="93"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.beans.ui"
+         download-size="366"
+         install-size="762"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.beans.ui.graph"
+         download-size="80"
+         install-size="172"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.beans.ui.editor"
+         download-size="257"
+         install-size="528"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.beans.ui.search"
+         download-size="48"
+         install-size="101"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.beans.ui.refactoring"
+         download-size="73"
+         install-size="166"
+         version="2.9.2.201205070117-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.osgi.core"
+         download-size="552"
+         install-size="1234"
+         version="2.0.0.M2-SNAPSHOT"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.osgi.io"
+         download-size="35"
+         install-size="69"
+         version="2.0.0.M2-SNAPSHOT"
+         unpack="false"/>
+
+   <plugin
+         id="edu.emory.mathcs.backport"
+         download-size="358"
+         install-size="755"
+         version="3.1.0.v200902251154"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.org.antlr"
+         download-size="549"
+         install-size="1260"
+         version="3.0.1"
+         unpack="false"/>
+
+   <plugin
+         id="javax.annotation"
+         download-size="24"
+         install-size="46"
+         version="1.1.1.v201006150915"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.javax.jms"
+         download-size="25"
+         install-size="33"
+         version="1.1.0"
+         unpack="false"/>
+
+   <plugin
+         id="javax.xml.stream"
+         download-size="38"
+         install-size="69"
+         version="1.0.1.v201004272200"
+         unpack="false"/>
+
+   <plugin
+         id="org.aopalliance"
+         download-size="10"
+         install-size="13"
+         version="1.0.0.v200905130917"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.commons.collections"
+         download-size="596"
+         install-size="1209"
+         version="3.2.0.v201005080500"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.commons.logging"
+         download-size="66"
+         install-size="138"
+         version="1.1.1.v201005080502"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.org.aspectj.weaver"
+         download-size="1650"
+         install-size="3572"
+         version="1.6.10.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.org.objectweb.asm"
+         download-size="34"
+         install-size="71"
+         version="2.2.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.org.objectweb.asm.commons"
+         download-size="15"
+         install-size="30"
+         version="2.2.3"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.aop"
+         download-size="323"
+         install-size="654"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.asm"
+         download-size="51"
+         install-size="104"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.beans"
+         download-size="576"
+         install-size="1310"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.context"
+         download-size="811"
+         install-size="1654"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.context.support"
+         download-size="104"
+         install-size="211"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.core"
+         download-size="438"
+         install-size="855"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.expression"
+         download-size="172"
+         install-size="360"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.jdbc"
+         download-size="395"
+         install-size="827"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.jms"
+         download-size="194"
+         install-size="431"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.orm"
+         download-size="369"
+         install-size="773"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.oxm"
+         download-size="71"
+         install-size="155"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.transaction"
+         download-size="240"
+         install-size="487"
+         version="3.1.1.RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.util.common"
+         download-size="41"
+         install-size="85"
+         version="2.0.0.RELEASE"
+         unpack="false"/>
+
+</feature>

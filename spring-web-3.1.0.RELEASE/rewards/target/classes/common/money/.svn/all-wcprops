@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/money
+END
+MonetaryAmount.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/money/MonetaryAmount.java
+END
+MonetaryAmountUserType.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/money/MonetaryAmountUserType.java
+END
+PercentageEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/money/PercentageEditor.java
+END
+MonetaryAmountEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/money/MonetaryAmountEditor.java
+END
+Percentage.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/money/Percentage.java
+END
+PercentageUserType.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/money/PercentageUserType.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/money/package.html
+END

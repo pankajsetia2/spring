@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: hudson
+Build-Jdk: 1.5.0_22
+Hudson-Build-Number: 12
+Hudson-Project: insight-1.8.3-release-jvm1.5
+Hudson-Version: 2.0.1
+

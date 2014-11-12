@@ -1,0 +1,299 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %providerName
+Ant-Version: Apache Ant 1.8.2
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 2.2.0.e37x-RELEASE-20120704-0900
+Bundle-Name: %pluginName
+Bundle-Localization: plugin
+Bundle-ManifestVersion: 2
+Created-By: 1.6.0_27-b07 (Sun Microsystems Inc.)
+Bundle-SymbolicName: org.eclipse.aspectj; singleton:=true
+
+Name: intro/rad/css/graphics/icons/etool/webrsrc48sel.gif
+SHA1-Digest: w8xMa1hwBO24J10hmfhyBzfE4UU=
+
+Name: intro/rad/css/graphics/icons/etool/samples48sel.gif
+SHA1-Digest: EvE/k3h/rQFdawfd22PhJdB46+M=
+
+Name: intro/rad/css/graphics/icons/ajdt/aj_logohov.gif
+SHA1-Digest: 0M4SLX0x/EhJ4+ZP10aaeeBFUao=
+
+Name: intro/rad/radAjdtTutorialsExtensionContent.xml
+SHA1-Digest: CAxcwzPFEsPlKdK3+7My1aGUCcU=
+
+Name: intro/eclipse/ajdtSamplesExtensionContent.xml
+SHA1-Digest: f8YdotMhTCgNu77UBzjt4GHCJ9k=
+
+Name: intro/rad/css/graphics/icons/etool/overview72.gif
+SHA1-Digest: rY64XL/6q5jw8OOnx/3sFSg6LDY=
+
+Name: intro/eclipse/ajdtTutorialsExtensionContent.xml
+SHA1-Digest: xT01Yj/4noG6q3lzjGlytAYX2MI=
+
+Name: intro/rad/css/content-swt.properties
+SHA1-Digest: noVJxRA0/Fpby+nXoatAU5cM4Ug=
+
+Name: intro/rad/css/graphics/icons/ctool/samples48.gif
+SHA1-Digest: Xy+xcwMDdTStAzhwc5Wy2Odnu6E=
+
+Name: intro/rad/css/graphics/icons/ctool/webrsrc72.gif
+SHA1-Digest: 6502o35P3a0m/iFeXnG/qpS3lYY=
+
+Name: intro/rad/css/graphics/icons/ctool/retuser72.gif
+SHA1-Digest: uBRdVX5GpR3hi9TLBJQEomJoaZo=
+
+Name: intro/rad/css/overview.css
+SHA1-Digest: b2yAjyd+MJQtUu3jibmoeUDzLZI=
+
+Name: intro/rad/css/firststeps.css
+SHA1-Digest: 6TPtdzH6Qgpt2qRP6P/Gj7JsIzU=
+
+Name: intro/eclipse/css/graphics/ajapp_obj.gif
+SHA1-Digest: chglhFeTXkBft+hRiSVzHnGPNog=
+
+Name: intro/rad/css/graphics/icons/ajdt/aspectj_windowhov.gif
+SHA1-Digest: g14rPHbbeuB9qsbN51JM1ubfqyo=
+
+Name: intro/rad/css/graphics/icons/ctool/samples72.gif
+SHA1-Digest: Cg2qhmB/8B+aLsnRyVxyPwV/PdE=
+
+Name: intro/rad/css/graphics/icons/ctool/wb48.gif
+SHA1-Digest: 7BlE4HdWkCv2E2IGgYDkeoVLGh4=
+
+Name: intro/rad/css/graphics/icons/ajdt/ajdevhov_obj.gif
+SHA1-Digest: goyTDjHMOLd5kKBCM3BcmJDaXZs=
+
+Name: plugin.properties
+SHA1-Digest: u9nqHp7iZrZZnOfiB4slH3N9E84=
+
+Name: intro/rad/css/graphics/icons/etool/retuser48sel.gif
+SHA1-Digest: tz37PSdpstGrH7bEiE4+rbkL2kE=
+
+Name: intro/rad/css/graphics/icons/etool/samples48.gif
+SHA1-Digest: NaVtDdSoxMfMQucWCMNH2ws7BWo=
+
+Name: intro/rad/css/graphics/icons/etool/firsteps48.gif
+SHA1-Digest: Io4H3tvs4RTCV2g5DxZB6VBGEeI=
+
+Name: intro/rad/radAjdtWebExtensionContent.xml
+SHA1-Digest: ye4VTtzRQGJnhZHi8khnbILih0o=
+
+Name: about.ini
+SHA1-Digest: WlaK+AN2TNPnyj1zQeq9eECuBug=
+
+Name: intro/rad/css/tutorial.css
+SHA1-Digest: LM9NE2HQkEIGHaJ803FM6W6mHmA=
+
+Name: intro/rad/css/graphics/icons/etool/webrsrc48.gif
+SHA1-Digest: vDv5tpjsyvkgqIVk+Vf7YmpchkU=
+
+Name: intro/rad/css/graphics/icons/etool/overview48.gif
+SHA1-Digest: DgceBqQlyBXekeMlhWEwwtpuUDA=
+
+Name: intro/rad/css/graphics/icons/ajdt/aspectj_page.gif
+SHA1-Digest: 8wLLkT3QwEgMoi6pxh5iMd0WAIc=
+
+Name: intro/rad/css/ad-images.css
+SHA1-Digest: MXfUHZrUsiNNpUbCqZ7wex5Le7g=
+
+Name: intro/rad/css/graphics/icons/ajdt/aspectj_folderhov.gif
+SHA1-Digest: WBc+w16gLusvPtHOpHCCVzOm9UY=
+
+Name: intro/rad/css/graphics/icons/ajdt/aspectj_window2.gif
+SHA1-Digest: An9nbeI1Iy5IXS0PKaxht9f6+iw=
+
+Name: intro/rad/css/graphics/icons/ctool/forward.gif
+SHA1-Digest: XmaOiMd1jEsrDB6NdyQqw+d1aAY=
+
+Name: intro/rad/css/graphics/icons/etool/webrsrc72.gif
+SHA1-Digest: b0gcegnCSxloQlNqqSOkpPCZywE=
+
+Name: intro/rad/css/graphics/icons/etool/back.gif
+SHA1-Digest: ySnsDpMG5nwH+1FeV2r27mUrMkU=
+
+Name: intro/rad/css/graphics/icons/ctool/samples48sel.gif
+SHA1-Digest: xZkt0xWdfilZyYasqE23sriQaz0=
+
+Name: intro/eclipse/css/ajdtNews.css
+SHA1-Digest: VttvOhQvLys/nuLF8il/5fZV2EA=
+
+Name: intro/rad/css/graphics/icons/ctool/overview48.gif
+SHA1-Digest: /0UYRMBETdWJYbBipJ0boCIb4u0=
+
+Name: intro/rad/css/graphics/icons/etool/samples72.gif
+SHA1-Digest: kl9BjEA9/2UmNPRPxvF69h3BVF8=
+
+Name: intro/eclipse/css/ajdtOverview.css
+SHA1-Digest: Lz67giBCxK8R/XoOWirQeKb0iZk=
+
+Name: intro/rad/css/webresources.css
+SHA1-Digest: Idv4n23drqthLVxUi3RXiYAWzxs=
+
+Name: intro/rad/css/graphics/icons/ajdt/aspectj_window2hov.gif
+SHA1-Digest: 1hWXI9n7VVeF0OLtvuBiuequZ/g=
+
+Name: intro/rad/css/graphics/icons/ctool/firsteps48.gif
+SHA1-Digest: S6K1wXtBgZBGNgeaI/c01gfWroU=
+
+Name: intro/rad/css/graphics/icons/etool/tutorials72.gif
+SHA1-Digest: vD0PfLXmywZsSwq0CmJAyGFsAwE=
+
+Name: intro/rad/css/graphics/icons/ctool/overview48sel.gif
+SHA1-Digest: 9mPd2jX448KXaCFA5Mgb9GaCuok=
+
+Name: intro/rad/css/graphics/icons/etool/firsteps48sel.gif
+SHA1-Digest: BGyxitqHnMNEQf4plmxnOnfiPE4=
+
+Name: cheatsheets/HelloWorld.xml
+SHA1-Digest: 6C9LGOTaGDT45u3U6Gj9slMbF9I=
+
+Name: intro/rad/css/graphics/icons/ctool/firsteps72.gif
+SHA1-Digest: FjgOZG0iaNrFTJ6Ih7SRduAXSSM=
+
+Name: intro/rad/css/graphics/icons/etool/tutorials48.gif
+SHA1-Digest: EElyD89OXhaJXvfx+eI26ZECh3Y=
+
+Name: intro/rad/css/graphics/icons/ctool/tutorials48sel.gif
+SHA1-Digest: H0dxcjV0EO+Joeq6F1Rbdgg2EMM=
+
+Name: intro/rad/css/graphics/icons/etool/retuser72.gif
+SHA1-Digest: +Bbp5dHNQyp9ORJPi8WYDOMRdEo=
+
+Name: intro/rad/css/graphics/icons/ctool/overview72.gif
+SHA1-Digest: 0/pHZXRCWezhk2xHEQVHr9UvWZI=
+
+Name: intro/rad/css/graphics/icons/etool/tutorials48sel.gif
+SHA1-Digest: V9Jx/Ge5bCBYv4xgvXSgcR6pjxM=
+
+Name: intro/rad/radAjdtSamplesExtensionContent.xml
+SHA1-Digest: SYtihQY/r4/8da6G11nmE4XnsD4=
+
+Name: intro/rad/css/graphics/icons/ctool/firsteps48sel.gif
+SHA1-Digest: dDORe3Am8VIw5m3APPLQp4NKXR0=
+
+Name: intro/eclipse/css/graphics/ajapphov_obj.gif
+SHA1-Digest: LR/Kg8TEV7vlQbG2PdqAjOUue/Q=
+
+Name: intro/rad/css/graphics/icons/ajdt/ajapphov_obj.gif
+SHA1-Digest: LR/Kg8TEV7vlQbG2PdqAjOUue/Q=
+
+Name: intro/rad/css/graphics/icons/ctool/back.gif
+SHA1-Digest: /ee1AJtypM5HojkNnK17U+1toxw=
+
+Name: intro/eclipse/css/graphics/sa_samplepyramid48.gif
+SHA1-Digest: 5RMVjJAMFMHQVd6ibgsfIK3ViMA=
+
+Name: aspectj32.png
+SHA1-Digest: J0mZQ/toFjg24QoBTWIqqb6kmfE=
+
+Name: intro/rad/css/graphics/icons/ajdt/aspectj_pagehov.gif
+SHA1-Digest: W8N81g21n9Hl2oLHbBjGVFRmKYc=
+
+Name: intro/rad/css/content.css
+SHA1-Digest: NakuiSCH/1pkA+tr7JeTzoD1/Hg=
+
+Name: intro/rad/css/graphics/icons/ctool/webrsrc48sel.gif
+SHA1-Digest: qAb2+wpz3WnMkmUVkzW+CVr9Zks=
+
+Name: intro/rad/css/graphics/icons/ctool/home.gif
+SHA1-Digest: +dfHtXYrxLHjjn8I1hvSsiolVec=
+
+Name: intro/rad/css/graphics/icons/etool/home.gif
+SHA1-Digest: /or5ve5EMGFdF2Y0L2g5nyUuIIw=
+
+Name: intro/rad/css/graphics/icons/ctool/retuser48sel.gif
+SHA1-Digest: 3BOHym2XiRvAdO4U2D1QaA1ZGRc=
+
+Name: intro/rad/css/graphics/icons/ajdt/aj_tutorial.gif
+SHA1-Digest: 3UGR3T0kLJ2wzQnl084LGu0VIpI=
+
+Name: about.html
+SHA1-Digest: GBCB10F/TFELOqVL2hqV91JsJ3E=
+
+Name: intro/rad/css/graphics/icons/etool/overview48sel.gif
+SHA1-Digest: 8rOGRNuFLizhjhsab8m4dRzOWDI=
+
+Name: intro/rad/css/graphics/icons/ctool/retuser48.gif
+SHA1-Digest: t1R73jLMSc0QqtrcGYQPQlib0M8=
+
+Name: intro/rad/css/graphics/icons/ajdt/aspectj_window.gif
+SHA1-Digest: KoCJaDFaS82lhfm9evbTf3OroLo=
+
+Name: intro/rad/css/graphics/icons/ctool/webrsrc48.gif
+SHA1-Digest: GTevzJs8P/XMkqAiyobVB8tTrP4=
+
+Name: about.mappings
+SHA1-Digest: dCGCpC5RtoqIcR0EwnQONwTo+Cg=
+
+Name: intro/rad/css/graphics/icons/etool/retuser48.gif
+SHA1-Digest: TdFWvnvnu2Rs0+zMle8GqzaaWhI=
+
+Name: intro/rad/css/graphics/icons/ctool/tutorials48.gif
+SHA1-Digest: 5wQEMYuxLvS3tZ8xqTiIe7PPzWU=
+
+Name: intro/eclipse/css/ajdtTutorials.css
+SHA1-Digest: F712eg8lpTP3Pv/mPFzgiXwdf3c=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: intro/eclipse/ajdtOverviewExtensionContent.xml
+SHA1-Digest: 0gIUBSBzOXIpunV7XdccMejOJ5A=
+
+Name: intro/eclipse/css/graphics/ajdev_obj.gif
+SHA1-Digest: bM2qw+i5+5zrd2NohYEiN3+xy88=
+
+Name: intro/eclipse/css/graphics/ajdevhov_obj.gif
+SHA1-Digest: goyTDjHMOLd5kKBCM3BcmJDaXZs=
+
+Name: intro/rad/css/graphics/icons/ajdt/ajapp_obj.gif
+SHA1-Digest: chglhFeTXkBft+hRiSVzHnGPNog=
+
+Name: intro/rad/css/graphics/icons/etool/wb48.gif
+SHA1-Digest: +p/9wyqpQS4yndxowuSoN2Hm43c=
+
+Name: intro/rad/css/graphics/icons/ajdt/aj_tutorialhov.gif
+SHA1-Digest: QAWvKv/J4BnrIJwKW00Q1mAgG7M=
+
+Name: intro/eclipse/css/graphics/sa_samplepyramid48_hov.gif
+SHA1-Digest: 5j4lU+A1NeXsPB6RxPcBJeAEa/k=
+
+Name: intro/eclipse/css/ajdtSamples.css
+SHA1-Digest: xQ7YVyIRmLj5tBBUAimPjtwkPCw=
+
+Name: intro/eclipse/css/ajdt.properties
+SHA1-Digest: 4ajiaMiVk+zPV2WE7u+nyEVCXPI=
+
+Name: intro/rad/css/graphics/icons/ajdt/aj_logo.gif
+SHA1-Digest: wNKNwr9yWuCNU/6w6Ay5+KOxeiA=
+
+Name: intro/rad/css/graphics/icons/ajdt/ajdev_obj.gif
+SHA1-Digest: bM2qw+i5+5zrd2NohYEiN3+xy88=
+
+Name: intro/rad/css/graphics/icons/etool/forward.gif
+SHA1-Digest: /hIcNo6w11v+EpgTXgFX9a1bYwY=
+
+Name: about.properties
+SHA1-Digest: lXKBT9ob9dCCB6aqk7z8Fdq87sI=
+
+Name: plugin.xml
+SHA1-Digest: YiEAMKRE6Z43+Q5gRZ6kHl0IVac=
+
+Name: intro/rad/css/whatsnew.css
+SHA1-Digest: 6DvdG27gxV+th5DW3Wl4h+/M45M=
+
+Name: intro/rad/radAjdtOverviewExtensionContent.xml
+SHA1-Digest: Hg43EWeDFMB/CcXUA77Jmztz9pM=
+
+Name: intro/rad/css/graphics/icons/ctool/tutorials72.gif
+SHA1-Digest: M9w6jNJPDBUXoKPPI9Cu5jQabeQ=
+
+Name: intro/rad/css/sample.css
+SHA1-Digest: /SG0UUAtz28DNwUtOS/HTiVF3Fw=
+
+Name: intro/rad/css/graphics/icons/etool/firsteps72.gif
+SHA1-Digest: fVQhd0MGurwx9YQu3/UFd+xAPUY=
+
+Name: intro/rad/css/graphics/icons/ajdt/aspectj_folder.gif
+SHA1-Digest: 7PSfEz13bTEqwSUy8SSEl6lR4XM=
+

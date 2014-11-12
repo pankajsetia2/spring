@@ -1,0 +1,247 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>mvc-forms: Building Forms in Spring MVC</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.70.0"><link rel="start" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="up" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="prev" href="mvc-views-lab.html" title="mvc-views: Views in Spring MVC"><link rel="next" href="mvc-personalization-lab.html" title="mvc-personalization: Enable Site Personalization Through Locale And Theme Switching"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns="http://www.w3.org/TR/xhtml1/transitional" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="http://www.springframework.org/" title="The Spring Framework"><img style="border:none;" src="images/xdev-spring_logo.jpg"></img></a><a style="border:none;" href="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="images/springsource-banner-rhs.jpg"></img></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="mvc-forms-lab"></a>mvc-forms: Building Forms in Spring MVC</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mvc-forms-lab-introduction"></a>1.&nbsp;Introduction</h2></div></div></div><p>
+            Most web applications use forms to process user input of some kind.
+            In this lab, you will learn how to build forms with Spring MVC by implementing the Account Edit page.
+            In the bonus section you can also implement the Account Search page.
+        </p><p>
+        	Please <span class="emphasis"><em>read all of each section first</em></span> - there are hints and tips after the
+        	instructions, which may go over the page/off the screen, and you may waste time struggling when
+        	the hint or tip would have helped.
+        </p><div class="orderedlist"><p class="title"><b>What you will learn:</b></p><ol type="1"><li><p>How to use the Spring Form Tag library to render forms populated with data.</p></li><li><p>How to apply formatting with formatting annotations.</p></li><li><p>How to work with data binding to have an object populated from form fields</p></li><li><p>How to invoke JSR-303 validation</p></li><li><p>How to process and display data binding and validation errors</p></li></ol></div><p>Estimated time to complete: 45 minutes</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mvc-forms-lab-instructions"></a>2.&nbsp;Instructions</h2></div></div></div><p>
+			In this lab you will implement the Account Edit page.
+		</p><p>
+			Here is a graphic illustrating the desired page flow:
+			
+			</p><div class="mediaobject" align="center"><img src="images/mvc-forms/accounts-site-map-short.png" align="middle"></div><p>
+		</p><p>
+			This is the HTTP contract desired for this functionality:
+			</p><div class="table"><a name="mvc-forms-http-contract"></a><p class="title"><b>Table&nbsp;1.&nbsp;HTTP Contract for RewardsOnline Account Processing</b></p><div class="table-contents"><table summary="HTTP Contract for RewardsOnline Account Processing" border="1"><colgroup><col><col><col><col></colgroup><thead><tr><th>
+								HTTP Method
+							</th><th>
+								Resource
+							</th><th>
+								Path Variables
+							</th><th>
+								Description
+							</th></tr></thead><tbody><tr><td>
+								GET
+							</td><td>
+								/accounts/{number}
+							</td><td>
+								number: required, String
+							</td><td>
+								Get the Account with the given account number
+							</td></tr><tr><td>
+								GET
+							</td><td>
+								/accounts/{number}/edit
+							</td><td>
+								number: required, String
+							</td><td>
+								Get the form for editing the specified Account
+							</td></tr><tr><td>
+								POST
+							</td><td>
+								/accounts/{number}
+							</td><td>
+								number: required String
+							</td><td>
+								Update the specified Account
+							</td></tr></tbody></table></div></div><p><br class="table-break">
+		</p><p>
+			You can also view the page flow by deploying the mvc-forms-solution project and accessing it at
+			<a href="http://localhost:8080/mvcforms-solution/accounts/123456789" target="_top">http://localhost:8080/mvcforms-solution/accounts/123456789</a>.
+			The URL's in the solution should corresponds to the table and graphic above.
+			When you have a good grasp of the requirements move on to the first section.
+			Be careful not to edit the files in the solution by mistake - closing the
+			mvc-forms-solution project is a good way to avoid this.
+		</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="mvc-forms-account-edit"></a>2.1.&nbsp;Implement The Account Edit Page</h3></div></div></div><p>
+				Deploy the <code class="filename">mvc-forms</code> project and access the Account Details page:
+				 <a href="http://localhost:8080/mvcforms/accounts/123456789" target="_top">http://localhost:8080/mvcforms/accounts/123456789</a>.
+				Or you can navigate to the account using the "List All Accounts" link on the home page - it is the first account
+				in the list.
+				The page should display the account data but the "Edit" link will not work.
+				Confirm that you get a 404 error when you select "Edit".
+			</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1180"></a>2.1.1.&nbsp;Display The Account Edit Form</h4></div></div></div><p>
+					Open <code class="classname">AccountsController.java</code> and add a method to process requests for <code class="filename">/accounts/{number}/edit</code>.  
+	  				The method should be similar to the existing show() method except that it's based on the <code class="filename">accounts/edit</code> view.
+					When this is done reload the edit page.
+					You should now see a form although the form fields will be empty.
+					Why?
+				</p><p>
+					Open <code class="filename">/WEB-INF/accounts/edit.jsp</code> (Ctrl+Shift+R) and examine the form.
+					It's not at all surprising that the form shows empty fields, is it?
+					Your next task is to bind the form fields to the properties of the Account model attribute.
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							Review the slides on using the Spring MVC form tag library and if you're still unsure ask the instructor.
+						</p></td></tr></table></div><p>
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							Remember that using a custom tag library requires a taglib declaration.
+							Fortunately code completion (Ctrl+Space) is available to help.
+						</p></td></tr></table></div><p>
+				</p><p>
+					You're ready with this step when the form displays actual account data. 
+					The data may not be properly formatted just yet. 
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1209"></a>2.1.2.&nbsp;Add Form Field Formatting</h4></div></div></div><p>
+					Look closely at the <code class="filename">Date of Birth</code> field in the Account form.
+					This uses the default format (e.g. "1981-04-11 00:00:00.0").
+					You'll need to format that according to application requirements instead.
+					While JSTL format tags can be used to render the date, they'll be of no help when the form is submitted.
+					You need a solution that correctly prints the date during rendering and parses it during form submission. 
+				</p><p>
+					Open <code class="filename">Account.java</code>, and use the <code class="code">@DateTimeFormat</code> annotation on the <code class="code">dateOfBirth</code> field to specify the pattern to use, which is "yyyy-MM-dd".
+					Both Spring MVC form tags (rendering) and the data binding mechanism (form submission) will be influenced by the @DateTimeFormat annotation.
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							Remember that date formatting is automatically enabled when using the custom MVC namespace <code class="code">annotation-driven</code> element and the Joda Time library is available on the classpath.
+						</p></td></tr></table></div><p>
+				</p><p>
+					Verify the formatting has been applied by refreshing the page in the browser.
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1237"></a>2.1.3.&nbsp;Save Account Changes</h4></div></div></div><p>
+					In this step, you will process the form submit, update the account, and redirect to the account details page.
+				</p><p>
+					Add a method to process the form submission.
+					Make sure the method is mapped to a request method of POST.
+					Use the following guidelines to implement the method:
+					accept an Account as input in order for data binding to take place;
+					check if binding errors occurred and if so return to "accounts/edit";
+					if there were no binding errors, save the Account and redirect to the account details page.
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							A Controller may request a redirect by returning a view name that starts with <code class="code">redirect:</code>.
+							The text following <code class="code">redirect:</code> specifies where to go next.
+							If it begins with a slash it's relative to the web application context path.
+							Otherwise it's relative to the current URL path.
+						</p></td></tr></table></div><p>
+				</p><p>
+					Once you've created the method try submitting the form.
+					You should see the following exception:
+					</p><pre class="programlisting">org.hibernate.TransientObjectException-The given object has a null identifier-rewardsonline.accounts.Account</pre><p>
+					This is Hibernate saying that it can't update the Account because it doesn't have its primary key set.
+					Before reading on take a couple of minutes to see if you can figure out what's causing this.
+					Have a look at the save method, think about how the Account was instantiated and populated. 
+				</p><p>
+					To understand what the issue is start from the method in the <code class="classname">AccountController</code> class that processes the form submission.
+					It accepts an <code class="classname">Account</code> instance, which Spring MVC will create and populate using form parameter values.
+					But if an <code class="classname">Account</code> is created using it's default constructor will it have a primary key? 
+					The answer is "no".
+					The <code class="classname">Account</code> must be retrieved from the database first and then updated using form parameter values.
+					Your task is to make sure the <code class="classname">Account</code> passed to your method is retrieved from the database.
+				</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+						You might want to review the slides on Form Object Management first and if you're still unsure ask the instructor.
+					</p></td></tr></table></div><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+						Once you've figured out how to ensure the <code class="classname">Account</code> is retrieved from the database, revisit the other methods and see if you can refactor to rely on the same mechanism. 
+					</p></td></tr></table></div><p>
+					You're ready to move on when the form saves correctly and redirects to the Account Details page.
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1287"></a>2.1.4.&nbsp;Add Validation</h4></div></div></div><p>
+					In addition to data binding errors you may also need to apply additional validation rules.
+					For example the Account <code class="filename">name</code> field is required, and so are <code class="filename">dataOfBirth</code> and <code class="filename">email</code>.
+					Furthermore an email should comply to some regular expression (e.g. <code class="code">"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}"</code>).
+					Add the appropriate JSR-303 annotations to the fields of the <code class="classname">Account</code> class.
+				</p><p>
+					Try editing the account again.
+					Leave the name empty and save.
+					Was the save processed without any error messages?
+					Why?
+				</p><p>
+					Remember that JSR-303 validation is enabled during data binding with the help of the <code class="classname">@Valid</code> annotation on the input <code class="classname">Account</code>.
+					Add that to the method that processes the form submit.
+					This time validation errors should kick in and send you back to the edit page.
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							If you do end up on the edit page but no errors are displayed, make sure you have <code class="code">form:errors</code> tags next to form input fields.
+						</p></td></tr></table></div><p>
+				</p><p>
+					You've now completed this lab. 
+					If you'd like you can proceed with the bonus section.
+				</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="mvc-forms-bonus-work"></a>2.2.&nbsp;Bonus: Implement The Account Search Page</h3></div></div></div><p>
+				As mentioned above, you have now completed the lab.
+				However, you have the choice to continue with the following bonus material.
+				Please note that you will probably need to do this outside normal class time unless you finish early.
+			</p><p>
+				By this point, you should have the ability to view and edit a selected account.  
+				However, how do you select an account in the first place?!
+				In this section, you will add the capability to search for and select accounts.
+			</p><p>
+				The following illustration describes the full flow of the Account Search and Account Edit pages:
+				</p><div class="mediaobject" align="center"><img src="images/mvc-forms/accounts-site-map.png" align="middle"></div><p>
+			</p><p>
+				This includes several new HTTP resources, as defined in the following table:
+				</p><div class="table"><a name="mvc-forms-search-http-contract"></a><p class="title"><b>Table&nbsp;2.&nbsp;HTTP Contract for RewardsOnline Account Search Processing</b></p><div class="table-contents"><table summary="HTTP Contract for RewardsOnline Account Search Processing" border="1"><colgroup><col><col><col><col></colgroup><thead><tr><th>
+									HTTP Method
+								</th><th>
+									Resource
+								</th><th>
+									Request Parameters
+								</th><th>
+									Description
+								</th></tr></thead><tbody><tr><td>
+									GET
+								</td><td>
+									/accounts/search
+								</td><td>
+									searchString (String), maxResults (int)
+								</td><td>
+									Gets the form for searching accounts. The form will be pre-populated with values from the last search.
+								</td></tr><tr><td>
+									GET
+								</td><td>
+									/accounts
+								</td><td>
+									searchString (required String), maxResults (int)
+								</td><td>
+									Get a list of accounts that meet the provided search criteria.
+								</td></tr></tbody></table></div></div><p><br class="table-break">
+			</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1377"></a>2.2.1.&nbsp;Display The Account Search Form</h4></div></div></div><p>
+					In this step, you will render the Account Search form.
+					Start by opening the <code class="classname">AccountsSearchController</code> class in the <code class="classname">rewardsonline.accounts</code> package.  
+					Modify the existing method to process the request for a search form.  Currently it returns the <code class="filename">notsupported</code> view,
+					but now we need it to select the <code class="filename">accounts/search</code> view.
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							Recall it is a best practice to group control logic by logical <span class="emphasis"><em>resource</em></span>.
+							You can consider operations against sets of account resources, like a search, to be distinct from control operations against a single account resource, like show or edit, for example.
+							Hence the use of the <code class="classname">AccountsSearchController</code> separately from <code class="classname">AccountsController</code>.
+						</p></td></tr></table></div><p>
+				</p><p>
+					As with accounts, the Account Search form has already been created for you.  
+					Bind it to the <code class="filename">accountSearchCriteria</code> model attribute by adding the apporpriate Spring MVC form tags to <code class="filename">accounts/search.jsp</code>.
+					Remember to add a corresponding object to the model in your controller method.
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							Note that this controller will be used for both new searches and to modify an existing search.
+							Treating the AccountSearchCriteria as a form object with proper data binding will allow values from the last search to be displayed on the form.
+						</p></td></tr></table></div><p>
+				</p><p>
+					Once you see the search criteria page, move on to the next and last step.
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1421"></a>2.2.2.&nbsp;Implement the Account Search Results page</h4></div></div></div><p>
+					In this step, you will process search form submissions by displaying the results that match the user-entered criteria.
+					First, open the search page's main template at <code class="filename">/WEB-INF/accounts/search.jsp</code> (CTRL+Shift+R).
+					Note the resource/action the HTML form is configured to submit to, and the HTTP method that will be used.
+					Also note the names of the two HTML input elements.
+				</p><p>
+					Now continue by authoring a new controller method to process the form submission.
+					Bind the incoming form parameters to an instance of the <code class="classname">AccountSearchCriteria</code> class.
+					Use the <code class="classname">AccountManager</code> dependency to find accounts meeting that criteria.
+					Finally, expose the returned list of accounts in the model and select the <code class="filename">accounts/list</code> view to render the results.
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							The search form submits to a URL that we are already using to list all accounts - you can think of the search
+							as a special case of listing accounts.  However, you can't have two controller methods mapping to the same URL.
+							To differentiate, for your new method, you will need to add an extra attribute to @RequestMapping to
+							identify that this is a form submission.  If you are still not sure, try submitting the form and look at the
+							URL in the browser.
+						</p></td></tr></table></div><p>
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							Remember the guidelines given in the presentation regarding search forms.
+							If the returned list of accounts contains only one element, you should redirect to the accounts/{number} resource rather than rendering a list.
+							However, there may be only account to present because we have reached the end of the list when paging - this is a
+							different case and a list of one <span class="emphasis"><em>should</em></span> be presented. 
+						</p></td></tr></table></div><p>
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+							Don't forget to add validation annotations as appropriate to your AccountSearchCriteria object and controller method.  
+							Do <span class="emphasis"><em>not</em></span> add @Valid to the search method you created in the previous step.
+							If you do, you'll never be able to render the initial form!
+	    				</p></td></tr></table></div><p>
+	  				</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+	  						Remember to convert the standard HTML for tags to the Spring form: tags.
+	  					</p></td></tr></table></div><p>
+				</p><p>
+					Once this is complete, and you can successfully search, view, and edit accounts, you have completed this lab and bonus material!  
+	  				Congratulations!
+				</p></div></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="mvc-views-lab.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="mvc-personalization-lab.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">mvc-views: Views in Spring MVC&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="http://www.springsource.com/" title="SpringSource">By SpringSource</a></span></td><td width="40%" align="right" valign="top">&nbsp;mvc-personalization: Enable Site Personalization Through Locale And Theme Switching</td></tr></table></div></body></html>

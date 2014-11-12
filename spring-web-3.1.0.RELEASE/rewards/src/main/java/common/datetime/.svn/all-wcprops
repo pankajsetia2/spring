@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/datetime
+END
+DateInterval.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/datetime/DateInterval.java
+END
+SimpleDate.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/datetime/SimpleDate.java
+END
+SimpleDateUserType.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/datetime/SimpleDateUserType.java
+END
+SimpleDateEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/datetime/SimpleDateEditor.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/training/!svn/ver/1774/common/trunk/java-project-parent/common-aux/src/main/java/common/datetime/package.html
+END

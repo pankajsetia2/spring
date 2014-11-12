@@ -1,0 +1,9 @@
+<aspectj>
+<aspects>
+<aspect name="rewardsonline.accounts.AccountIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="rewardsonline.accounts.AccountDataOnDemand_Roo_Configurable"/>
+<aspect name="rewardsonline.accounts.AccountIntegrationTest_Roo_Configurable"/>
+<aspect name="rewardsonline.accounts.AccountDataOnDemand_Roo_DataOnDemand"/>
+</aspects>
+</aspectj>
+

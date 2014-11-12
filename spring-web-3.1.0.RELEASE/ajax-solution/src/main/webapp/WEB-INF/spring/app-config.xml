@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		
+	<!-- Import configuration from the datasource and the rewardnetwork projects -->	
+	<import resource="classpath:datasource/db-config.xml"/>
+	<import resource="classpath:rewardnetwork/app-config.xml"/>
+
+	<!-- Scans the impl package for module @Components to install and configure -->
+	<context:component-scan base-package="rewardsonline" />
+	
+	<!-- Enables declarative transaction management with @Transactional annotations  -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- Drives transactions in a local Hibernate environment -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- Configures the Hibernate Object Relational Mapper (ORM) for the Admin and RewarNetwork applications -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="annotatedClasses">
+			<list>
+				<value>rewardsonline.accounts.Account</value>
+				<value>rewardsonline.accounts.Beneficiary</value>
+			</list>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>

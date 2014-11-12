@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.vmware.vixapi"
+      label="%featureName"
+      version="2.9.2.201205071000-RELEASE"
+      provider-name="%providerName"
+      plugin="com.vmware.vixapi"
+      image="vmware_update.gif">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+   </requires>
+
+   <plugin
+         id="com.vmware.vixapi"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+
+</feature>

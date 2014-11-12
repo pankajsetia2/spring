@@ -1,0 +1,74 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: Zlcl0E1Jf1+uNQeQZwMpUIvIE1g=
+Created-By: 1.6.0_22 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: Jjf396t2JeaAcJ1kl/UUPceH0qM=
+
+Name: org/objectweb/asm/Item.class
+SHA1-Digest: iTJuhL54V2iJsHxFK4jhd8f+q8g=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: QdryQvJlVywlE0MGLuwYCkmkyWk=
+
+Name: org/objectweb/asm/signature/SignatureWriter.class
+SHA1-Digest: aAlElN7Ur3K+xJhypKbkffXIG6Q=
+
+Name: org/objectweb/asm/MethodWriter.class
+SHA1-Digest: ZRW2zaBHrdoE+0IO6iJ/aTuP3ws=
+
+Name: org/objectweb/asm/ClassAdapter.class
+SHA1-Digest: A93EriMsQ6dBT/v9RWdURitWLjE=
+
+Name: org/objectweb/asm/Type.class
+SHA1-Digest: bJdrPcxUuWPWWKQDc6KBr+2AtBQ=
+
+Name: org/objectweb/asm/Opcodes.class
+SHA1-Digest: 3VQuk3TezGXcx2lp7csAo5V4gwo=
+
+Name: org/objectweb/asm/Handler.class
+SHA1-Digest: ZnP5Co1sBRPQe3JzJtSpWDVyPpI=
+
+Name: org/objectweb/asm/MethodVisitor.class
+SHA1-Digest: XgjWgV8VMiaZ5UIoErVxKBbcFGY=
+
+Name: org/objectweb/asm/Label.class
+SHA1-Digest: qpfMXdC59+ghi/w8lehuczpcgiM=
+
+Name: org/objectweb/asm/FieldWriter.class
+SHA1-Digest: h9syGGfmmXNJKF6svlrfBxzCEsA=
+
+Name: org/objectweb/asm/signature/SignatureVisitor.class
+SHA1-Digest: KKWiYbgR/ilaOdqXMI0n0ICVpOY=
+
+Name: org/objectweb/asm/signature/SignatureReader.class
+SHA1-Digest: 3IwKrlXA0UpFjrlf18HAboD/7Ys=
+
+Name: org/objectweb/asm/AnnotationVisitor.class
+SHA1-Digest: XhJlu/PLn5FdsyQGRY8x+1hVV+s=
+
+Name: org/objectweb/asm/MethodAdapter.class
+SHA1-Digest: OhlGvhUyeVBsyN+9nvWntgua7rI=
+
+Name: org/objectweb/asm/Edge.class
+SHA1-Digest: TgxvJhX4q2+y2sV52V8VnfzN30E=
+
+Name: org/objectweb/asm/ClassReader.class
+SHA1-Digest: u+FXvjAQskfwNNuhNG/OgqcQ818=
+
+Name: org/objectweb/asm/FieldVisitor.class
+SHA1-Digest: tpkY7+fvZUBVJ5asUS+7BgjFEvo=
+
+Name: org/objectweb/asm/ByteVector.class
+SHA1-Digest: sgevR6UUc62Pn0hreM4Gi80ZvOE=
+
+Name: org/objectweb/asm/Attribute.class
+SHA1-Digest: phIWSauJslppUuhGj7zMN4jm7/8=
+
+Name: org/objectweb/asm/ClassVisitor.class
+SHA1-Digest: abp9rCBA1SNDTP3reyIq4DCL4qM=
+
+Name: org/objectweb/asm/ClassWriter.class
+SHA1-Digest: uYelsKbeJCOMHt5MD2aQwRec98k=
+
+Name: org/objectweb/asm/AnnotationWriter.class
+SHA1-Digest: roAQbOhD1IBFsTqWe9IWOPjnqDM=
+

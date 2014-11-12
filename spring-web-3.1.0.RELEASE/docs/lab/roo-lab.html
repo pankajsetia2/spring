@@ -1,0 +1,233 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>roo: Getting Started with Spring Roo</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.70.0"><link rel="start" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="up" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="prev" href="web-security-lab.html" title="web-security: Secure Your Web Application With Spring Security"><link rel="next" href="web-testing-lab.html" title="web-test: Functional And Performance Web Application Testing"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns="http://www.w3.org/TR/xhtml1/transitional" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="http://www.springframework.org/" title="The Spring Framework"><img style="border:none;" src="images/xdev-spring_logo.jpg"></img></a><a style="border:none;" href="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="images/springsource-banner-rhs.jpg"></img></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="roo-lab"></a>roo: Getting Started with Spring Roo</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="roo-lab-introduction"></a>1.&nbsp;Introduction</h2></div></div></div><p>
+			This lab will get you started with Spring Roo. 
+			In it, you will implement a simple domain model with a scaffolded web interface and some other
+			functionality to see how easy it is to get up and running with Roo. 
+		</p><div class="orderedlist"><p class="title"><b>What you will learn:</b></p><ol type="1"><li><p>How a Spring Roo application is set up</p></li><li><p>How to set up JPA and add some entities</p></li><li><p>How to set up Spring MVC and add scaffolded controllers and views</p></li></ol></div><p>Estimated time to complete: 60 minutes</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="roo-lab-instructions"></a>2.&nbsp;Instructions</h2></div></div></div><p>
+			The instructions in this lab are divided into sections.
+			In the first section you'll set up a new Spring Roo project and JPA persistency. In the next
+			section you will add two entities with some constrained fields and a one-to-many association.
+			In the third section you'll scaffold a web interface to perform CRUD operations on these
+			entities. A final optional bonus section shows some ways to customize the generated interface. 
+		</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3901"></a>2.1.&nbsp;Setting up a new Spring Roo project</h3></div></div></div><p>
+				When you open the 'roo' working set, you'll notice that there is only a solution project.
+				That's because you will create the start project yourself. 
+			</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3906"></a>2.1.1.&nbsp;Step 1: Create a new project</h4></div></div></div><p>
+					Right-click on the 'roo' working set and choose "New -&gt; Spring Roo Project". In the
+					wizard that pops up, use 'rewardsonline' as both the Project name and the Top level
+					package name. Check the "Add project to working sets" checkbox and choose the 'roo'
+					Working set. Then click "Next" and "Finish" to create your project.
+				</p><p>
+					Notice that a Roo Shell View is automatically opened for your new project. When you want to
+					enter a Roo command you can do it in this shell.
+					</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+							Typing 'Ctrl+R' should open up a pop-up prompt that allows you to enter Roo commands
+							as well, but this stopped working for the author of this lab in STS 2.7.1 on Windows.
+						</p></td></tr></table></div><p>
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3917"></a>2.1.2.&nbsp;Step 2: Set up persistency</h4></div></div></div><p>
+					All Spring Roo 1.1.x projects use JPA 2 for persistency, but you'll have to tell Roo what
+					provider and database you're using. Type 'hint' in the Roo shell to see instructions on
+					how to do that, and then follow these instructions using "HIBERNATE" as the provider and
+					"HYPERSONIC_IN_MEMORY" as the database. Remember to use Ctrl+Space (Cmd+Space on a Mac) to
+					get code assist for completing commands and command arguments!
+					</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+							The stand-alone Roo shell uses Tab for completion, but in STS the default Eclipse key
+							bindings are used instead. 
+						</p></td></tr></table></div><p>
+				</p><p>
+					Note the files that are added and updated to add JPA support to your project: this saves
+					you a lot of tedious work in setting things up yourself. 
+				</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3928"></a>2.2.&nbsp;Adding some entities</h3></div></div></div><p>
+				You now have an empty project that uses Spring and JPA: the next step is to add some
+				entities that model the domain of the application. 
+			</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3933"></a>2.2.1.&nbsp;Step 3: Add an Account</h4></div></div></div><p>
+					First type 'hint' again: Roo suggests that you add an entity using the 'entity' command.
+					Create an <code class="classname">Account</code> entity under the
+					<code class="literal">rewardsonline.accounts</code> package: you can do that by specifying the class
+					as <code class="literal">~accounts.Account</code> (the '.' between the tilde and the package name is
+					optional). Also, follow the hint instructions and add an optional argument called
+					'testAutomatically'. To see optional arguments, first type '--' (two dashes) and then use
+					code assist. 
+				</p><p>
+					Note the files that Roo creates for you: in addition to the
+					<code class="filename">Account.java</code> there are several .aj files and there's an integration
+					test with a so-called data on demand class created for you. The latter allows for easy
+					creation of test data. 
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3952"></a>2.2.2.&nbsp;Step 4: Add some fields</h4></div></div></div><p>
+					Add two private <code class="classname">String</code> fields to the <code class="classname">Account</code>
+					class, <code class="varname">name</code> and <code class="varname">number</code>. You can either do this on
+					the Roo command line using the 'field string' commands, or directly in the Java editor:
+					</p><div class="itemizedlist"><ul type="disc"><li><p>
+								When using the Roo shell, add a '--notNull' to the <code class="varname">name</code> field and
+								a '--unique' to the <code class="varname">number</code>. To use 'number' as a field name, you'll
+								also need to add the '--permitReservedWords' argument. 
+							</p></li><li><p>
+								When using the Java editor directly instead, annotate the <code class="varname">name</code> field
+								with <code class="literal">@NotNull</code> and the <code class="varname">number</code> field with
+								<code class="literal">@Column(unique=true)</code> (make sure to import the
+								<code class="classname">javax.persistence.Column</code> type and not the one from
+								<code class="literal">org.hibernate.annotations</code>!). 
+							</p></li></ul></div><p>
+				</p><p>
+					When you're done, the <code class="classname">Account</code> class still looks fairly empty: just
+					some fields and annotations. That is because Roo places the supporting code it generates
+					for the <code class="literal">@RooXxx</code> annotations in hidden AspectJ files containing
+					inter-type declarations (ITDs). To see these files, click the small downwards-pointing
+					arrow in the Package Explorer View and choose "Filters...". Then deselect the "Hide
+					generated Spring Roo ITDs" element and press OK. 
+					</p><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="75%"><tr><td><img src="images/roo/filters.png" width="100%"></td></tr></table></div><p>
+					Have a look at the generated code: it reads almost like Java, but this code adds fields
+					and methods to the <code class="classname">Account</code> class during compilation. These files
+					are internal to Roo, so you should never edit them: instead, you can simply provide your
+					own implementation of some method or field and Roo will automatically remove the
+					corresponding ITD. You can try this by implementing your own
+					<code class="methodname">toString</code> method in <code class="classname">Account</code>: as soon as you
+					save that change, Roo will remove the corresponding .aj file. This file will be restored
+					when you remove your method again, since the class still has the
+					<code class="literal">@RooToString</code> annotation. When you remove a @RooXxx annotation, the
+					corresponding code will no longer be generated for you. 
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4025"></a>2.2.3.&nbsp;Step 5: Add a Beneficiary with some fields</h4></div></div></div><p>
+					Now create another entity in the same package called <code class="classname">Beneficiary</code>.
+					Add a non-null String field <code class="varname">name</code> and a
+					<code class="classname">BigDecimal</code> field <code class="varname">savings</code> with a decimal minimum
+					of 0. When you use the Roo command line for this, that requires the 'field number' command
+					and the '--decimalMin' argument; when using the Java editor, use the
+					<code class="classname">@DecimalMin</code> JSR-303 annotation. 
+				</p><p>
+					By default Roo simply appends an 's' to an entity's name to come up with a plural form:
+					for "Beneficiary" that's wrong. Annotate the class with <code class="literal">@RooPlural</code> and
+					specify "Beneficiaries" as its value attribute. You must do this in the Java editor.
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4050"></a>2.2.4.&nbsp;Step 6: Add a bi-directional association between Account and Beneficiary</h4></div></div></div><p>
+					An account has 1 or more beneficiaries. To be able to work with such a relationship in a
+					Roo-generated web interface, you have to configure a bi-directional association: that
+					means that a <code class="classname">Beneficiary</code> must have an <code class="varname">account</code>
+					field and an <code class="classname">Account</code> must have a <code class="varname">beneficiaries</code>
+					field. Add these fields either using the Roo command line or in the Java editor:
+					</p><div class="itemizedlist"><ul type="disc"><li><p>
+								In the Roo shell, use the 'field ref' command to add an <code class="varname">account</code>
+								field of type <code class="classname">Account</code> to the
+								<code class="classname">Beneficiary</code> class. Then use the 'focus' command to switch to
+								Account and use the 'field set' command to add a <code class="varname">beneficiaries</code>
+								field: specify a cardinality of ONE_TO_MANY!
+							</p></li><li><p>
+								Or use the Java editor to add the fields: annotate the <code class="varname">account</code>
+								field with <code class="literal">@ManyToOne</code> and the <code class="varname">beneficiaries</code>
+								field (which should be of type <code class="classname">Set&lt;Beneficiary&gt;</code>) with
+								<code class="literal">@OneToMany(cascade=CascadeType.ALL)</code>. 
+							</p></li></ul></div><p>
+					With this setup you have finished a simple domain model that you can now generate a Web UI
+					for.
+				</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4102"></a>2.2.5.&nbsp;Scaffolding a Spring MVC web interface</h4></div></div></div><p>
+					So far, your project is a simple Java project that would produce a jar file when built. In
+					this section you'll turn it into a web project with a Spring-MVC backed frontend that's
+					created using Tiles and JSPs with custom tags: all technology that you learned about in
+					the course so far.
+				</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e4107"></a>2.2.5.1.&nbsp;Step 7: Set up Spring MVC support</h5></div></div></div><p>
+						Enter the 'web mvc setup' command to add support for Spring MVC to your application.
+						Notice the long list of files that's added and updated: this simple command has turned
+						your project into a web project (including Maven support for deploying to a local Tomcat
+						or Jetty instance using 'mvn tomcat:run' or 'mvn jetty:run'), added Spring-MVC to the
+						dependencies, configured a <code class="classname">DispatcherServlet</code>, added Tiles 2
+						configuration and a default layout including static resources, and added custom tags, a
+						resource bundle for I18N purposes and some default error pages. 
+					</p><p>
+						Before you continue, browse through the configuration and generated files to see al the
+						things that Roo has set up for you and to get a feel for how the application works. Most
+						of what you see should be familiar from the earlier modules in the course.
+					</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e4117"></a>2.2.5.2.&nbsp;Step 8: Scaffold views and controllers</h5></div></div></div><p>
+						To get up and running quickly, Roo supports the so-called scaffolding of views and
+						controllers for your web application. This means that basic CRUD
+						(Create-Read-Update-Delete) support for your entities will be provided by a generated
+						user interface. Roo will continue to track changes to your entities and will update the
+						views and controllers accordingly.
+					</p><p>
+						Use the 'web mvc all' command to scaffold a web UI with '~web' as the package to use for
+						the generated classes. 
+					</p><p>
+						You can now deploy the application to the local Tomcat instance and run it. Navigate to
+						<a href="http://localhost:8080/rewardsonline" target="_top">http://localhost:8080/rewardsonline</a>
+						to see what the scaffolded UI looks like. Create an Account and then create some
+						Beneficiaries that you add to that Account. Notice how an Account is shown in the list
+						when creating a new Beneficiary: you see a combination of its properties. Notice the
+						same thing happens for beneficiaries when you look at an Account. 
+					</p><p>
+						Also, notice how the 'notNull' constraints you specified earlier are reflected in the
+						user interface: for not-null fields an extra message is shown, and client-side validation
+						is active which also prevents you from submitting an invalid form. 
+					</p><p>
+						Explore the user interface a bit more and then proceed with the next step.
+					</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4133"></a>2.2.6.&nbsp;Bonus Section: Modifying the scaffolded interface</h4></div></div></div><p>
+					The user interface that has been generated is not typically intended to be used as-is:
+					it's just a quick way to get started, but you are still responsible for designing and
+					implementing your web interface of course. One thing that's somewhat annoying is that
+					accounts and beneficiaries are displyed using a combination of their attributes at the
+					moment: it would make more sense to just show their names instead.
+				</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e4138"></a>2.2.6.1.&nbsp;Step 9: Define your own Converters</h5></div></div></div><p>
+						Spring Roo uses Spring Converter implementations for rendering entities as labels. These
+						converters are registered in a class called
+						<code class="classname">ApplicationConversionServiceFactoryBean</code>: please open that class
+						now. Notice that there are no converter definitions here: like with entities, this code
+						is woven in using an AspectJ ITD. Open the
+						<code class="filename">ApplicationConversionServiceFactoryBean_Roo_ConversionService.aj</code>
+						file and look at the static inner <code class="classname">AccountConverter</code> class that it
+						defines. You're going to add this converter to the .java file: an easy way to do that is
+						to use a built-in refactoring. Select the <code class="classname">AccountConverter</code> in the
+						.aj file, right-click and choose "AspectJ Refactoring	-&gt; Push In..." and press OK.
+					</p><p>
+						Then switch back to the <code class="classname">ApplicationConversionServiceFactoryBean</code>
+						and update the <code class="methodname">convert</code> method to simply return the name of the
+						account. 
+					</p><p>
+						Make sure to also add a <code class="literal">registry.addConverter(new AccountConverter())</code>
+						call to the <code class="methodname">installFormatters</code> method, since Roo will remove
+						that line from the ITD after you push in the static converter class: without this call
+						the converter won't be used!
+					</p><p>
+						Repeat this push-in and edit procedure for the <code class="classname">BeneficiaryConverter</code>.
+						FIXME: doesn't currently work, AspectJ complains about empty body of
+						installLabelConverters.
+						</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+								If the push-in refactoring wizard doesn't show the BeneficiaryConverter after
+								selecting it, then cancel and perform a Project -&gt; Clean first. Sometimes the
+								AspectJ plugin seems to get confused after the first push-in, cleaning the project
+								will fix that.
+							</p></td></tr></table></div><p>
+					</p><p>
+						Restart the server and verify that your changes are reflected.
+						</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+								Since we're using an in-memory database you'll have to enter a new account and new
+								beneficiaries.
+							</p></td></tr></table></div><p>
+					</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e4186"></a>2.2.6.2.&nbsp;Step 10: Edit the generated views</h5></div></div></div><p>
+						It would be nice if you could add new beneficiaries to an account directly from the
+						account details page. This page is rendered by the
+						<code class="filename">WEB-INF/views/accounts/show.jspx</code> file. Open it and look at its
+						implementation: as you can see, custom tags are used to render the account details. This
+						ensures that changes to the entity will automatically be reflected in the user
+						interface. However, you're free to edit this file and add some contents. 
+					</p><p>
+						Copy the <code class="literal">&lt;form:create&gt;</code> element and its content from the
+						<code class="filename">views/beneficiaries/create.jspx</code> file and paste it under the
+						<code class="literal">&lt;page:show&gt;</code> element in the account's
+						<code class="filename">show.jspx</code> file. Also copy the <code class="literal">xmlns:form</code>
+						attribute from the create.jspx root element to the root element of the show.jspx to
+						declare the tag library's namespace. 
+					</p><p>
+						Notice that this tag requires a <code class="varname">beneficiary</code> model attribute for
+						binding. To ensure that that attribute exists, add the following method to the
+						<code class="classname">AccountController</code>:
+						</p><pre class="programlisting">    @ModelAttribute
+    public Beneficiary newBeneficiary() {
+        return new Beneficiary();
+    }</pre><p>
+						Also, replace the <code class="literal">&lt;field:select&gt;</code> tag with the following tag,
+						since we know the account id for the new Beneficiary already:
+						</p><pre class="programlisting">&lt;input type="hidden" name="account" value="${account.id}"/&gt;</pre><p>
+					</p><p>
+						Restart the server, add a new Account and try to add a new Beneficiary to it from the
+						account details view using your new form. It's not the perfect solution yet, but this
+						gives you a pretty good idea of how Roo's custom tags help you to quickly customize the
+						generated user interface, or to define new pages yourself while still allowing Roo to
+						generate some of the dynamic contents for you. 
+					</p></div></div></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="web-security-lab.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="web-testing-lab.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">web-security: Secure Your Web Application With Spring Security&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="http://www.springsource.com/" title="SpringSource">By SpringSource</a></span></td><td width="40%" align="right" valign="top">&nbsp;web-test: Functional And Performance Web Application Testing</td></tr></table></div></body></html>

@@ -1,0 +1,182 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>ajax: Building an AJAX Search</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.70.0"><link rel="start" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="up" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="prev" href="rest-ws-2-lab.html" title="rest-ws-2: Building a REST Server with Spring MVC"><link rel="next" href="webflow-getting-started.html" title="webflow-getting-started: Getting Started with Spring Web Flow"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns="http://www.w3.org/TR/xhtml1/transitional" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="http://www.springframework.org/" title="The Spring Framework"><img style="border:none;" src="images/xdev-spring_logo.jpg"></img></a><a style="border:none;" href="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="images/springsource-banner-rhs.jpg"></img></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="ajax-lab"></a>ajax: Building an AJAX Search</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ajax-lab-introduction"></a>1.&nbsp;Introduction</h2></div></div></div><p>Many web applications use forms to process user input of some kind.
+    In a prior lab you performed a typical 'edit' scenario where a form was
+    used to capture changes and then POSTed back to the server. You may have
+    optionally implemented the search scenario by also submitting a request to
+    the server using a GET type invocation and then were re-directed to a new
+    page with the search results. In this lab, you will put into practice some
+    of the AJAX principles in order to build a more rich style of interaction
+    for performing the search.</p><div class="orderedlist"><p class="title"><b>What you will have a chance to practice:</b></p><ol type="1"><li><p>How to use the JQuery library to decorate and modify the HTML
+        elements on the page</p></li><li><p>How to formulate an AJAX request using the JQuery library</p></li><li><p>How to handle the AJAX response by dynymaically updating the
+        page with the response data</p></li><li><p>How to configure
+        the<code class="classname">MappingJacksonJsonView</code> and the
+        <code class="classname">ContentNegotiatingViewResolver</code> to re-use
+        existing controller functionality for AJAX requests</p></li><li><p>How to use annotations to help customize the JSON mapping
+        behavior</p></li></ol></div><p>Estimated time to complete: 45 minutes</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="ajax-lab-instructions"></a>2.&nbsp;Instructions</h2></div></div></div><p>In this lab you will modify the Account Search feature to use the
+    AJAX style of invocation.</p><p>Here is a graphic illustrating the desired page flow: </p><div class="mediaobject" align="center"><img src="images/ajax/ajax-account-search.png" align="middle"></div><p>Note that the use of the path <code class="filename">/ajax</code> is somewhat
+    arbitrary. This path is used simply to distinguish the AJAX account search
+    request from the existing search request.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="ajax-account-edit"></a>2.1.&nbsp;Implement JQuery and AJAX functionality to perform a filtered
+      search</h3></div></div></div><p>Start by deploying the <code class="filename">ajax-start</code> project and
+      accessing it at <a href="http://localhost:8080/ajax-start" target="_top">http://localhost:8080/ajax-start/</a>.</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2515"></a>2.1.1.&nbsp;Assess the current implementation</h4></div></div></div><p>Select the <code class="classname">Accounts</code> link and notice that
+        under the search criteria form there are two labels;
+        <code class="filename">Account</code> and <code class="filename">Name</code>. Open the
+        <code class="filename">accounts/search.jsp</code> file under the
+        <code class="filename">WEB-INF</code> directory and scroll down to the bottom
+        of the file. Notice there is the start of a table definition. This is
+        where the search results will ultimately be displayed.</p><p>Next, open the <code class="filename">layouts/standard.jsp</code> file
+        and notice there is an entry to load the JQuery javascript library.
+        This means that JQuery Javascript functionality is available on all
+        pages that use this template layout file.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2540"></a>2.1.2.&nbsp;Use JQuery to initially hide the table</h4></div></div></div><p>As a first step, you will want to initially hide the table.
+        Create a JQuery document ready handler function to hide the table.
+        Later, you will use this handler function to also intercept the search
+        button click event and route to a JavaScript method.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>Review the slides on using JQuery and if you're still unsure
+          ask the instructor.</p></td></tr></table></div><p>In the handler function, use the appropriate JQuery selector to
+        select the <code class="filename">div</code> block that wraps the table and
+        then use the hide method. Save the JSP and refresh the page.</p><p>Verify that the table header is indeed now hidden.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2555"></a>2.1.3.&nbsp;Attach a button clicked handler to the search button</h4></div></div></div><p>In this step, you will add an event handler to intercept the
+        submit button click event. You will direct the click event to a
+        Javascript function that will process the form data and send via AJAX
+        request to a request handler method on the
+        <code class="filename">AccountSearchController</code> class.</p><p>First, bind an event handler function for the click event on the
+        <code class="filename">Search</code> button in the document ready handler. For
+        now, simply implement a function and have it pop up an alert when the
+        button is pressed. Make sure to return <code class="filename">false</code> so
+        that pressing the <code class="filename">Submit</code> button doesn't cause an
+        http <code class="filename">GET</code> request. Save the file and test to make
+        sure pressing the button does indeed trigger an alert dialog
+        box.</p><p>Next, implement additional functionality to obtain the values of
+        the <code class="filename">searchString</code> and
+        <code class="filename">maximumResults</code> form fields. It might be a good
+        idea to add a test to ensure the user has provided a value in the
+        <code class="filename">searchString</code> field. </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>You can use the <code class="filename">focus()</code> method to set
+            the cursor focus on an element selected using a JQuery
+            selector</p></td></tr></table></div><p>You will want to create a simple JSON object that resembles the
+        <code class="filename">AccountSearchCriteria</code> class. You will only need
+        to set the <code class="filename">searchString</code> and
+        <code class="filename">maximumResults</code> fields for this search. Finally,
+        invoke a JSON Get request, passing the target URL to invoke, the JSON
+        object and the name of the callback function that will be called on
+        successful execution.</p><p>Implement another function that will be the callback function
+        (make sure you use the same function name as provided to the AJAX
+        request. Make sure to provide an argument to function to represent the
+        returned results. For now, just have an alert pop up a modal dialog
+        box showing the number of results.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2607"></a>2.1.4.&nbsp;Implement a handler method on the
+        <code class="filename">AccountSearchCriteria</code> controller</h4></div></div></div><p>In the <code class="filename">AccountSearchController</code> class,
+        implement a method using the RESTful style. The handler method should
+        include an <code class="filename">AccountSearchCriteria</code> object in the
+        signature. Use this object to search for matching accounts and return
+        this list as the response body. </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>You may want to refer back to the REST sections to see how
+            to do this.</p></td></tr></table></div><p>Re-start the server and verify that submitting a search returns
+        results. For example, searching for accounts with the character 'k'
+        should result in an alert dialog showing 3 results were returned. It
+        will be helpful to watch the data exchanged by using Firebug.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>Open the search URL in Firefox. Use F12 to open Firebug.
+          Select the Net tab and ensure that it is enabled. Next, go to the
+          XHR tab. Now, submit the search again and you should see a GET
+          request populated in the display area. Expand the request and
+          examine the Response where you will see the raw JSON object data
+          that was returned. You can also select the JSON tab to get a better
+          idea of how to navigate the returned object.</p></td></tr></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2629"></a>2.1.5.&nbsp;Implement functionality to display accounts</h4></div></div></div><p>In this final step, you will implement the functionality to
+        display the results, which will be passed into the callback function
+        as a JSON object representing the list of accounts matching the
+        specified search criteria.</p><p>In the prior step when monitoring the returned JSON object, you
+        should have observed that what was returned was a list of objects that
+        can be indexed. A logical approach would be to use a <code class="filename">for
+        loop</code> to iterate over the list and display a row of table
+        data representing the current account values. The heading for the
+        table has already been defined and is epxected to show just the
+        account number and the name of the account owner.</p><p>The high level steps you will need to perform then are:</p><div class="orderedlist"><ol type="1"><li><p>Empty out the contents of the former table data</p></li><li><p>Iterate over the results data and display the desired
+            content (you will need to write the HTML for each table row and
+            the table cells)</p></li><li><p>Show the HTML fragment that wraps the entire table</p></li></ol></div><p>Once you've got this working, you have completed this lab. If
+        you'd like you can proceed with the bonus section.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="ajax-bonus-work"></a>2.2.&nbsp;Bonus: Implement The Account Details Functionality Using
+      AJAX</h3></div></div></div><p>In this section, you will add additional functionality to display
+      the account details using an AJAX style request but using the
+      MappingJacksonJson view instead. This will allow you to re-use the
+      existing controller handler functionality that already retrieves the
+      details information.</p><p>The following illustration describes the flow of the Account
+      Details scenario: </p><div class="mediaobject" align="center"><img src="images/ajax/ajax-account-details.png" align="middle"></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2665"></a>2.2.1.&nbsp;Modify displayed account data to include a link for
+        details</h4></div></div></div><p>In the prior section, you simply displayed the account number
+        and account name as plain text in a table. In this step, you will
+        modify the display of the account number to include a link that will
+        trigger a javascript event, passing the associated account
+        number.</p><p>In your callback function for displaying the table of matching
+        accounts, modify the existing simple table data item for the account
+        number to turn this into a link.</p><p>
+          </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>You will want this to be a link that does not go anywhere
+            but will have an onclick event handler associated to it. Your
+            modified link might look something like this:</p><p><code class="classname">&lt;a href="#"
+            onclick="clickEventHandlingMethod(customValue)"&gt;data&lt;/a&gt;</code>.
+            You will want to provide your own name for
+            <code class="classname">clickEventHandlingMethod</code> and find a way to
+            provide the account number as an argument for each account
+            item.</p></td></tr></table></div><p>
+        </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2685"></a>2.2.2.&nbsp;Modify the Spring configuration to support the
+        MappingJacksonJsonView</h4></div></div></div><p>Before proceeding with your JavaScript coding, you will want to
+        make some changes to your Spring MVC application to support additional
+        view types. You will add a configuration for the Spring
+        <code class="classname">MappingJacksonJsonView</code>
+        and<code class="classname">ContentNegotiatingViewResolver</code> classes. Make
+        the JSON view resolver be the default view if one can't be
+        found.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>You may want to refer back to the mvc-view section to see how
+          to do this. You may have also performed a similar task in optional
+          section of the associated mvc-views lab.</p></td></tr></table></div><p>Once this is complete, restart the server.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2701"></a>2.2.3.&nbsp;Implement a handler function to invoke the AJAX request</h4></div></div></div><p>To begin, implement the method and use an alert to display the
+        argument that is passed in to the handler. Verify that you are
+        receiving the correct value for each link you click on.</p><p>Next, implement the actual handler code. This will use a similar
+        invocation of the JQuery getJSON method call except there is no
+        argument data. Instead, the URL value will be the value of the account
+        number provided as an argument to the 'link clicked' handler function.
+        You can provide the name of a callback function to be called on
+        successful invocation of the AJAX request or you can simply implement
+        the function inline.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>Before implementing the actual code to display account
+            details, you might simply implement an empty callback function and
+            use the Firebug tools to observe the JSON payload that is
+            returned. This should give you some idea as to how to process the
+            data returned. Also, look at the JavaDoc for the
+            <code class="classname">MappingJacksonJsonView</code> class for additional
+            background.</p></td></tr></table></div><p> Now, write some code in your callback function that will
+        extract the result data and display in a simple modal dialog box.
+        Rather than spending a lot of time implementing this in a fancy
+        dialog, simply display an alert with a string containing the text to
+        display where each attribute of the account is displayed with the
+        label and its value on a new line.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>You can use a variable to build up this concatenated string
+            before displaying it as an alert</p></td></tr></table></div><p>Once this is complete, reload the JSP and walk through the
+        entire flow. When you are able to successfully display the account
+        details for a selected account, you have completed this step. However,
+        notice that the date value is currently a numeric value. This is
+        because the Jackson/JSON converter is having a little difficulty
+        knowing how to serialize the Date field of the Account object.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2721"></a>2.2.4.&nbsp;Help the Jackson/JSON view perform the serialization</h4></div></div></div><p>To begin, open the <code class="classname">Account</code> class and look
+        at the various field types. For the most part, these are simple types
+        that the JSON serialization process has no difficulty converting. The
+        one exception is the <code class="classname">dateOfBirth</code> field, which
+        is a <code class="classname">java.util.Date</code> type. The default behavior
+        is simply to return the value of invoking the
+        <code class="classname">getTime()</code> method. In this step, you will be
+        helping the converter serialize this value in a more customized
+        way.</p><p>Next, open the <code class="classname">CustomDateConverter</code> class,
+        which is also in the <code class="classname">rewardsonline.accounts</code>
+        package. This is a custom serializer class that we will use to help
+        the JSON mapper perform the conversion. This class has one method that
+        performs the serialization. Notice that because this implementation
+        extends a parameterized version of
+        <code class="classname">JsonGenerator</code> there is a required first
+        argument type of <code class="classname">java.util.Date</code>. This is a very
+        simple implementation that simply takes the
+        <code class="classname">Date</code> object and performs the formatting using
+        the <code class="classname">SimpleDateFormat</code> class and using the
+        pattern 'MM-dd-yyyy'.</p><p>In this step, you will simply use this mechanism to tell the
+        JSON mapper how to serialize the date. To do this, you will place the
+        <code class="classname">@JsonSerialize</code> annotation on the
+        <code class="classname">getDate()</code> method of the
+        <code class="classname">Account</code> class.</p><p>
+          </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>You will use the <code class="classname">using</code> parameter of
+            the <code class="classname">@JsonSerialize</code> annotation to point to
+            the <code class="classname">CustomDateSerializer</code> class. Make sure
+            to include the .class suffix on the class name.</p></td></tr></table></div><p>
+
+          </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>For more information on the Jackson/JSON annotations, refer
+            to the following link:</p><p>
+              <a href="http://wiki.fasterxml.com/JacksonAnnotations" target="_top">http://wiki.fasterxml.com/JacksonAnnotations</a>
+            </p></td></tr></table></div><p>
+        </p><p>Once this is complete, reload the JSP and walk through the
+        entire flow. When you are able to successfully display the formatted
+        date for the dateOfBirth field, you have completed this lab and bonus
+        material! Congratulations!</p></div></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="rest-ws-2-lab.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="webflow-getting-started.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">rest-ws-2: Building a REST Server with Spring MVC&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="http://www.springsource.com/" title="SpringSource">By SpringSource</a></span></td><td width="40%" align="right" valign="top">&nbsp;webflow-getting-started: Getting Started with Spring Web Flow</td></tr></table></div></body></html>

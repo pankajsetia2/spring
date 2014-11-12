@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.springsource.sts.vmware"
+      label="%featureName"
+      version="2.9.2.201205071000-RELEASE"
+      provider-name="%providerName"
+      plugin="com.springsource.sts">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseUrl">
+      %license
+   </license>
+
+   <requires>
+<!--      <import feature="com.vmware.vixapi" version="2.9.2" match="compatible"/> -->
+      <import plugin="org.eclipse.mylyn.commons.soap" version="3.3.0" match="compatible"/>
+      <import feature="com.springsource.sts" version="2.9.2" match="equivalent"/>
+      <import feature="com.springsource.sts.server.tc" version="2.9.2" match="equivalent"/>
+   </requires>
+
+   <plugin
+         id="com.springsource.sts.vmware.core"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.sts.vmware.ui"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.sts.server.commons.vmware.core"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.sts.server.commons.vmware.ui"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.sts.server.tc.vmware.core"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="com.springsource.sts.server.tc.vmware.ui"
+         download-size="0"
+         install-size="0"
+         version="2.9.2.201205071000-RELEASE"
+         unpack="false"/>
+
+</feature>

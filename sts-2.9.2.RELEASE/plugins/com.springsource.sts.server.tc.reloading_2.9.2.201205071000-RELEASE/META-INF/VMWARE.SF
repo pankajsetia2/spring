@@ -1,0 +1,18 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: 7h9GZhhRY02H7+1yxiUs3x8+Wgc=
+Created-By: 1.6.0_22 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: JRiL/wUVVVBh6IcBrPOqHmIEV58=
+
+Name: com/springsource/sts/server/tc/reloading/TcServerReloadingPlugin
+ .class
+SHA1-Digest: gjyETyOZ8DiuRQYuWzICII+nk5o=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: QdryQvJlVywlE0MGLuwYCkmkyWk=
+
+Name: about.html
+SHA1-Digest: 1ij0vaBkpNtNgFNMKE64IiEy7UM=
+
+Name: lib/springloaded-1.0.1.jar
+SHA1-Digest: abwlBNdBNxW1ewGnaS5IEkdBqGE=
+

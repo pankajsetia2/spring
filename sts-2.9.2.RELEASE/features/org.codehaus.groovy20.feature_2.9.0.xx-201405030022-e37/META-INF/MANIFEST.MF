@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.6.0_45
+Built-By: bamboo
+Created-By: Apache Maven
+Archiver-Version: Plexus Archiver
+
+Name: META-INF/maven/org.codehaus.groovy.eclipse/org.codehaus.groovy20
+ .feature/pom.xml
+SHA1-Digest: y3uuYB6j0RANwu4RFMdH6NwFJ8Y=
+
+Name: license.html
+SHA1-Digest: gDvZFJq7zVmKWUPgIORS17Zr37o=
+
+Name: feature.xml
+SHA1-Digest: bVTo+/myo8xLqpwji9SCz4tDtrQ=
+
+Name: META-INF/maven/org.codehaus.groovy.eclipse/org.codehaus.groovy20
+ .feature/pom.properties
+SHA1-Digest: vw21fiOf+z+gfbuGXrf0K0JHNis=
+
+Name: epl-v10.html
+SHA1-Digest: tvkm5kOOGRjiDD2ShWv6taRG2OI=
+
+Name: feature.properties
+SHA1-Digest: akHRObrndWjHW/r3YP8cg14+JuI=
+

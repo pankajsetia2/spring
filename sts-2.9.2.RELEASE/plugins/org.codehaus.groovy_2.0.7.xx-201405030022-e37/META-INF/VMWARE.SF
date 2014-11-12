@@ -1,0 +1,94 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: Vrg0crTWKKjCBzEBvRVqRxTenSI=
+Created-By: 1.6.0_45 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: LpHrmttN0thEXtRdpQxLt89hJeI=
+
+Name: plugin_dsld_support/dsld/groovy.dsld
+SHA1-Digest: /vM7CrFbBrrJG4NGBpBv/CKZBmI=
+
+Name: lib/ivy-2.2.0.jar
+SHA1-Digest: sEmO8hPDUyKnoVYYcNpR/eTc82A=
+
+Name: plugin_dsld_support/dsld/logging.dsld
+SHA1-Digest: egXRL6qp46nWZLZ5lDDdaXuTJe8=
+
+Name: about_files/asl-v20.txt
+SHA1-Digest: N50rmMN67ojI3R39182KA3+fkbM=
+
+Name: plugin_dsld_support/dsld/autoExternalize.dsld
+SHA1-Digest: 3tfsg9XZ7bkT3YfzzT0p/6+oNvA=
+
+Name: extras/groovyReset.jar
+SHA1-Digest: 9Qv7yFglRwadrD8RdOQalqeEoWo=
+
+Name: VERSION
+SHA1-Digest: k/2Gw934CF+2OE6tQuwiJVBmug4=
+
+Name: plugin_dsld_support/dsld/bindable.dsld
+SHA1-Digest: w37zfjwlus9rpNHwkjUcNSaLK9k=
+
+Name: about.html
+SHA1-Digest: PpKd/lfOpAdstmWb/VxFk5eEdas=
+
+Name: lib/groovy-all-2.0.7-sources.jar
+SHA1-Digest: dGL5cNuC/Pd61/mmVcgdR2K9pcs=
+
+Name: groovy-eclipse.jar
+SHA1-Digest: 4nz354uyIIF2ONmmfceAEVbanhw=
+
+Name: lib/groovy-all-2.0.7.jar
+SHA1-Digest: Am1aDOs1aXXuAdNZQ2l/j6RbZjA=
+
+Name: META-INF/maven/org.codehaus.groovy.eclipse/org.codehaus.groovy/p
+ om.properties
+SHA1-Digest: PsE/sJs2KpVm4do1b57+99cbwdk=
+
+Name: about_files/jline.txt
+SHA1-Digest: z9bcZeB8T2cHeITWy9JhqhUHtAM=
+
+Name: about_files/antlr2.txt
+SHA1-Digest: zyApDp2J4pTnDpOmasipJv5BdA8=
+
+Name: plugin_dsld_support/dsld/listenerList.dsld
+SHA1-Digest: v6wPUcdmtSEIIn7NK7pIBo6eYx4=
+
+Name: lib/bsf-2.4.0.jar
+SHA1-Digest: 2EC9h1VDlwSXE78skG7SENANpLQ=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: qhPIaG5IGUyh01BYaDcgy/gX2EU=
+
+Name: lib/servlet-api-2.4.jar
+SHA1-Digest: iVaKSxJUOVctUm5Okr/1Qkd2Twk=
+
+Name: about_files/asm.txt
+SHA1-Digest: Bhyx+bT2PGxHAVRq1DQjpud7/yA=
+
+Name: plugin_dsld_support/dsld/DSLD_meta_script.dsld
+SHA1-Digest: lOSU9MNn94dw976HdqaWLsVJaGY=
+
+Name: conf/groovy-starter.conf
+SHA1-Digest: LZbLwFMBbJo7yxYus+M5fsZPKjk=
+
+Name: plugin_dsld_support/dsld/swing_builder.dsld
+SHA1-Digest: 7/7coYurzEI1hsoJFIGOKIwjzqI=
+
+Name: plugin_dsld_support/dsld/vetoable.dsld
+SHA1-Digest: eDSRx3OIrqXQ+bHsVI23hV3czAE=
+
+Name: eclipse-trace.jar
+SHA1-Digest: LNFALT1Nlg8YwnM38j0baF1vLpM=
+
+Name: META-INF/maven/org.codehaus.groovy.eclipse/org.codehaus.groovy/p
+ om.xml
+SHA1-Digest: y03wzbrWZTWlSnbP1XsmLFcZ+z8=
+
+Name: META-INF/p2.inf
+SHA1-Digest: zIKNsUArQUczs8VxWl84OS4kedg=
+
+Name: plugin_dsld_support/dsld/groovy18.dsld
+SHA1-Digest: vGL8lgP/ESk6Zq38rFvPMln63Ek=
+
+Name: plugin_dsld_support/readme.txt
+SHA1-Digest: WuETQCTEpDfBj6P6ObKUWp11wDw=
+

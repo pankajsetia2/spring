@@ -1,0 +1,2741 @@
+Manifest-Version: 1.0
+Export-Package: org.aspectj.apache.bcel;version="1.6.10.RELEASE";uses:
+ ="org.aspectj.apache.bcel.classfile,org.aspectj.apache.bcel.util",org
+ .aspectj.apache.bcel.classfile;version="1.6.10.RELEASE";uses:="org.as
+ pectj.apache.bcel,org.aspectj.apache.bcel.classfile.annotation,org.as
+ pectj.apache.bcel.generic,org.aspectj.apache.bcel.util",org.aspectj.a
+ pache.bcel.classfile.annotation;version="1.6.10.RELEASE";uses:="org.a
+ spectj.apache.bcel.classfile,org.aspectj.apache.bcel.generic",org.asp
+ ectj.apache.bcel.generic;version="1.6.10.RELEASE";uses:="org.aspectj.
+ apache.bcel,org.aspectj.apache.bcel.classfile,org.aspectj.apache.bcel
+ .classfile.annotation,org.aspectj.apache.bcel.util",org.aspectj.apach
+ e.bcel.util;version="1.6.10.RELEASE";uses:="org.aspectj.apache.bcel.c
+ lassfile",org.aspectj.asm;version="1.6.10.RELEASE";uses:="org.aspectj
+ .bridge,org.aspectj.util",org.aspectj.asm.internal;version="1.6.10.RE
+ LEASE";uses:="org.aspectj.asm,org.aspectj.bridge",org.aspectj.bridge;
+ version="1.6.10.RELEASE",org.aspectj.bridge.context;version="1.6.10.R
+ ELEASE";uses:="org.aspectj.bridge",org.aspectj.internal.lang.annotati
+ on;version="1.6.10.RELEASE",org.aspectj.internal.lang.reflect;version
+ ="1.6.10.RELEASE";uses:="org.aspectj.lang.reflect",org.aspectj.lang;v
+ ersion="1.6.10.RELEASE";uses:="org.aspectj.lang.reflect,org.aspectj.r
+ untime.internal",org.aspectj.lang.annotation;version="1.6.10.RELEASE"
+ ,org.aspectj.lang.internal.lang;version="1.6.10.RELEASE",org.aspectj.
+ lang.reflect;version="1.6.10.RELEASE";uses:="org.aspectj.lang",org.as
+ pectj.runtime;version="1.6.10.RELEASE",org.aspectj.runtime.internal;v
+ ersion="1.6.10.RELEASE";uses:="org.aspectj.lang,org.aspectj.runtime,o
+ rg.aspectj.runtime.internal.cflowstack",org.aspectj.runtime.internal.
+ cflowstack;version="1.6.10.RELEASE",org.aspectj.runtime.reflect;versi
+ on="1.6.10.RELEASE";uses:="org.aspectj.lang,org.aspectj.lang.reflect,
+ org.aspectj.runtime.internal",org.aspectj.util;version="1.6.10.RELEAS
+ E",org.aspectj.weaver;version="1.6.10.RELEASE";uses:="org.aspectj.bri
+ dge,org.aspectj.util,org.aspectj.weaver.ast,org.aspectj.weaver.patter
+ ns,org.aspectj.weaver.tools",org.aspectj.weaver.ast;version="1.6.10.R
+ ELEASE";uses:="org.aspectj.weaver,org.aspectj.weaver.internal.tools",
+ org.aspectj.weaver.bcel;version="1.6.10.RELEASE";uses:="org.aspectj.a
+ pache.bcel.classfile,org.aspectj.apache.bcel.classfile.annotation,org
+ .aspectj.apache.bcel.generic,org.aspectj.apache.bcel.util,org.aspectj
+ .asm,org.aspectj.bridge,org.aspectj.util,org.aspectj.weaver,org.aspec
+ tj.weaver.ast,org.aspectj.weaver.internal.tools,org.aspectj.weaver.lo
+ adtime.definition,org.aspectj.weaver.patterns,org.aspectj.weaver.tool
+ s",org.aspectj.weaver.bcel.asm;version="1.6.10.RELEASE";uses:="org.as
+ pectj.weaver,org.objectweb.asm",org.aspectj.weaver.internal.tools;ver
+ sion="1.6.10.RELEASE";uses:="org.aspectj.util,org.aspectj.weaver,org.
+ aspectj.weaver.ast,org.aspectj.weaver.patterns,org.aspectj.weaver.too
+ ls",org.aspectj.weaver.loadtime;version="1.6.10.RELEASE";uses:="com.b
+ ea.jvm,org.aspectj.bridge,org.aspectj.weaver,org.aspectj.weaver.bcel,
+ org.aspectj.weaver.loadtime.definition,org.aspectj.weaver.tools",org.
+ aspectj.weaver.loadtime.definition;version="1.6.10.RELEASE";uses:="ja
+ vax.xml.parsers,org.xml.sax,org.xml.sax.helpers",org.aspectj.weaver.l
+ tw;version="1.6.10.RELEASE";uses:="org.aspectj.apache.bcel.classfile,
+ org.aspectj.bridge,org.aspectj.weaver,org.aspectj.weaver.bcel,org.asp
+ ectj.weaver.loadtime,org.aspectj.weaver.reflect",org.aspectj.weaver.m
+ odel;version="1.6.10.RELEASE";uses:="org.aspectj.asm,org.aspectj.brid
+ ge,org.aspectj.weaver,org.aspectj.weaver.bcel,org.aspectj.weaver.patt
+ erns",org.aspectj.weaver.patterns;version="1.6.10.RELEASE";uses:="org
+ .aspectj.bridge,org.aspectj.util,org.aspectj.weaver,org.aspectj.weave
+ r.ast",org.aspectj.weaver.reflect;version="1.6.10.RELEASE";uses:="org
+ .aspectj.bridge,org.aspectj.util,org.aspectj.weaver,org.aspectj.weave
+ r.ast,org.aspectj.weaver.internal.tools,org.aspectj.weaver.patterns,o
+ rg.aspectj.weaver.tools",org.aspectj.weaver.tools;version="1.6.10.REL
+ EASE";uses:="org.aspectj.bridge,org.aspectj.util,org.aspectj.weaver,o
+ rg.aspectj.weaver.patterns,org.aspectj.weaver.reflect",testdata;versi
+ on="1.6.10.RELEASE"
+Implementation-Title: org.aspectj.weaver
+Implementation-Version: 1.6.10.RELEASE
+Specification-Vendor: aspectj.org
+Tool: Bundlor 1.0.0.RELEASE
+Bundle-Name: AspectJ Weaver
+Premain-Class: org.aspectj.weaver.loadtime.Agent
+Implementation-Vendor: aspectj.org
+Bundle-Vendor: SpringSource
+Bundle-Version: 1.6.10.RELEASE
+Name: org/aspectj/weaver/
+Bundle-ManifestVersion: 2
+Specification-Title: AspectJ Weaver Classes
+Bundle-SymbolicName: com.springsource.org.aspectj.weaver
+Specification-Version: 1.6.10.RELEASE
+Import-Package: javax.xml.parsers;version="0",org.apache.commons.loggi
+ ng;version="[1.1.1, 2.0.0)";resolution:="optional",org.xml.sax;versio
+ n="0",org.xml.sax.helpers;version="0"
+Can-Redefine-Classes: true
+
+Name: org/aspectj/weaver/reflect/PointcutParameterImpl.class
+SHA1-Digest: 3eOO17ZkcO16M/l9cS8SavG109A=
+
+Name: org/aspectj/weaver/patterns/OrSignaturePattern.class
+SHA1-Digest: tyaZV8NdxN/dXnJ1ZmGJcmOKkxc=
+
+Name: org/aspectj/apache/bcel/classfile/JavaClass.class
+SHA1-Digest: rwDWkREssKDLb1us92nBVNrnLYE=
+
+Name: org/aspectj/apache/bcel/classfile/ClassParser.class
+SHA1-Digest: 95XI2O6sVZmD7FoC7ae4N9e3ZHs=
+
+Name: org/aspectj/weaver/ShadowMunger.class
+SHA1-Digest: +1EKya8Qg5qnmeK/pyYM5xYgxJM=
+
+Name: org/aspectj/weaver/patterns/TypePatternQuestions$Question.class
+SHA1-Digest: A9I7Em5+AmA44X6X9SWTqx5zn0k=
+
+Name: org/aspectj/lang/reflect/TypePattern.class
+SHA1-Digest: zvqRF7C5eA34SKgZQs/ny8hfTbk=
+
+Name: org/aspectj/apache/bcel/Constants$Clinit.class
+SHA1-Digest: C/Kkh++GvLVFrtAFeT5BDGaNM94=
+
+Name: org/aspectj/weaver/weaver-messages.properties
+SHA1-Digest: QQFzHyu4I1nz0wVncIZSTk09VGk=
+
+Name: org/aspectj/weaver/Iterators$8.class
+SHA1-Digest: EHbbefRJQhkSAgMoOvMsM9HXQQE=
+
+Name: org/aspectj/weaver/loadtime/definition/Definition$ConcreteAspect
+ .class
+SHA1-Digest: xOJdLgcLUXM4G8/RfN+Z+52tvPY=
+
+Name: org/aspectj/bridge/WeaveMessage.class
+SHA1-Digest: J2vibbES6wrVcaeT5iqFY7noyWI=
+
+Name: org/aspectj/weaver/AnnotationNameValuePair.class
+SHA1-Digest: 650nOerxHYLObMVLsJ7H5zYRb4w=
+
+Name: org/aspectj/weaver/bcel/BcelConstantPoolWriter.class
+SHA1-Digest: Ubg3YhZJh95s2EQIVAlrdAF0f8Y=
+
+Name: org/aspectj/weaver/Checker.class
+SHA1-Digest: B9SLsY3ZzsIfuM4e0n/r/3G59/w=
+
+Name: org/aspectj/weaver/SimpleAnnotationValue.class
+SHA1-Digest: M3y9AXfNgTJ1kt85r7gkMuZ33ac=
+
+Name: org/aspectj/weaver/internal/tools/PointcutExpressionImpl$Handler
+ .class
+SHA1-Digest: MkuUv3N3vUDMuhsWlu3lQdRM4oY=
+
+Name: org/aspectj/apache/bcel/classfile/ClassFormatException.class
+SHA1-Digest: eY1aNyFLXsRLzRb0Q+7IYLx+6uc=
+
+Name: org/aspectj/apache/bcel/generic/MULTIANEWARRAY.class
+SHA1-Digest: bhuJZhz2TvQu5BSqBpzj2OknpTw=
+
+Name: org/aspectj/weaver/model/AsmRelationshipUtils.class
+SHA1-Digest: DSYUD9qGCXm1ZraY0Z7HwTp6FM0=
+
+Name: org/aspectj/asm/AsmManager$1.class
+SHA1-Digest: pQj8Br4M7muO/Kr1R8GrTvLFarg=
+
+Name: org/aspectj/asm/AsmManager$ModelInfo.class
+SHA1-Digest: Uh885RLredStuaBjs9Y9uIkgw/M=
+
+Name: org/aspectj/weaver/JoinPointSignatureIterator.class
+SHA1-Digest: vdH3foFTPsoJKkG9ckzt4OB8WU0=
+
+Name: org/aspectj/runtime/CFlow.class
+SHA1-Digest: og81Izo6kOJ0FaL9cFp0Ih9tsW4=
+
+Name: org/aspectj/apache/bcel/classfile/InnerClass.class
+SHA1-Digest: +Oz4CNcjMxQA/S+8zF3DiDO/cfQ=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/RuntimeAnnos.class
+SHA1-Digest: BuJFAsW/Xtm5YbuCvAu2tTvNa1o=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/RuntimeInvisParamAn
+ nos.class
+SHA1-Digest: q4ZfpG5KNxwDNQSgyeOkVmWdhJs=
+
+Name: org/aspectj/weaver/ResolvableTypeList.class
+SHA1-Digest: /y0AvXBLkPEuE/jciPmlSbM7ESg=
+
+Name: org/aspectj/util/LangUtil$ProcessController$Thrown.class
+SHA1-Digest: 4TVSGfLlgGOjB8AfXSthbBEybM0=
+
+Name: org/aspectj/runtime/reflect/Factory.class
+SHA1-Digest: yX9arQwyQI15FQ45bE60BS0QNXs=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantUtf8.class
+SHA1-Digest: s/YYwjw4H+9VK56D3pLPcI8byWE=
+
+Name: org/aspectj/weaver/AnnotationOnTypeMunger.class
+SHA1-Digest: yfZtLyXZRWbG5zulWT92GB/zP4Q=
+
+Name: org/aspectj/weaver/patterns/BasicTokenSource.class
+SHA1-Digest: 9RLYm2r6JR0ziYIchsurlZ+RPRI=
+
+Name: org/aspectj/weaver/bcel/UnwovenClassFile.class
+SHA1-Digest: epNcQz2z6PEZ7wwDNNHzvG13/3M=
+
+Name: org/aspectj/util/GenericSignature$BaseTypeSignature.class
+SHA1-Digest: 0bKNNdEsmW7l+VS5oFTFiVRP5QQ=
+
+Name: org/aspectj/weaver/AbstractReferenceTypeDelegate.class
+SHA1-Digest: jmioeOTF3GFJlmFfVOkI5usiHnc=
+
+Name: org/aspectj/util/FileUtil$1.class
+SHA1-Digest: b/81xU5wcS54/+Hr69+pU2wMUO8=
+
+Name: org/aspectj/weaver/ast/ITestVisitor.class
+SHA1-Digest: 1HmF+Giq4hWTGAg0C6dBvMqZq/U=
+
+Name: org/aspectj/weaver/MemberUtils.class
+SHA1-Digest: 7yvheHjv5mGHr2CjqPBMRQhXVbQ=
+
+Name: org/aspectj/asm/IHierarchy.class
+SHA1-Digest: LxIsH4FUHeWlkp59385v4RoxN/U=
+
+Name: org/aspectj/weaver/tools/StandardPointcutParser$1.class
+SHA1-Digest: ZL9eh05LTtrYtQfaxiFp3TQTS2U=
+
+Name: org/aspectj/weaver/bcel/BcelShadow.class
+SHA1-Digest: p3E+q8hSTAkdk+vC8ziy3F3O/iM=
+
+Name: org/aspectj/weaver/reflect/ReflectionFastMatchInfo.class
+SHA1-Digest: 8t1k8oo05b2T2CzOM5s4Ifa7wRs=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantString.class
+SHA1-Digest: XaEeKHREdCEoPk8ZHRFKJVns7gs=
+
+Name: org/aspectj/weaver/bcel/BcelAccessForInlineMunger.class
+SHA1-Digest: RfQjhIjFHAkeEtYsmboLnwcJjr8=
+
+Name: org/aspectj/internal/lang/reflect/InterTypeFieldDeclarationImpl.
+ class
+SHA1-Digest: gLXttn6ODQAFj/4lKX3ohpjRgR8=
+
+Name: org/aspectj/weaver/patterns/ExactAnnotationTypePattern.class
+SHA1-Digest: fsFo3eqAqkP6ycB3cvMOZfFvXR0=
+
+Name: org/aspectj/weaver/bcel/BcelWeaver$2.class
+SHA1-Digest: yOGteEa2s+cLarCnp8zhWquLHFM=
+
+Name: org/aspectj/weaver/tools/CommonsTrace.class
+SHA1-Digest: TeBrk7HWgsFL9alADJK0AyTCMa0=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes$AjAttributeMethodStruct.c
+ lass
+SHA1-Digest: xTvuujbdK7J68T9Hv3crUa+KVHI=
+
+Name: org/aspectj/bridge/WeaveMessage$WeaveMessageKind.class
+SHA1-Digest: JuAuxGPjKLg8uzrpybKN5NqhRY0=
+
+Name: org/aspectj/weaver/ast/IExprVisitor.class
+SHA1-Digest: vPyk0fWTe21OIC1gm6R2Vg/k3iI=
+
+Name: org/aspectj/asm/internal/ProgramElement$1.class
+SHA1-Digest: pCDu70MU+iaVHFSFjg1JRCEyfC0=
+
+Name: org/aspectj/asm/HierarchyWalker.class
+SHA1-Digest: ZfXOiQ6tghurh2Z/ykhJJjves0Q=
+
+Name: org/aspectj/bridge/MessageUtil$11.class
+SHA1-Digest: ZgS93RsGaHisgqGozqS6sUP23MY=
+
+Name: org/aspectj/weaver/patterns/IVerificationRequired.class
+SHA1-Digest: QuKDDlPk2ipQQhj5wSBTQvoxl9g=
+
+Name: org/aspectj/internal/lang/reflect/DeclareErrorOrWarningImpl.clas
+ s
+SHA1-Digest: s+qA0EUUImZDsNU3l1zNKFYPHH4=
+
+Name: org/aspectj/runtime/reflect/SignatureImpl$Cache.class
+SHA1-Digest: 7oOb7n9EvcReCIqYqiz/ldRpFT0=
+
+Name: org/aspectj/internal/lang/annotation/ajcPrivileged.class
+SHA1-Digest: eksPVGlO7Hop3gKYYJrW9a8k+mQ=
+
+Name: org/aspectj/weaver/bcel/UnwovenClassFile$ChildClass.class
+SHA1-Digest: J3XDg8erV2aUS1zRvKCaUAFU/VU=
+
+Name: org/aspectj/weaver/patterns/Pointcut$State.class
+SHA1-Digest: bQVJikV38zG904a9vxts+CIosow=
+
+Name: org/aspectj/internal/lang/annotation/ajcDeclareEoW.class
+SHA1-Digest: EcxbT289QOoKB8Ha1fdOoNwNXj0=
+
+Name: org/aspectj/weaver/bcel/ClassPathManager.class
+SHA1-Digest: Z9Dab0IjtHsE4SeOIWtUHNFw2fg=
+
+Name: org/aspectj/weaver/bcel/asm/StackMapAdder.class
+SHA1-Digest: mxDNUw1oCkW4HAdPDBrGT36303I=
+
+Name: org/aspectj/bridge/IMessage$Kind.class
+SHA1-Digest: x5yK4dRPGY6CotTx04Kbg+ku3o0=
+
+Name: org/aspectj/weaver/bcel/BcelClassWeaver.class
+SHA1-Digest: FoHTsjQ5zs+MSv/p8thkZBl4+ec=
+
+Name: org/aspectj/lang/reflect/MemberSignature.class
+SHA1-Digest: Hnfi+bCfEGzT58W7KOoEAqToaSg=
+
+Name: org/aspectj/weaver/ast/Or.class
+SHA1-Digest: uHKLXfB3qNXA5aOSqEVDyK0qGCo=
+
+Name: org/aspectj/weaver/tools/CommonsTraceFactory.class
+SHA1-Digest: RPqEpGF8B4DoqXO+SHvBkrHyXLA=
+
+Name: org/aspectj/weaver/ast/Not.class
+SHA1-Digest: OOEDmb9g5yg/B8i4GnFDLMaq0Fk=
+
+Name: org/aspectj/weaver/StaticJoinPointFactory.class
+SHA1-Digest: 1fbpUOtBUSKdEOo8sVGFIbAW/bk=
+
+Name: org/aspectj/weaver/ast/Expr.class
+SHA1-Digest: U7h78YBUi/NIDCtyrvS/gCmBYfs=
+
+Name: org/aspectj/util/FuzzyBoolean$1.class
+SHA1-Digest: iOfmxtbHYP54gy6kblbK76Qt1fw=
+
+Name: org/aspectj/weaver/tools/StandardPointcutParser.class
+SHA1-Digest: QXSfxc8CJ/Bx3MlSHbi8bhNBcTU=
+
+Name: org/aspectj/weaver/Iterators$4.class
+SHA1-Digest: yt3PCpngWMiFOF7fE0hdyoFLRT4=
+
+Name: org/aspectj/apache/bcel/generic/InstructionByte.class
+SHA1-Digest: riuekMH+E1djBi8AuFel3bIIg9g=
+
+Name: testdata/AnnotatedClass.class
+SHA1-Digest: km2DomEfw5OfPpeVI4wTE44jls0=
+
+Name: org/aspectj/apache/bcel/generic/TargetLostException.class
+SHA1-Digest: ucCXDq46Q/C9HUKrkLorjyAzMxQ=
+
+Name: org/aspectj/weaver/reflect/AnnotationFinder.class
+SHA1-Digest: WfpT+3Vj2wYlrrBLPma3U1vcSug=
+
+Name: org/aspectj/weaver/reflect/JavaLangTypeToResolvedTypeConverter.c
+ lass
+SHA1-Digest: QWysTMublWwDmZz7gp2nwdh0u4g=
+
+Name: org/aspectj/weaver/AjAttribute$EffectiveSignatureAttribute.class
+SHA1-Digest: fw1MLc2TZunt7+KpKYoBEn5zqHw=
+
+Name: org/aspectj/apache/bcel/util/DefaultClassLoaderReference.class
+SHA1-Digest: wDLTkq0JOG6Mf7KKxdRXE6e+NPM=
+
+Name: org/aspectj/bridge/MessageUtil$6.class
+SHA1-Digest: Bi+9yXd0i8QcWrldEes9V4TT4EM=
+
+Name: org/aspectj/apache/bcel/util/ClassPath$1.class
+SHA1-Digest: 88g5bg6PmmTOz3TosMaw0LU2Y3w=
+
+Name: org/aspectj/apache/bcel/generic/BranchHandle.class
+SHA1-Digest: 90tUYeV61mfZSGsDdVvyRe5EHk4=
+
+Name: org/aspectj/weaver/tools/DefaultTraceFactory.class
+SHA1-Digest: 3SzqcFCDUMhZGLCsiYjGhItQlqw=
+
+Name: org/aspectj/weaver/patterns/ScopeWithTypeVariables.class
+SHA1-Digest: Rwgjw8OmbO9EX0j2QYdtZPShl0o=
+
+Name: org/aspectj/weaver/bcel/BcelGenericSignatureToTypeXConverter$FTP
+ Holder.class
+SHA1-Digest: NZe+i4jt49Twclii0D2DHEoQNTw=
+
+Name: org/aspectj/weaver/loadtime/IWeavingContext.class
+SHA1-Digest: mdAbGx5rChQC9k8l5A5VR14/CNk=
+
+Name: org/aspectj/lang/NoAspectBoundException.class
+SHA1-Digest: w45P8FGtYiMPStom9HrZAxrVVXk=
+
+Name: org/aspectj/apache/bcel/classfile/FieldOrMethod.class
+SHA1-Digest: f8Eeifh4LHroINgWam7gXweklqE=
+
+Name: org/aspectj/apache/bcel/generic/FieldOrMethod.class
+SHA1-Digest: PohlCX8T/h9ymzMtixF0aDGOcBE=
+
+Name: org/aspectj/weaver/Iterators.class
+SHA1-Digest: bjkPYjNQd0dcPRlANrToH9FvW6Q=
+
+Name: org/aspectj/weaver/tools/WeavingAdaptor$WeavingClassFileProvider
+ .class
+SHA1-Digest: jQTFOlQK5aV9MtFebi4PJEbqWoA=
+
+Name: org/aspectj/asm/IRelationshipMap.class
+SHA1-Digest: FdKCCKDNGaqCKmJsEMhhfds0ark=
+
+Name: org/aspectj/weaver/patterns/PointcutEvaluationExpenseComparator.
+ class
+SHA1-Digest: Q5LmRjcI2U5K5zc2WxuukTFRYmk=
+
+Name: org/aspectj/asm/internal/HandleProviderDelimiter.class
+SHA1-Digest: 0V22ZzjLUjn6Ik7rYdOjYQOIp5M=
+
+Name: org/aspectj/runtime/reflect/JoinPointImpl$StaticPartImpl.class
+SHA1-Digest: SQsiRyN6XWshdF4B6DCQUcWScIk=
+
+Name: org/aspectj/weaver/patterns/PerClause$KindAnnotationPrefix.class
+SHA1-Digest: 0AROxPl6xq8Qy1QXJRBW5cDTJzI=
+
+Name: org/aspectj/weaver/bcel/BcelWorld$WeavingXmlConfig.class
+SHA1-Digest: 98OJFgNM+tkGQCD7MDkHN0D+R0o=
+
+Name: org/aspectj/util/IStructureModel.class
+SHA1-Digest: VzOgMV7TwVh+JwJATguaITO8hU0=
+
+Name: org/aspectj/weaver/reflect/ReflectionWorld.class
+SHA1-Digest: wCZkvg+C1ybhcLsVodqEmQ897vM=
+
+Name: org/aspectj/weaver/bcel/BcelClassWeaver$IfaceInitList.class
+SHA1-Digest: XEO3LiYvH7E3cKHNArJGtQ/hDuI=
+
+Name: org/aspectj/asm/IProgramElement$Modifiers.class
+SHA1-Digest: 2+FmpO6ruiB6HxZiP/nSb7qbceM=
+
+Name: org/aspectj/weaver/patterns/NoTypePattern.class
+SHA1-Digest: 0Hlgt1zolkYZcu4tOwT6hYTatDw=
+
+Name: org/aspectj/lang/JoinPoint$StaticPart.class
+SHA1-Digest: zES5Jo7Yfgf6YPx6nTyvMrfDTtQ=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/AnnotationElementVa
+ lue.class
+SHA1-Digest: NeuvOYmy5qSFilxOIcB1VWBgoh4=
+
+Name: org/aspectj/lang/reflect/AdviceKind.class
+SHA1-Digest: aRYCxDoYKZ6jRdb0aBvLy5yKGXY=
+
+Name: org/aspectj/weaver/internal/tools/TypePatternMatcherImpl.class
+SHA1-Digest: R1LmsNW2S55gre1QKz8e6yeNVV8=
+
+Name: org/aspectj/weaver/bcel/BcelWeavingSupport.class
+SHA1-Digest: nPoml9onKjXMxfexGJA/Nh3/Twc=
+
+Name: org/aspectj/weaver/loadtime/WeavingURLClassLoader$1.class
+SHA1-Digest: jnereUOZ9Qajju/1uHDk/8t5t0o=
+
+Name: org/aspectj/weaver/tools/WeavingClassLoader.class
+SHA1-Digest: PrpkM35HNbB5lo1Dx1srOPIUlLQ=
+
+Name: org/aspectj/weaver/IHasPosition.class
+SHA1-Digest: ZMzagen5b/e6Kc93tqGIHd3ywCg=
+
+Name: org/aspectj/weaver/SourceContextImpl.class
+SHA1-Digest: lGx2YBmbXkuBtmPA2EsnDs0xV+s=
+
+Name: org/aspectj/weaver/Shadow.class
+SHA1-Digest: Efo3Y77vufqCQCAGXtHQH094PMI=
+
+Name: org/aspectj/weaver/loadtime/definition/DocumentParser.class
+SHA1-Digest: b7DiBkZ8x5d7zrUc3i6Zry66M5k=
+
+Name: org/aspectj/weaver/patterns/OrTypePattern.class
+SHA1-Digest: MHPG63xVCXeXnrtefi9KYGzwSEs=
+
+Name: org/aspectj/weaver/tools/DefaultMatchingContext.class
+SHA1-Digest: +gvkNnhQq+2433s2hUZaNmnXlNc=
+
+Name: org/aspectj/weaver/patterns/TypeCategoryTypePattern.class
+SHA1-Digest: AFjasLylzXsXAdfEHPPkRJlAvaE=
+
+Name: org/aspectj/weaver/AjAttribute$SourceContextAttribute.class
+SHA1-Digest: dkOYmuBUTplcUqrP4/5tO1foauI=
+
+Name: org/aspectj/weaver/patterns/DeclareSoft.class
+SHA1-Digest: ydFlpBVR0s5FcovHBMvZNOGz+CU=
+
+Name: org/aspectj/bridge/IMessageHolder.class
+SHA1-Digest: ra00NAOWDeipg3Pcmoc+ZtMdHpA=
+
+Name: org/aspectj/weaver/ClassAnnotationValue.class
+SHA1-Digest: TlkQAzSkyYihzPLaNSGr0EzD8e4=
+
+Name: org/aspectj/lang/reflect/NoSuchAdviceException.class
+SHA1-Digest: jTXH8/bO4BV2z/MshXA42Ei6Xq0=
+
+Name: org/aspectj/apache/bcel/classfile/StackMapEntry.class
+SHA1-Digest: H3Sh9wn+k2ACkYCZ/7u2KuWxa8I=
+
+Name: org/aspectj/lang/reflect/DeclareErrorOrWarning.class
+SHA1-Digest: 4oQksly3aVTQ+x1ppg1nIeBXSqg=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantMethodref.class
+SHA1-Digest: ZVnFfX0YQteZW7vILOKhdex2K3Q=
+
+Name: org/aspectj/lang/reflect/DeclareSoft.class
+SHA1-Digest: QvN21WK6pdYklO1f/v/jqkYNT4s=
+
+Name: org/aspectj/weaver/ResolvedMember.class
+SHA1-Digest: TeYMJIhxgJRRLCMjsIG7gBr1eDQ=
+
+Name: org/aspectj/weaver/patterns/ArgsAnnotationPointcut.class
+SHA1-Digest: x95VrQwKvCOngFoX0t5CUThsDd8=
+
+Name: org/aspectj/asm/internal/CharOperation.class
+SHA1-Digest: fY/RS3WpOe6xRGJAoiZvpYXL+W4=
+
+Name: org/aspectj/weaver/bcel/asm/AsmDetector.class
+SHA1-Digest: ZokerkQK6L6qU+BkofPLPuvrZww=
+
+Name: org/aspectj/weaver/patterns/AbstractSignaturePattern.class
+SHA1-Digest: 5ZRoiqYTZwXttkn1SiCvcSotrHI=
+
+Name: org/aspectj/asm/IProgramElement$Kind.class
+SHA1-Digest: DWYI5caigT9dZ/nws0oJznj8Kwg=
+
+Name: org/aspectj/weaver/loadtime/definition/Definition$DeclareErrorOr
+ Warning.class
+SHA1-Digest: 5V/awNmayEYz2OPpVPbL98BCT8I=
+
+Name: org/aspectj/weaver/TypeVariableReference.class
+SHA1-Digest: GiAglaF1/MWnspix7cFO55C8YiU=
+
+Name: org/aspectj/apache/bcel/ExceptionConstants.class
+SHA1-Digest: 5r2uctAp+g9b6qt2YEQJIgR0q9M=
+
+Name: org/aspectj/weaver/patterns/NotTypePattern.class
+SHA1-Digest: FLlRoDU69Q30+JQWDokU0VCfKQo=
+
+Name: org/aspectj/apache/bcel/generic/INVOKEINTERFACE.class
+SHA1-Digest: w63JQXuYyYA39LESStz+IS56GIQ=
+
+Name: org/aspectj/weaver/loadtime/ClassPreProcessor.class
+SHA1-Digest: pr6TMzDWm4YQd2yI5I+yA48sWDs=
+
+Name: org/aspectj/runtime/internal/AroundClosure.class
+SHA1-Digest: IAE1wWZsNbj33kmVFy3ZBLJlOAg=
+
+Name: org/aspectj/weaver/Shadow$Kind.class
+SHA1-Digest: 4Kz8UcWjq6jE0usUM/NoFrFw9+w=
+
+Name: org/aspectj/weaver/bcel/BcelAdvice.class
+SHA1-Digest: DFXPbMzhxyKgfZZ3b8tcf3Vo75M=
+
+Name: org/aspectj/weaver/tools/ShadowMatch.class
+SHA1-Digest: +Qew7ao0G6G2w+wdnSqbmyNYsbE=
+
+Name: org/aspectj/weaver/JoinPointSignatureIterator$SearchPair.class
+SHA1-Digest: f9gYqPY+tiEqmcFC+iBJXH5Evac=
+
+Name: org/aspectj/weaver/patterns/NotSignaturePattern.class
+SHA1-Digest: O7pJBpMz8anLkYOMqKQfJT6Sm3k=
+
+Name: org/aspectj/weaver/loadtime/Aj$ExplicitlyInitializedClassLoaderW
+ eavingAdaptor.class
+SHA1-Digest: 5LZ16kK6zJr3vLB47mrqtfjotNM=
+
+Name: org/aspectj/apache/bcel/classfile/LineNumberTable.class
+SHA1-Digest: lqDfNvItoMU/Z14rlhrcZZefE54=
+
+Name: org/aspectj/weaver/patterns/DeclareErrorOrWarning.class
+SHA1-Digest: IQjSVDXWNdWjK6jh6aScI1apIKY=
+
+Name: org/aspectj/weaver/bcel/ClassPathManager$FileClassFile.class
+SHA1-Digest: dPB79MGm8FneYLE62YF37XsHzzM=
+
+Name: org/aspectj/weaver/tools/WeavingAdaptor$WeavingAdaptorMessageWri
+ ter.class
+SHA1-Digest: EJkxKnQnZaDyku3gs+ZoIg5+AW8=
+
+Name: org/aspectj/lang/reflect/Pointcut.class
+SHA1-Digest: +2sA/i6Vz7vR+pWqHDgfrdt4Efk=
+
+Name: org/aspectj/weaver/PersistenceSupport.class
+SHA1-Digest: IY+8qBcgvG4j10/BJzPN+o/NuTg=
+
+Name: org/aspectj/weaver/bcel/FakeAnnotation.class
+SHA1-Digest: b3agGhySIdNKSOUCn3yRqLZyBKI=
+
+Name: org/aspectj/util/UtilClassLoader.class
+SHA1-Digest: 86uIQ7JkXtl+deb4fgzTprz0e38=
+
+Name: org/aspectj/bridge/IMessage$1.class
+SHA1-Digest: Mmsy1DP3LLEizZfK+1aSHoOuudo=
+
+Name: org/aspectj/weaver/bcel/BcelAnnotation.class
+SHA1-Digest: MkBewnr/ewcJnjaPoS9AMdm8Pp4=
+
+Name: org/aspectj/weaver/ResolvedType$3.class
+SHA1-Digest: pbmu4fqHQZZETjhonsX9NoLD7yQ=
+
+Name: org/aspectj/weaver/loadtime/DefaultMessageHandler.class
+SHA1-Digest: QHpFxWisnJuPu9HIVS5JRN7zJA4=
+
+Name: org/aspectj/weaver/ResolvedType.class
+SHA1-Digest: j02Z1giRbSR1o3wn+LsY2npcZWQ=
+
+Name: org/aspectj/weaver/ast/FieldGet.class
+SHA1-Digest: yBHprtH+JMmNYlF9MJG/GxhpWmo=
+
+Name: org/aspectj/weaver/bcel/BcelVar.class
+SHA1-Digest: FvnB+f6aY2/Q0wsyLYFj9r/tDhs=
+
+Name: org/aspectj/apache/bcel/generic/InvokeInstruction.class
+SHA1-Digest: GpSZq9dmk2EwpKs0iqBx7Tpzi3M=
+
+Name: org/aspectj/internal/lang/reflect/DeclareAnnotationImpl.class
+SHA1-Digest: MTQtuhHL1fUr9I94n6xGLBjjGD0=
+
+Name: org/aspectj/lang/reflect/AjType.class
+SHA1-Digest: q9KC/Neg22YoPFxjsS33EfXAWEU=
+
+Name: org/aspectj/weaver/loadtime/ConcreteAspectCodeGen.class
+SHA1-Digest: 7JoH+ea1YMx0baBQhNnaY9U7Kws=
+
+Name: org/aspectj/weaver/AjcMemberMaker.class
+SHA1-Digest: s1oEqc4GEXCo1l0qlyVSc8V9Pr4=
+
+Name: org/aspectj/weaver/patterns/IfPointcut$IfFalsePointcut.class
+SHA1-Digest: g80cnKnBWhelrvZNfduFon4TTMg=
+
+Name: org/aspectj/weaver/IEclipseSourceContext.class
+SHA1-Digest: k37jZrlghdkh2duVpUzrEAbJ0CU=
+
+Name: org/aspectj/lang/Signature.class
+SHA1-Digest: ExdXYV5z1tz30CFbore2r4Q9myY=
+
+Name: org/aspectj/weaver/ast/And.class
+SHA1-Digest: ykuFV+3ihjPegCtzFcrliTaWEiQ=
+
+Name: org/aspectj/util/PartialOrder$SortObject.class
+SHA1-Digest: mvaPlRItvmeXJINbV6FhzzM5w8w=
+
+Name: org/aspectj/lang/reflect/AdviceSignature.class
+SHA1-Digest: 6STt2YmLVjGkzkZSFyQ24VVbXaA=
+
+Name: org/aspectj/weaver/AjAttribute$WeaverState.class
+SHA1-Digest: PWqLWv1EfVRLIFpzXUf5x7pJZHM=
+
+Name: org/aspectj/weaver/bcel/BcelFieldRef.class
+SHA1-Digest: RR394sjVw173r7raqCzHorJwcxk=
+
+Name: org/aspectj/weaver/reflect/StandardShadow.class
+SHA1-Digest: 7J53SaZC+W+NLFLTZN9IbsUhvgE=
+
+Name: org/aspectj/weaver/patterns/IToken.class
+SHA1-Digest: Q4NhVuncc6gyEopZzrYnHX+jEMs=
+
+Name: org/aspectj/apache/bcel/generic/Type$1.class
+SHA1-Digest: N8flE87D2H8kIrwySNWeusH6diw=
+
+Name: org/aspectj/weaver/patterns/DeclareAnnotation$1.class
+SHA1-Digest: Af9AzCW0W12PM8QNtnX7lQZ6rkQ=
+
+Name: org/aspectj/apache/bcel/generic/InstructionCP.class
+SHA1-Digest: TNfkLRExnpinr2pUbfAGj9W1zdU=
+
+Name: org/aspectj/weaver/patterns/AnnotationPatternList.class
+SHA1-Digest: Z1agFRYVfGfuQ3iTLtZlUY/jKF4=
+
+Name: org/aspectj/util/GenericSignature$ClassSignature.class
+SHA1-Digest: 7ifFzN464UrWppv7UvCLqVdry3c=
+
+Name: org/aspectj/weaver/ResolvedType$MethodGetter.class
+SHA1-Digest: 2sF3HrpMPO+CZuZxGSS3FcXgNJE=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes$MethodArgument.class
+SHA1-Digest: Y9QxsdR4+10Ry89xuhdo87jTzUA=
+
+Name: org/aspectj/weaver/ConcreteTypeMunger.class
+SHA1-Digest: 6VbEncfEFEbSb5OuF686CL/kZlA=
+
+Name: org/aspectj/weaver/bcel/BcelField.class
+SHA1-Digest: 5/H2y6w5tyBf8ad8sDax4/rzpTU=
+
+Name: org/aspectj/weaver/patterns/PerThisOrTargetPointcutVisitor.class
+SHA1-Digest: TwidgXVzoi0hPEGOajUpuksIFO0=
+
+Name: org/aspectj/util/GenericSignature$ClassTypeSignature.class
+SHA1-Digest: rtAVHItpnRWgPm3uFS/9z/PWah4=
+
+Name: org/aspectj/weaver/patterns/ReferencePointcut.class
+SHA1-Digest: eQsdRt+RveBzaenGsFnmK2h3oqs=
+
+Name: org/aspectj/apache/bcel/classfile/Method.class
+SHA1-Digest: 6SbSuOs2Y9X/x8mKtDOTj8RgWFs=
+
+Name: org/aspectj/apache/bcel/generic/FieldInstruction.class
+SHA1-Digest: 9yezwXURuRSwcy01TNZUi5Z0Bmw=
+
+Name: org/aspectj/weaver/bcel/ClassPathManager$ZipEntryClassFile.class
+SHA1-Digest: ws4SbTKfMwu1lGhN2eD0gX/b53o=
+
+Name: org/aspectj/weaver/NewFieldTypeMunger.class
+SHA1-Digest: aWFNXeOegnbjZXHFTJFQWZU9HiY=
+
+Name: org/aspectj/apache/bcel/util/ClassLoaderReference.class
+SHA1-Digest: 8ZTgPLGXWItbfmP6GdBFxnYzBXw=
+
+Name: org/aspectj/weaver/tools/PointcutParser$1.class
+SHA1-Digest: JVih6f6V9+6ziTwuGpBBxM1/Z6w=
+
+Name: org/aspectj/weaver/Position.class
+SHA1-Digest: hVexFpiaqleHxx/LVVyCiDjA8yY=
+
+Name: org/aspectj/util/FileUtil$5.class
+SHA1-Digest: ry5rLLtQZ3zSBnicGVFS7r05crw=
+
+Name: org/aspectj/weaver/ResolvedType$Missing.class
+SHA1-Digest: 4iyZ4aPxKxBq4Bx6+OQoHZG2lT4=
+
+Name: org/aspectj/apache/bcel/classfile/Field.class
+SHA1-Digest: TluM+m3CPoeurdTOeE8plaC5jAI=
+
+Name: org/aspectj/weaver/patterns/WildTypePattern.class
+SHA1-Digest: OVwlCone2x7KWHZRkJwDhKwo/2I=
+
+Name: org/aspectj/weaver/ast/Test.class
+SHA1-Digest: g8oFEcm9sZjbzoTE09t6mk+nmf8=
+
+Name: org/aspectj/weaver/loadtime/WeavingURLClassLoader.class
+SHA1-Digest: tUyTXW/y8dFaOFD3fuzJj078s04=
+
+Name: org/aspectj/apache/bcel/util/ClassPath$Dir$1.class
+SHA1-Digest: /in3AqjcggJRw5tvKstFyx7yLA4=
+
+Name: org/aspectj/weaver/UnresolvedTypeVariableReferenceType.class
+SHA1-Digest: rORWHJq1dlDPZzScOE/m2zun8F4=
+
+Name: org/aspectj/weaver/bcel/LazyMethodGen$LVPosition.class
+SHA1-Digest: DWrr54Gzodu+IYiOEq0FAdJf9/E=
+
+Name: org/aspectj/weaver/bcel/BcelRenderer.class
+SHA1-Digest: Ekt1FgDBG3o6JKddlv71bZpDkcQ=
+
+Name: org/aspectj/apache/bcel/classfile/ClassVisitor.class
+SHA1-Digest: qWMkiBIysxzVIqr3AbYDCkdEfXc=
+
+Name: org/aspectj/apache/bcel/classfile/Signature.class
+SHA1-Digest: 1ktzOfhlet4TYq/Mg9eFaCuu42A=
+
+Name: org/aspectj/internal/lang/reflect/PointcutImpl.class
+SHA1-Digest: LduIbDasWoxt7idah7vhQXYZ1ew=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantFieldref.class
+SHA1-Digest: fWO9NYYLRX4nkz8rmps2mAbVIhQ=
+
+Name: org/aspectj/internal/lang/reflect/DeclareSoftImpl.class
+SHA1-Digest: 7pq9vDLj8Ff9dZAIvA3D9zY5sRo=
+
+Name: org/aspectj/weaver/PoliceExtensionUse.class
+SHA1-Digest: 0VhpcZqcTwlQOX6cYyWq7dwEAS0=
+
+Name: org/aspectj/weaver/SourceContextImpl$1.class
+SHA1-Digest: WACHWN8/vPfFnaTFg9Sntraikk8=
+
+Name: org/aspectj/weaver/ast/Var.class
+SHA1-Digest: 693nqOZ6kMuPYlFNOiLGqCa00Zk=
+
+Name: org/aspectj/bridge/CountingMessageHandler$IntHolder.class
+SHA1-Digest: rFiV5wOSoUTElkX4tCSabdNced4=
+
+Name: org/aspectj/weaver/ConstantPoolWriter.class
+SHA1-Digest: yvzYvWEjNLRxxRTTWppicu+nWZY=
+
+Name: org/aspectj/weaver/bcel/BcelWeaver$4$1.class
+SHA1-Digest: CAFTfXGI0HMb1Lb9ESiVKIAiQK8=
+
+Name: org/aspectj/internal/lang/reflect/PointcutBasedPerClauseImpl$1.c
+ lass
+SHA1-Digest: OQuP9eLEwiZmYZROyUi0Kb4Gqd0=
+
+Name: org/aspectj/apache/bcel/generic/MethodGen.class
+SHA1-Digest: H16TbGbU2mUS6gNU1r+H8qsXzt4=
+
+Name: org/aspectj/runtime/internal/CFlowPlusState.class
+SHA1-Digest: cfEZrCFixxbmQpAU3fekNVehDao=
+
+Name: org/aspectj/apache/bcel/generic/ClassGenException.class
+SHA1-Digest: vFVo3TZ/cFODTKznvPxkO3SbbRI=
+
+Name: org/aspectj/weaver/loadtime/definition/Definition.class
+SHA1-Digest: Lc9OGxOU7Rs3PZt6Qda/BFDd6LQ=
+
+Name: org/aspectj/weaver/bcel/BcelGenericSignatureToTypeXConverter$Gen
+ ericSignatureFormatException.class
+SHA1-Digest: BiSa2SqgAvptBEjKPsu6t8IKqPU=
+
+Name: org/aspectj/weaver/ResolvedType$1.class
+SHA1-Digest: igR4IjKtsFjx/0drT9sRPRShFfA=
+
+Name: org/aspectj/apache/bcel/classfile/LocalVariable.class
+SHA1-Digest: ogz/VqBBstgj17sw4Jgd/FEpwng=
+
+Name: org/aspectj/weaver/Iterators$Filter.class
+SHA1-Digest: 333N62ltbelW4jrQ+dofXV0KQjU=
+
+Name: org/aspectj/weaver/ResolvedType$4.class
+SHA1-Digest: Uv4OmPG4wIHaeODe4dBiEEI00wM=
+
+Name: org/aspectj/bridge/MessageUtil$7.class
+SHA1-Digest: anarKFDWxpUboe1KQ50CjDXDNlU=
+
+Name: org/aspectj/runtime/reflect/SourceLocationImpl.class
+SHA1-Digest: T7psowgn5LZvSM9cXzXVBIwBX6w=
+
+Name: org/aspectj/weaver/TypeFactory.class
+SHA1-Digest: JtCL9bFnnUlW+7DFCbjLLIXKnp4=
+
+Name: org/aspectj/weaver/bcel/LazyClassGen.class
+SHA1-Digest: FLYzmKbOr3xWiMkPZaiHBqwWtnk=
+
+Name: org/aspectj/apache/bcel/util/ClassPath$Dir.class
+SHA1-Digest: 5osCd3ek7DZhdbj7odb4uJE4br8=
+
+Name: org/aspectj/weaver/patterns/Declare.class
+SHA1-Digest: F9NR8Vh5DZn6xOxjr3MXqWoodcY=
+
+Name: org/aspectj/weaver/bcel/LazyMethodGen.class
+SHA1-Digest: uH1IRtoIP3iLuCqE1Vj/l7+iOvk=
+
+Name: org/aspectj/internal/lang/reflect/TypePatternImpl.class
+SHA1-Digest: M8RORgQRuZS83HvfcOzeNye02Us=
+
+Name: org/aspectj/weaver/patterns/ISignaturePattern.class
+SHA1-Digest: rwn9DrZMnprQ7lqvzi8+hicJ2Cw=
+
+Name: org/aspectj/bridge/IProgressListener.class
+SHA1-Digest: kdP7I8IsVl89t8mNpmcQdkuMs1c=
+
+Name: org/aspectj/lang/reflect/PointcutExpression.class
+SHA1-Digest: GoqullBwwKNEs4tS8zUedgl7zLU=
+
+Name: org/aspectj/lang/annotation/AdviceName.class
+SHA1-Digest: 6w4lkwdqwQfJMLJNffFV8nFqd8M=
+
+Name: org/aspectj/apache/bcel/util/ByteSequence$ByteArrayStream.class
+SHA1-Digest: xGQWAGQeo4L6Fv4tQqQONjQsvHc=
+
+Name: org/aspectj/util/FuzzyBoolean.class
+SHA1-Digest: bd/ELm9JcgmoZfB+Ip2eNO/5DRw=
+
+Name: org/aspectj/lang/reflect/DeclareParents.class
+SHA1-Digest: qfn9zpWpA3MYqEFm5/s1X8HTBL4=
+
+Name: org/aspectj/weaver/ResolvedType$SuperClassWalker.class
+SHA1-Digest: KJkg95edP33h4AO+JSLVF56ojyQ=
+
+Name: org/aspectj/weaver/IUnwovenClassFile.class
+SHA1-Digest: xj1OAiD7Eks10/5EbjUhX0E67G0=
+
+Name: aspectj_1_5_0.dtd
+SHA1-Digest: 3neNn6ihbQKS48s8lIoZvOcbzFE=
+
+Name: org/aspectj/weaver/TypeVariableDeclaringElement.class
+SHA1-Digest: y5reQYCW57dUJi8FsOdmBDXK5To=
+
+Name: org/aspectj/weaver/UnresolvedType.class
+SHA1-Digest: fv9ln8K++K7jhx1pmRhHESVKNis=
+
+Name: org/aspectj/weaver/patterns/TypePattern.class
+SHA1-Digest: +8hc90sexIfQ9ZSupOZTWOv98DI=
+
+Name: org/aspectj/weaver/NewParentTypeMunger.class
+SHA1-Digest: zS1s3DinOWjHPtNioa1pGeglN9U=
+
+Name: org/aspectj/apache/bcel/generic/ClassGen.class
+SHA1-Digest: P5MnI0qSXOwiUDHUGzwWjm3QRak=
+
+Name: org/aspectj/lang/annotation/DeclareWarning.class
+SHA1-Digest: zIcOInTG2OZcu60WxCpDbuZd8Gk=
+
+Name: org/aspectj/internal/lang/reflect/DeclareParentsImpl.class
+SHA1-Digest: xLLwLCRMxJxvpqF0qgDuG80fItc=
+
+Name: org/aspectj/weaver/Advice.class
+SHA1-Digest: /8+nnfCwAzZ30OXR4XDX1mMGuw0=
+
+Name: org/aspectj/weaver/AdviceKind.class
+SHA1-Digest: I9e/hKzOvIGlKCgbY/+pHgfcwpk=
+
+Name: org/aspectj/apache/bcel/generic/IINC.class
+SHA1-Digest: h5CXFlXyA0batj17sxljVga3l3s=
+
+Name: org/aspectj/weaver/PrivilegedAccessMunger.class
+SHA1-Digest: g/xq2jvlY2oYrzn5c0QulpWhhxw=
+
+Name: org/aspectj/weaver/reflect/ReflectionWorld$1.class
+SHA1-Digest: IGGTCgT/xededc0289bM6rbu74U=
+
+Name: org/aspectj/apache/bcel/generic/Tag.class
+SHA1-Digest: 3mpxpESqvUyPepR/kkEaxpcEH2w=
+
+Name: org/aspectj/weaver/patterns/DeclareAnnotation$Kind.class
+SHA1-Digest: CarYHkQEEd/KxrihEaheQ5OG6Ig=
+
+Name: org/aspectj/weaver/tools/JoinPointMatch.class
+SHA1-Digest: AXJKW+Qe1pCrgjzvA4aiKXWY3Kc=
+
+Name: org/aspectj/weaver/bcel/ClassPathManager$ClassFile.class
+SHA1-Digest: I8EK8p2+ppakDiqUbaEhCDCSvtg=
+
+Name: org/aspectj/weaver/ast/CallExpr.class
+SHA1-Digest: QxaClzgZ2OCjjTglDxrwFcmfifk=
+
+Name: org/aspectj/weaver/patterns/AndSignaturePattern.class
+SHA1-Digest: rg1ULMxi/vRp5DlUnu+sR1FwEyc=
+
+Name: org/aspectj/weaver/ast/Literal.class
+SHA1-Digest: CdZ9mSRC/2u/sP/8h8bY6YsXXjo=
+
+Name: org/aspectj/apache/bcel/generic/Type.class
+SHA1-Digest: 1+/1/PVF73LWmE3PE1las7PZ1+k=
+
+Name: org/aspectj/lang/annotation/DeclarePrecedence.class
+SHA1-Digest: U7u6rNI+UVX3j/z9JVq1pe0CMAo=
+
+Name: org/aspectj/bridge/ICommand.class
+SHA1-Digest: XyL9POFdqSg3itXSklOWoOYFoZs=
+
+Name: org/aspectj/weaver/bcel/LazyClassGen$CacheKey.class
+SHA1-Digest: xOEeLgjTXc6VF7YKAoK8QWwUA3Y=
+
+Name: org/aspectj/weaver/patterns/WildAnnotationTypePattern.class
+SHA1-Digest: ED6LNyJ+f7fiFM8mgoFiUfm6OXg=
+
+Name: org/aspectj/weaver/StandardAnnotation.class
+SHA1-Digest: 1YXs/A7/V1qepOKDJs9vw1KyEbU=
+
+Name: org/aspectj/weaver/patterns/BasicToken.class
+SHA1-Digest: qmx0KB5bm430rLzCz4BHB1SVt3M=
+
+Name: org/aspectj/weaver/reflect/IReflectionWorld.class
+SHA1-Digest: w1lzATyXnB+JmZ/aopC9A8mfAc8=
+
+Name: org/aspectj/weaver/patterns/OrAnnotationTypePattern.class
+SHA1-Digest: pCItQH+JHfFSIGywVnRPAO91m5s=
+
+Name: org/aspectj/lang/annotation/Aspect.class
+SHA1-Digest: IONo8qGVmhkQ6qhXPB41WavDW4U=
+
+Name: org/aspectj/lang/reflect/DeclarePrecedence.class
+SHA1-Digest: sZdnC6wBa8eV8n+1saW7xvdm8K4=
+
+Name: org/aspectj/weaver/AjAttribute.class
+SHA1-Digest: 7fXhiTZr9lG1frFmrSFcFcQtaRo=
+
+Name: org/aspectj/asm/internal/JDTLikeHandleProvider.class
+SHA1-Digest: liuCvB3xby3srABR5MWoD00378U=
+
+Name: org/aspectj/weaver/loadtime/ClassLoaderWeavingAdaptor$SimpleGene
+ ratedClassHandler.class
+SHA1-Digest: 88nxvFB9atFmm1RBU/1tFuk2Uk4=
+
+Name: org/aspectj/weaver/reflect/StandardShadowMatchImpl$RuntimeTestEv
+ aluator.class
+SHA1-Digest: Rlo7m0Dnrc/7kuu4+F7isguQFIw=
+
+Name: org/aspectj/bridge/context/PinpointingMessageHandler$PinpointedM
+ essage.class
+SHA1-Digest: CXxJZ/x8sphtO91VSvE5NZR4vv4=
+
+Name: org/aspectj/internal/lang/reflect/PointcutExpressionImpl.class
+SHA1-Digest: vrspTVupTJbu0BPYZNwx3YoCN30=
+
+Name: org/aspectj/apache/bcel/generic/InstructionConstants$Clinit.clas
+ s
+SHA1-Digest: sF1jhCxHtnYs1XhyS+HO2qzLEIM=
+
+Name: org/aspectj/lang/reflect/PerClauseKind.class
+SHA1-Digest: +JRNltVk+IIlUs7ny+P/LU0EfgA=
+
+Name: org/aspectj/weaver/reflect/ReflectionWorld$ReflectionWorldExcept
+ ion.class
+SHA1-Digest: FCMZQL5XJ6P33R6yWBsQVfZjJwo=
+
+Name: org/aspectj/apache/bcel/util/ClassLoaderRepository$SoftHashMap.c
+ lass
+SHA1-Digest: 4Viu+oOsRMJLhclZEICwb3hHN0A=
+
+Name: org/aspectj/weaver/tools/MatchingContext.class
+SHA1-Digest: +LyCYFeChIwkZhorHU1AUfdH4vI=
+
+Name: org/aspectj/weaver/reflect/ReflectionBasedReferenceTypeDelegateF
+ actory.class
+SHA1-Digest: h5CS0a0OcY0Sy0XeB0qhSX1WYNQ=
+
+Name: org/aspectj/weaver/bcel/Range.class
+SHA1-Digest: u93NF7XWEhiUGLd5u7c/tOO7ZhI=
+
+Name: org/aspectj/apache/bcel/util/ClassPath$Zip$1.class
+SHA1-Digest: /Fylw66s39YkB99AhnDxr4l071g=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/SimpleElementValue.
+ class
+SHA1-Digest: xVFishyAR/qHCQS5a7BRRgxpU4c=
+
+Name: org/aspectj/runtime/internal/PerObjectMap.class
+SHA1-Digest: 966SHZ7BeP/5UQOUBz+hzRvWO0c=
+
+Name: org/aspectj/util/PartialOrder.class
+SHA1-Digest: kpOe7oUP3MVYzQn2zQVvulMAyAA=
+
+Name: org/aspectj/util/GenericSignature$ArrayTypeSignature.class
+SHA1-Digest: qKYGk6uH11/VfGlGUHH1U7l7CJQ=
+
+Name: org/aspectj/asm/IProgramElement.class
+SHA1-Digest: E9ubaWcwzFEDkMaTXzT1I2FLwPA=
+
+Name: org/aspectj/weaver/ReferenceType.class
+SHA1-Digest: QcbSXSlpG4duE6ZfIyguiLEvDng=
+
+Name: org/aspectj/lang/reflect/SourceLocation.class
+SHA1-Digest: 1Q0skFfqGEpK9kZ7HwQ2N6qfRGE=
+
+Name: org/aspectj/bridge/Constants.class
+SHA1-Digest: 3botwNp9MjHaMVHB+LTSsYiZI44=
+
+Name: org/aspectj/bridge/IMessage.class
+SHA1-Digest: PTC4ZAGt+nvbkWRyMkias8yV0Z0=
+
+Name: org/aspectj/weaver/WildcardedUnresolvedType.class
+SHA1-Digest: hkI1dngekZV0Nh1UFIq92/eHkxM=
+
+Name: org/aspectj/weaver/AjAttribute$Aspect.class
+SHA1-Digest: 5w8xMun9e9YFyHU2TZ9SFeB2KPM=
+
+Name: org/aspectj/weaver/bcel/ExceptionRange.class
+SHA1-Digest: LkDNyyCqMvB/rUdsgRj2k2VC5cQ=
+
+Name: org/aspectj/apache/bcel/util/NonCachingClassLoaderRepository.cla
+ ss
+SHA1-Digest: bS/Mq8owU97O0EvwE8t0gPvd6c0=
+
+Name: org/aspectj/apache/bcel/classfile/StackMap.class
+SHA1-Digest: Lb5KpGAr28EGO1U8zdB6xIlVUEQ=
+
+Name: org/aspectj/weaver/patterns/ITokenSource.class
+SHA1-Digest: yXyccG9VyYCvWv0FUzyuLc1dWh8=
+
+Name: org/aspectj/weaver/internal/tools/MatchingContextBasedTest.class
+SHA1-Digest: rBKYJPh1wAmjWfFZXpXaFZjahVw=
+
+Name: org/aspectj/apache/bcel/classfile/SourceFile.class
+SHA1-Digest: Vbuca9qEhOo/vWc/C5tcK6KMht8=
+
+Name: org/aspectj/runtime/reflect/SignatureImpl.class
+SHA1-Digest: e+9YEnnBTbMnZsuPAS7DKRFxitE=
+
+Name: org/aspectj/apache/bcel/generic/ClassGen$FieldComparator.class
+SHA1-Digest: 6xPxTj5mjnOnGT6T/XK3TCcv11g=
+
+Name: org/aspectj/bridge/context/ContextFormatter.class
+SHA1-Digest: dQS+aXFZitqSeRShm3e4hgZlwb4=
+
+Name: org/aspectj/apache/bcel/generic/MethodGen$BranchTarget.class
+SHA1-Digest: 5qe1VskxZwlr7e8S3cFFI7oT6to=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantPool.class
+SHA1-Digest: kV5ZhKG3VcnJQSrviOxHkwT+lMo=
+
+Name: org/aspectj/weaver/tools/Jdk14TraceFactory.class
+SHA1-Digest: qi/SkXHpU6gcOnEYOU6edN0D660=
+
+Name: org/aspectj/bridge/CountingMessageHandler$1.class
+SHA1-Digest: TDDjwdPi3nsgFLhTVEem5FzX+h0=
+
+Name: org/aspectj/lang/reflect/LockSignature.class
+SHA1-Digest: sTt24LkOikS8fonzutpW2DW5Jjg=
+
+Name: org/aspectj/weaver/bcel/TypeDelegateResolver.class
+SHA1-Digest: j03+ng59KlXDg9Pu0DxLZGebKVs=
+
+Name: org/aspectj/bridge/context/CompilationAndWeavingContext.class
+SHA1-Digest: cQaTZRTadC5/1mVNkdT4+5s9aYc=
+
+Name: org/aspectj/weaver/reflect/GenericSignatureInformationProvider.c
+ lass
+SHA1-Digest: zbUkKoRP7CUWsSU969a/Jjt1ZAI=
+
+Name: org/aspectj/weaver/ConstantPoolReader.class
+SHA1-Digest: 29vrOUjPw7ulYyDbYCFzwrgkB4k=
+
+Name: org/aspectj/weaver/bcel/BcelCflowCounterFieldAdder.class
+SHA1-Digest: F6YtE4p+4Dnt6UtTld82k24UvJU=
+
+Name: org/aspectj/weaver/Constants.class
+SHA1-Digest: b5BnwluvA6HCmP4tm+PUNf4/1Gg=
+
+Name: org/aspectj/weaver/bcel/LazyMethodGen$BodyPrinter.class
+SHA1-Digest: Vl4arKkRF3qHrs601f0yY6hrJec=
+
+Name: org/aspectj/util/Reflection.class
+SHA1-Digest: IWXTdviZUPwVYfZGURsfMKe/8o8=
+
+Name: org/aspectj/weaver/Dump.class
+SHA1-Digest: ztqu4TWYzfPaC3/K/lHfDignDJ0=
+
+Name: org/aspectj/lang/reflect/PointcutBasedPerClause.class
+SHA1-Digest: ex8wdwkIw8supbq4Nmrf1wtyJ9A=
+
+Name: org/aspectj/internal/lang/reflect/StringToType.class
+SHA1-Digest: m9J6+5R26WNGzNzav8KD8vlEmuk=
+
+Name: org/aspectj/internal/lang/annotation/ajcDeclareSoft.class
+SHA1-Digest: qZhPkOlnzjRTzmi5rBmP/K0Kn1Y=
+
+Name: org/aspectj/weaver/tools/DefaultTrace.class
+SHA1-Digest: rBzbCD3iK1ARUWj11L+zOhAPq+k=
+
+Name: org/aspectj/weaver/patterns/DeclarePrecedence.class
+SHA1-Digest: NiqSpvn5BKVTSE+Y5qGq7+J1oZw=
+
+Name: org/aspectj/bridge/MessageUtil.class
+SHA1-Digest: gK3YZ5GcrT29DDM9mz4v2zHblnk=
+
+Name: org/aspectj/weaver/patterns/Pointcut.class
+SHA1-Digest: Jf/T2rtGh9tGPpbtlg5yY+DQSlk=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantLong.class
+SHA1-Digest: qbFD0oBHKZy6bXZHaxADmv9yCYE=
+
+Name: org/aspectj/weaver/reflect/Java15GenericSignatureInformationProv
+ ider.class
+SHA1-Digest: vQTHW9QaILsJnuTm3v/LVNgUXmE=
+
+Name: org/aspectj/weaver/bcel/ClassPathManager$ZipFileEntry.class
+SHA1-Digest: wzTM/wR+ekGU9ELnx9avHdNZMFU=
+
+Name: org/aspectj/weaver/loadtime/JRockitAgent$ThreadLocalStack.class
+SHA1-Digest: /aaxnQRYVoeyjuzQnXqcoGK/vDk=
+
+Name: org/aspectj/weaver/patterns/PerThisOrTargetPointcutVisitor$1.cla
+ ss
+SHA1-Digest: 5BYEFdlKbjKrfYb850TBElTvQ0M=
+
+Name: org/aspectj/weaver/tools/WeavingAdaptor$WeavingClassFileProvider
+ $1.class
+SHA1-Digest: hDGfkr6hF2Thb7Y9CvT49cEoInw=
+
+Name: org/aspectj/bridge/IMessageHandler.class
+SHA1-Digest: F203/AZBF2Pq+x3eL2+uSY/L5pE=
+
+Name: org/aspectj/weaver/Iterators$6.class
+SHA1-Digest: P+ilocK25+BvFVCmpUSGQSXcfMw=
+
+Name: org/aspectj/lang/reflect/TypePatternBasedPerClause.class
+SHA1-Digest: VmJCZ9jfoqURqzx9W3GMZZiAZs4=
+
+Name: org/aspectj/weaver/patterns/NamePattern.class
+SHA1-Digest: 5Xu1awkP8lAn2MN7GlEbJ0ID/kY=
+
+Name: org/aspectj/weaver/patterns/AndPointcut.class
+SHA1-Digest: ZarltC98UreofRk4Ahvb2yxOAdg=
+
+Name: org/aspectj/weaver/BindingScope.class
+SHA1-Digest: vgNF3ajtQABU6zGvJp2ALh0Ksao=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/RuntimeVisParamAnno
+ s.class
+SHA1-Digest: NbNO48vwGJolkQfPI25iAMuAZc4=
+
+Name: org/aspectj/weaver/MemberKind.class
+SHA1-Digest: GxEFuraBSARBaH919H9br2crV1Q=
+
+Name: org/aspectj/runtime/reflect/AdviceSignatureImpl.class
+SHA1-Digest: Z9t9UyeVqekYZqv5MnLD5rOJQBs=
+
+Name: org/aspectj/internal/lang/reflect/AdviceImpl$1.class
+SHA1-Digest: BDBgTIPgvbTTC/sVwimFH2rK16k=
+
+Name: org/aspectj/weaver/patterns/EllipsisAnnotationTypePattern.class
+SHA1-Digest: vnjx1hHbzKteQtEzQ/c+cvlKlmo=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/RuntimeInvisAnnos.c
+ lass
+SHA1-Digest: Kaj37XpajZr0dBdc1s1Uo2fNnjo=
+
+Name: org/aspectj/weaver/bcel/BcelConstantPoolReader.class
+SHA1-Digest: u/b3+S78TKqdE8YxreZVCuep43g=
+
+Name: org/aspectj/lang/SoftException.class
+SHA1-Digest: SimnYqAJ/1+6YqpqnsY1C669dp8=
+
+Name: org/aspectj/bridge/context/CompilationAndWeavingContext$DefaultF
+ ormatter.class
+SHA1-Digest: H9i8WJgkupHL9Pja0XFQNKfRESQ=
+
+Name: testdata/SomeAnnotation.class
+SHA1-Digest: wNqSaSEoZCT83Pi1lm78snVxDLM=
+
+Name: org/aspectj/bridge/MessageHandler.class
+SHA1-Digest: dp/XypHqRIUcRWUtRmi49It8vvQ=
+
+Name: org/aspectj/apache/bcel/classfile/Modifiers.class
+SHA1-Digest: wouGOIwBXnasif+RSaXmE5+455U=
+
+Name: org/aspectj/util/FileUtil.class
+SHA1-Digest: sJvsjrc4PDQcMCX+9s4sbL1MwXQ=
+
+Name: org/aspectj/lang/reflect/DeclareAnnotation$Kind.class
+SHA1-Digest: ujjXDq8CbGZMHIspOjqKmu4+e5Q=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantValue.class
+SHA1-Digest: fm+lL7AAzy9kr+9mmmhUeg/5f1w=
+
+Name: org/aspectj/internal/lang/reflect/DeclarePrecedenceImpl.class
+SHA1-Digest: k+N6Yd+CcUX2G8VyuJqIh9D/OwY=
+
+Name: org/aspectj/weaver/patterns/TypeVariablePatternList.class
+SHA1-Digest: C62ibiUpTBSbLHbrbH+/Csv5TzE=
+
+Name: org/aspectj/weaver/patterns/IScope.class
+SHA1-Digest: cjDTatzKsiCF+iWIwE+tg3QLMwU=
+
+Name: org/aspectj/asm/IProgramElement$Accessibility.class
+SHA1-Digest: chXxeEPhE38YbvHeugrf0o3T2YE=
+
+Name: org/aspectj/weaver/bcel/BcelPerClauseAspectAdder.class
+SHA1-Digest: Yd6Q+qx4BKOsURD2ytAU3wh4ZLc=
+
+Name: org/aspectj/weaver/ResolvedPointcutDefinition.class
+SHA1-Digest: WVRri+zGF3/dSSj1hm0aNid+8ak=
+
+Name: org/aspectj/util/GenericSignature.class
+SHA1-Digest: WT8gQEkRAYGw8mEOjPeg3VSaTvg=
+
+Name: org/aspectj/weaver/Iterators$4$1.class
+SHA1-Digest: 8x0yPe8HkRWY9tN1xoy+LeGlEx4=
+
+Name: org/aspectj/weaver/patterns/PerObject.class
+SHA1-Digest: 6q6He2+lvGPWn3gBekJVgUOrZqs=
+
+Name: org/aspectj/internal/lang/annotation/ajcDeclareAnnotation.class
+SHA1-Digest: C5DAXAQaDZ+niMBaJ6wjOduxjNQ=
+
+Name: org/aspectj/internal/lang/reflect/DeclareAnnotationImpl$1.class
+SHA1-Digest: eWTbQXpXrqYUYoBUEiENll/BH9E=
+
+Name: org/aspectj/weaver/reflect/ShadowMatchImpl.class
+SHA1-Digest: EcWWdLLpVFYni55mPvDkTx9sZx4=
+
+Name: org/aspectj/weaver/bcel/BcelObjectType.class
+SHA1-Digest: m+Owh+kamsFb6kYtwWzye3pYpGw=
+
+Name: org/aspectj/asm/IProgramElement$ExtraInformation.class
+SHA1-Digest: RH9Ys/GAUnw1fvQtJTqD5sfVJWM=
+
+Name: org/aspectj/weaver/patterns/DeclareTypeErrorOrWarning.class
+SHA1-Digest: Gok982YzLzwSUEZiSnLIIIUT01I=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/NameValuePair.class
+SHA1-Digest: 5V7eEM8onpEiiELLFxCNdcRFSbw=
+
+Name: org/aspectj/weaver/AjAttribute$TypeMunger.class
+SHA1-Digest: OKXtmAHFeFXIwd6wSBPfYcwOzgw=
+
+Name: org/aspectj/runtime/reflect/StringMaker.class
+SHA1-Digest: Q6QadmZW7qBo7ll3vC6uJgN9Q1U=
+
+Name: org/aspectj/apache/bcel/generic/InstructionCLV.class
+SHA1-Digest: 55P3sTOKDzCo/WLNqIipfISKwGk=
+
+Name: org/aspectj/apache/bcel/classfile/Node.class
+SHA1-Digest: ZQbtgU0jMfnjsEZNNSj2llgMjg0=
+
+Name: org/aspectj/weaver/AnnotatedElement.class
+SHA1-Digest: a+XRxPm3G8MNrOgYnaHm3v4dS9I=
+
+Name: org/aspectj/lang/annotation/AfterReturning.class
+SHA1-Digest: 2Ly4sjo+V2GcebOQnLlF3aT3Tlw=
+
+Name: org/aspectj/weaver/bcel/BcelMethod.class
+SHA1-Digest: h60JglFTTEJ+H4koXlmQIKS5UHA=
+
+Name: org/aspectj/weaver/patterns/HandlerPointcut.class
+SHA1-Digest: i/wbpaoZ2k4hVLzKnpx4+191DbY=
+
+Name: org/aspectj/weaver/bcel/BcelWeaver$1.class
+SHA1-Digest: xrAAHz5iIvdImxqJ/EnMv/Wnu2o=
+
+Name: org/aspectj/bridge/IMessageContext.class
+SHA1-Digest: CEmvfkpuNWKQMkImIbVatoI3bQM=
+
+Name: org/aspectj/weaver/bcel/ClassPathManager$DirEntry.class
+SHA1-Digest: SaxCKSKQcHB2YFxq+T7fflpiCHE=
+
+Name: org/aspectj/apache/bcel/classfile/Utility.class
+SHA1-Digest: xnQnPnjuGDicTk6hI9cCGQcSxvw=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadCounterImpl11.clas
+ s
+SHA1-Digest: GzEpiNop6evwOz844wBU7rV1awo=
+
+Name: org/aspectj/weaver/IHasSourceLocation.class
+SHA1-Digest: siqZ2e/LeDlK9gXb9hV/7uD4fxg=
+
+Name: org/aspectj/weaver/MissingResolvedTypeWithKnownSignature$1.class
+SHA1-Digest: Ia3Qaj2Ksy4Qjj48HpPnSEORoaA=
+
+Name: org/aspectj/apache/bcel/classfile/CodeException.class
+SHA1-Digest: uHgKoXM09n30MXTJ4ylegTCR2aU=
+
+Name: org/aspectj/weaver/internal/tools/StandardPointcutExpressionImpl
+ $1.class
+SHA1-Digest: TilANmaKv9z7jLC0e31Vxwx4N0E=
+
+Name: org/aspectj/weaver/bcel/Range$Where.class
+SHA1-Digest: mTtbt2Se8W3gcjHSJ4dvTRSouzo=
+
+Name: org/aspectj/runtime/internal/CFlowCounter.class
+SHA1-Digest: dIJFeXRNyg1mnagF9CHZdXqRtuY=
+
+Name: org/aspectj/lang/Aspects14.class
+SHA1-Digest: rRD6YLpnSFsjhOOdrOB364E7cNI=
+
+Name: org/aspectj/util/GenericSignature$FormalTypeParameter.class
+SHA1-Digest: dtsebJHmvYl8KpdKmUndBSWwn/Y=
+
+Name: org/aspectj/weaver/bcel/BcelWeaver$1AdviceLocation.class
+SHA1-Digest: duoJUJzZA0ewOw+CYqd/mDPZXGQ=
+
+Name: org/aspectj/weaver/tools/UnsupportedPointcutPrimitiveException.c
+ lass
+SHA1-Digest: klIed29jk3B+fV0oZSdvOLgvAsI=
+
+Name: org/aspectj/weaver/patterns/WithinAnnotationPointcut.class
+SHA1-Digest: Rli0N3LyJhoUyY05uRGCodqjHa0=
+
+Name: org/aspectj/weaver/tools/PointcutParser.class
+SHA1-Digest: lGXKSll+taG/T1G4Nkl+UEOlAig=
+
+Name: org/aspectj/apache/bcel/generic/InstructionLV.class
+SHA1-Digest: rPtrG1S4D7Ar4UZozaBqzif6x8Y=
+
+Name: org/aspectj/apache/bcel/classfile/StackMapType.class
+SHA1-Digest: xL6Wq93+F9lnQqR7tlZ5acj35/g=
+
+Name: org/aspectj/weaver/bcel/AnnotationAccessVar.class
+SHA1-Digest: AE2YjrUu3CWxRGghuwtvNtdRbuI=
+
+Name: org/aspectj/weaver/patterns/TypePattern$MatchKind.class
+SHA1-Digest: sVB2NlW1pWGlsLmdizNzbYA7wk0=
+
+Name: org/aspectj/apache/bcel/generic/Type$TypeHolder.class
+SHA1-Digest: ebiWJ4pDkS8xhqhHDdT7ZN+q/k4=
+
+Name: org/aspectj/apache/bcel/generic/LineNumberTag.class
+SHA1-Digest: iHphq4mN6brfUyGNHMIA/JeQNdY=
+
+Name: org/aspectj/weaver/ResolvedType$5.class
+SHA1-Digest: 2eSDDDBshavlqLWtgY3CPlKMC1E=
+
+Name: org/aspectj/weaver/patterns/NameBindingPointcut.class
+SHA1-Digest: zrfeiTn3MXiRhUsT7kKmXb2/kbo=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/EnumElementValue.cl
+ ass
+SHA1-Digest: UjBOGetwCzQAyK3DWdRWt7LtSlw=
+
+Name: org/aspectj/weaver/Utils.class
+SHA1-Digest: 2JCWcTsMiWfu0y9mRMH4o5foLcE=
+
+Name: org/aspectj/weaver/reflect/ArgNameFinder.class
+SHA1-Digest: Kom4SlCeR5hk88raV6xOXZipkOM=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes$AjAttributeFieldStruct.cl
+ ass
+SHA1-Digest: 2zXXhDgNAnOvCw9cP4MH6joSkpA=
+
+Name: org/aspectj/weaver/bcel/BcelWeakClassLoaderReference.class
+SHA1-Digest: OB+D+Ms3w4kqt70p65cj3TQsURU=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantCP.class
+SHA1-Digest: p3C9VtJWxHejeXYzOdkETsqJ5pk=
+
+Name: org/aspectj/util/GenericSignature$FieldTypeSignature.class
+SHA1-Digest: 7rbKl4vXIpt5LA6zlGq7FUgQlDs=
+
+Name: org/aspectj/lang/annotation/DeclareMixin.class
+SHA1-Digest: QDKN9WHXO/XiuyivL1qrq+Eh4nc=
+
+Name: org/aspectj/apache/bcel/util/ClassPath$Zip.class
+SHA1-Digest: pOpieZXF221QzEyMOkj3RaVRzLw=
+
+Name: org/aspectj/apache/bcel/util/ClassPath$ClassFile.class
+SHA1-Digest: txCEUvA8D4h3zTvOev70x7Y67ek=
+
+Name: org/aspectj/apache/bcel/generic/MethodGen$BranchStack.class
+SHA1-Digest: Rz9IUrABHPSg9p0ZtYqjK1fnNwg=
+
+Name: org/aspectj/apache/bcel/generic/ClassGen$MethodComparator.class
+SHA1-Digest: 39O/bpkaoVJLNBI0vuZfsrNLsxg=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes$LazyResolvedPointcutDefin
+ ition.class
+SHA1-Digest: 61tWzcCMMFzAYYEFpxzjXLXUE90=
+
+Name: org/aspectj/weaver/tools/TraceFactory.class
+SHA1-Digest: Aa5yBCyYsfEO+ydYxPeQTz/u+o0=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes$UnreadableDebugInfoExcept
+ ion.class
+SHA1-Digest: mQPHuxIOL5T/RhmSXdwXT5Mjbpw=
+
+Name: org/aspectj/weaver/loadtime/ClassLoaderWeavingAdaptor.class
+SHA1-Digest: aoCvfhRMiTkexS0pbGyq+iDLJsQ=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/RuntimeParamAnnos.c
+ lass
+SHA1-Digest: Dlzojqw7iuaVX3akwF/1gaQ1ArY=
+
+Name: org/aspectj/lang/reflect/Advice.class
+SHA1-Digest: UE9bI5cjPmh/ib0RAGAs7cMJgYU=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadStackFactoryImpl.c
+ lass
+SHA1-Digest: QKQhzM5BKrvLwTt61XE0Q+bwm6M=
+
+Name: org/aspectj/apache/bcel/classfile/EnclosingMethod.class
+SHA1-Digest: Mc78Gfe8rNb2/QEX/K5tLqifzaY=
+
+Name: org/aspectj/weaver/BoundedReferenceType.class
+SHA1-Digest: 2JBjK7hfuAS8cXJkBSREIm7aGsw=
+
+Name: org/aspectj/weaver/ast/FieldGetCall.class
+SHA1-Digest: /bNClp3IMQpvgv9kneHF1NKOTIo=
+
+Name: org/aspectj/asm/internal/AspectJElementHierarchy.class
+SHA1-Digest: emF1FKGr++ZtGRA8ZrEm11pvbMI=
+
+Name: org/aspectj/lang/annotation/Before.class
+SHA1-Digest: EqShGxGWWkvIuzvZWtbuEtjORzE=
+
+Name: org/aspectj/weaver/MethodDelegateTypeMunger$FieldHostTypeMunger.
+ class
+SHA1-Digest: oPl0XgaaAqeqZa0FUHFuWThKl2Y=
+
+Name: org/aspectj/weaver/VersionedDataInputStream.class
+SHA1-Digest: 6z2mcMIJzU83SqRXO4fwSTHDjLU=
+
+Name: org/aspectj/apache/bcel/util/Repository.class
+SHA1-Digest: rw1ISUhwJC0h3piMxVgZedda7Pc=
+
+Name: org/aspectj/lang/reflect/InterTypeFieldDeclaration.class
+SHA1-Digest: QvFz0qwoNUcik9G0yg72hijKE5M=
+
+Name: org/aspectj/weaver/patterns/ModifiersPattern.class
+SHA1-Digest: OSKzmLkEhDzGwOphCAcaYD1bifo=
+
+Name: org/aspectj/weaver/patterns/PerCflow.class
+SHA1-Digest: hot/CY+Tt8kdOZQMGNUG5VMq6QU=
+
+Name: org/aspectj/weaver/internal/tools/PointcutExpressionImpl$1.class
+SHA1-Digest: D6D3EXXHUuDzl/UC10+5qU5YDz0=
+
+Name: org/aspectj/weaver/WeaverStateInfo.class
+SHA1-Digest: jNu0LYRQXl49pZ5Jwie8FTsIvgw=
+
+Name: org/aspectj/lang/JoinPoint$EnclosingStaticPart.class
+SHA1-Digest: EkIyzopddCRhPi6qFp5prUnqDiA=
+
+Name: org/aspectj/bridge/context/CompilationAndWeavingContext$1.class
+SHA1-Digest: PxXY5oD2OpNxTzRdXMQ1yhOSt+A=
+
+Name: org/aspectj/weaver/bcel/BcelShadow$1.class
+SHA1-Digest: VWu/mnhq5f7q6sEXA3DX/UDK1F4=
+
+Name: org/aspectj/runtime/reflect/ConstructorSignatureImpl.class
+SHA1-Digest: KY0r3+9EqvwDUVvPkkUDq/PLSSs=
+
+Name: org/aspectj/weaver/patterns/DeclareParentsMixin.class
+SHA1-Digest: aLbueIavq1QNBxkm3yp3NlSMQ2A=
+
+Name: org/aspectj/weaver/tools/WeavingAdaptor$1.class
+SHA1-Digest: 4VCk4U2sD9z5cZwX8jJDqVOHAeg=
+
+Name: org/aspectj/internal/lang/reflect/InterTypeDeclarationImpl.class
+SHA1-Digest: yMpJpPTGMs92tMeUBMwrW959SLg=
+
+Name: org/aspectj/weaver/patterns/SignaturePattern.class
+SHA1-Digest: B59dPsVte9nUuscDPGbe5saVrJ0=
+
+Name: org/aspectj/lang/annotation/DeclareParents.class
+SHA1-Digest: MO2Q0+1bDmzryLI0NUebDAk4iGk=
+
+Name: org/aspectj/weaver/patterns/FormalBinding$ImplicitFormalBinding.
+ class
+SHA1-Digest: WK+xODQNiPyfaKtREYX2157sE4k=
+
+Name: org/aspectj/weaver/bcel/AnnotationAccessFieldVar.class
+SHA1-Digest: yMQG2xR10BQjGDB7isjF1YZA3/s=
+
+Name: org/aspectj/asm/IRelationship.class
+SHA1-Digest: 4rVJKC5sB0KAQb/hoJPiI8hlv9k=
+
+Name: org/aspectj/weaver/bcel/TypeAnnotationAccessVar.class
+SHA1-Digest: b7RdGWKTWx8rGPIZhd8XOzv9/2w=
+
+Name: org/aspectj/internal/lang/reflect/PerClauseImpl.class
+SHA1-Digest: Pn2uH6gSNCvkK56tYHm7KoA0AQU=
+
+Name: org/aspectj/weaver/patterns/EllipsisTypePattern.class
+SHA1-Digest: bmXncfjTFVvfnb4hXKi52HpvURE=
+
+Name: org/aspectj/lang/Aspects.class
+SHA1-Digest: zgu7fhp2TV1UfHECMUtZZtqYGGo=
+
+Name: testdata/MethodLevelAnnotation.class
+SHA1-Digest: /n0aXzfBqTxzmAYqotkiQ785174=
+
+Name: org/aspectj/weaver/EnumAnnotationValue.class
+SHA1-Digest: f2RpN/vWyJXHJBO21oqBtw77WOo=
+
+Name: org/aspectj/lang/reflect/CodeSignature.class
+SHA1-Digest: ZwVpgcMXCXvmo46xs4MJwWWy9Ks=
+
+Name: org/aspectj/apache/bcel/classfile/LocalVariableTable.class
+SHA1-Digest: Se6NpHHPv9naBXNw5m897mmcDQA=
+
+Name: org/aspectj/weaver/reflect/Java15ReflectionBasedReferenceTypeDel
+ egate.class
+SHA1-Digest: SKngPbz/Mikmyu4Mavubs2I04bY=
+
+Name: org/aspectj/weaver/XlintDefault.properties
+SHA1-Digest: SccceJHhAVXfu6XQmuF/zx9UsRk=
+
+Name: org/aspectj/internal/lang/reflect/PointcutBasedPerClauseImpl.cla
+ ss
+SHA1-Digest: eI0eotAjw4H+wQZOeoTfLYuK3Js=
+
+Name: org/aspectj/weaver/MissingResolvedTypeWithKnownSignature.class
+SHA1-Digest: X1T9tQHWgKnhZIKts2NIhwjxcn4=
+
+Name: org/aspectj/weaver/ICrossReferenceHandler.class
+SHA1-Digest: X8Nv0DMvXiSOsjD0Ulv+tqFImW0=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadCounter.class
+SHA1-Digest: gJUK0JfRXwoVotYpXnNONbgDc/0=
+
+Name: org/aspectj/weaver/tools/ContextBasedMatcher.class
+SHA1-Digest: k1DfzPEtMFkRfNyGVmNobCeyoMU=
+
+Name: org/aspectj/weaver/bcel/ExtensibleURLClassLoader.class
+SHA1-Digest: vvXgW4bGlFBMIDFObh5xOwzgJTE=
+
+Name: org/aspectj/weaver/bcel/BcelClassWeaver$1.class
+SHA1-Digest: WMWQRDNwtsxs1VgJrsjRfCOp2CE=
+
+Name: org/aspectj/bridge/MessageUtil$1HandlerPrintStream.class
+SHA1-Digest: nHv51DJuVMMsTB1UAj9I3Wltzc8=
+
+Name: org/aspectj/bridge/MessageUtil$9.class
+SHA1-Digest: TqtB9cVOccJe3yIUmLCYDWockqM=
+
+Name: org/aspectj/apache/bcel/generic/CodeExceptionGen.class
+SHA1-Digest: LPf3niItEp2+jNR17W8L9lrheGc=
+
+Name: org/aspectj/weaver/bcel/UnwovenClassFileWithThirdPartyManagedByt
+ ecode.class
+SHA1-Digest: L6XPvtv1N8jdskZC9LLp9LgicY4=
+
+Name: org/aspectj/weaver/AjAttribute$PointcutDeclarationAttribute.clas
+ s
+SHA1-Digest: lQE5ndlVRg+W8onoKG8rxXDBRz8=
+
+Name: org/aspectj/bridge/MessageUtil$10.class
+SHA1-Digest: Ztu+UG6ZEuBVNZqkMJ6T+cXDcVk=
+
+Name: org/aspectj/lang/JoinPoint.class
+SHA1-Digest: B4Th/NDedHVYqB7u0rLzWRqdbas=
+
+Name: org/aspectj/apache/bcel/generic/InstructionList$1.class
+SHA1-Digest: GTM8Ipkx6Sb8ytSZ0zXOdeSm+IY=
+
+Name: org/aspectj/apache/bcel/classfile/ExceptionTable.class
+SHA1-Digest: vfwqWJ/1ZK9yW48/5olpdtxvQpo=
+
+Name: org/aspectj/weaver/SignatureUtils.class
+SHA1-Digest: +BACFxcysiWLV0HQD+Zua2Fl8ug=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes$AjAttributeStruct.class
+SHA1-Digest: ioJglXmCfJ/7F/jhp9ylMkHZWWQ=
+
+Name: org/aspectj/weaver/bcel/BcelShadow$UsesThisVisitor.class
+SHA1-Digest: eJivMrS4ioJGFBAGrGd8lfL0lj0=
+
+Name: org/aspectj/bridge/ILifecycleAware.class
+SHA1-Digest: CEU996WNAaMZrHi+muhb/7CzXWQ=
+
+Name: org/aspectj/weaver/WeakClassLoaderReference.class
+SHA1-Digest: KJaQdAfW2epBvaIzUxDFN0f9GZI=
+
+Name: org/aspectj/weaver/patterns/BindingTypePattern.class
+SHA1-Digest: h1qwgVOPMgpZIC0bJUirZl8HWzI=
+
+Name: org/aspectj/weaver/patterns/ThisOrTargetAnnotationPointcut.class
+SHA1-Digest: sq1aGgWaxoC6dWiSbAYW90VRcpQ=
+
+Name: org/aspectj/internal/lang/annotation/ajcDeclarePrecedence.class
+SHA1-Digest: 623AqA0qK7/fp9QYg4lUiGDuLj8=
+
+Name: org/aspectj/weaver/AnnotationValue.class
+SHA1-Digest: PGk4md21ugdB/8zDfeGMRoNI6Fc=
+
+Name: org/aspectj/weaver/ResolvedTypeMunger.class
+SHA1-Digest: +OUS5PpMpvmgGoyuXvXEvLDqPPQ=
+
+Name: org/aspectj/weaver/tools/PointcutExpression.class
+SHA1-Digest: ZY0MJasGj7rq+A4SQLTeawQXij8=
+
+Name: org/aspectj/weaver/ISourceContext.class
+SHA1-Digest: F33TGXtNjVlCr8CEw9TTL5MRA7U=
+
+Name: org/aspectj/weaver/reflect/ReflectionWorld$ExceptionBasedMessage
+ Handler.class
+SHA1-Digest: I7psc4erqsPgf5jj5iWtB6GJkPE=
+
+Name: org/aspectj/weaver/tools/StandardPointcutExpression.class
+SHA1-Digest: LXyQ88f3FPSIqlm4IP1rjMq9lzY=
+
+Name: org/aspectj/weaver/loadtime/Options$WeaverOption.class
+SHA1-Digest: qZqN659N/awLOxrWjyMsfeFreaw=
+
+Name: org/aspectj/weaver/patterns/HasMemberTypePattern.class
+SHA1-Digest: ncI+p/95AIkL+GqHq+kloz8llmw=
+
+Name: org/aspectj/weaver/loadtime/Agent.class
+SHA1-Digest: xgvl5loH/ltr2xMjsDZynOtyOeA=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadStack.class
+SHA1-Digest: MNFIqQAIWaGcfnsCZnY1u59Hm1k=
+
+Name: org/aspectj/weaver/patterns/AndTypePattern.class
+SHA1-Digest: oZWa2lBkpqdJqj2pQr5nE4/5zy8=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantClass.class
+SHA1-Digest: FmSzKQRAiFtGJJtDFXHIgnjwmQA=
+
+Name: org/aspectj/weaver/Iterators$3.class
+SHA1-Digest: N9LPLjo0UrVnqvDw3w/oHToTxf4=
+
+Name: org/aspectj/apache/bcel/generic/FieldGenOrMethodGen.class
+SHA1-Digest: 0OeoEXQthRgCT8fiMw+1v79v6FQ=
+
+Name: org/aspectj/util/GenericSignature$TypeSignature.class
+SHA1-Digest: VZResU1DYvhWsFjSgnUU2KBpvHU=
+
+Name: org/aspectj/weaver/reflect/ReflectionVar.class
+SHA1-Digest: MQbTK/8o1N1M5w94mQ18Obs/a80=
+
+Name: org/aspectj/weaver/patterns/ConcreteCflowPointcut$Slot.class
+SHA1-Digest: Px7i9q9YoMunu4PoBgcFq5xYnKQ=
+
+Name: org/aspectj/weaver/patterns/PerThisOrTargetPointcutVisitor$TypeP
+ atternMayBe.class
+SHA1-Digest: jNE6RfahHfTUT6F4O0JF2xbqaoo=
+
+Name: org/aspectj/weaver/loadtime/DefaultWeavingContext.class
+SHA1-Digest: GuUKYkr6Kc5ahGaQrmdMdqYJUeA=
+
+Name: org/aspectj/lang/internal/lang/PlaceHolder.class
+SHA1-Digest: UhyHH4IIMv3R4E4uHel30ECDMqg=
+
+Name: org/aspectj/weaver/patterns/DeclareAnnotation.class
+SHA1-Digest: d5fSXAKnW9gWiCIOK7s2qWuC2bQ=
+
+Name: org/aspectj/apache/bcel/generic/InstVisitor.class
+SHA1-Digest: 16XVyn+aNyiXGX2FoYQBmS9hk5g=
+
+Name: org/aspectj/bridge/Message.class
+SHA1-Digest: zZ8O+XJEFJN+kdzhG8ueCngZ0yk=
+
+Name: org/aspectj/weaver/patterns/Pointcut$MatchesNothingPointcut.clas
+ s
+SHA1-Digest: 7kWLJRhyBFzEJCYXdz8mxZyYrHk=
+
+Name: org/aspectj/apache/bcel/util/NonCachingClassLoaderRepository$Sof
+ tHashMap$SpecialValue.class
+SHA1-Digest: N1QLeBMf0m/tALdm9coTSTVjuag=
+
+Name: org/aspectj/weaver/patterns/AndAnnotationTypePattern.class
+SHA1-Digest: GhDRWvb9wWOiWfKUVMJgt8othl8=
+
+Name: org/aspectj/apache/bcel/generic/LOOKUPSWITCH.class
+SHA1-Digest: ijDqwG1pARqMdDtS4H/+JJUoh5k=
+
+Name: org/aspectj/util/GenericSignature$TypeArgument.class
+SHA1-Digest: 48XHQvIq1WmCh9IIeIqIVij4crY=
+
+Name: org/aspectj/weaver/bcel/IfFinder.class
+SHA1-Digest: 5THgaQ29reLcGYQPOszL5QobavU=
+
+Name: org/aspectj/bridge/MessageUtil$8.class
+SHA1-Digest: 1q1Cm+DaD8Xdj9rteoV8reduzmA=
+
+Name: org/aspectj/weaver/UnresolvedType$TypeKind.class
+SHA1-Digest: 552oFhTBrgKsWRwDoohPxgwMMiQ=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes$ReturningFormalNotDeclare
+ dInAdviceSignatureException.class
+SHA1-Digest: G1gHxrId1HisFTNW4Fbsz13VENE=
+
+Name: org/aspectj/weaver/AnnotationAnnotationValue.class
+SHA1-Digest: pplujTAQBvdjPH6pXBUSxmoXLCw=
+
+Name: org/aspectj/weaver/reflect/Java14GenericSignatureInformationProv
+ ider.class
+SHA1-Digest: ml41nYGC4nZz86PU8AISS+phmxg=
+
+Name: org/aspectj/runtime/reflect/MemberSignatureImpl.class
+SHA1-Digest: ywBNhohejvf84/kpTQmiEOWRW4s=
+
+Name: org/aspectj/weaver/patterns/AnyTypePattern.class
+SHA1-Digest: LGV+X9mzB2rOWC/goapGMk5JaKc=
+
+Name: org/aspectj/util/FileUtil$3.class
+SHA1-Digest: D3Pig+l6QNVPSuewbGmFUu675aI=
+
+Name: org/aspectj/weaver/WeaverStateInfo$Entry.class
+SHA1-Digest: GwhSKlHOjlrOueh2F0qunaQ5PD4=
+
+Name: org/aspectj/internal/lang/reflect/StringToType$1.class
+SHA1-Digest: cwiC011I47DJZ0zLwmSp9KzGPaI=
+
+Name: org/aspectj/asm/IModelFilter.class
+SHA1-Digest: W66UwdlAWQVjxoGlnJ9RVFUNMmQ=
+
+Name: org/aspectj/weaver/MethodDelegateTypeMunger.class
+SHA1-Digest: a0ef8OrwM1y8G040CmPi8GU9Grs=
+
+Name: org/aspectj/apache/bcel/generic/SwitchBuilder.class
+SHA1-Digest: l1qP1/PzsCWv4/23IOlpFBjkS4g=
+
+Name: org/aspectj/weaver/ast/ASTNode.class
+SHA1-Digest: Y4GIR+RXrmhWRs2B1qZoVujs7qY=
+
+Name: org/aspectj/weaver/bcel/BcelCflowStackFieldAdder.class
+SHA1-Digest: lkDMV9r5szlg4czOITfdR7c26fw=
+
+Name: org/aspectj/lang/annotation/After.class
+SHA1-Digest: wIfpmYzznobz/4mkt2UJA9bGsNs=
+
+Name: org/aspectj/weaver/AnnotationTargetKind.class
+SHA1-Digest: n5XVh+9Rgfw5wbWBAJxIzaCtrY8=
+
+Name: org/aspectj/weaver/reflect/ReflectionShadow.class
+SHA1-Digest: M+ytoNG7XG2JNKhHL84thxsW1Zk=
+
+Name: org/aspectj/apache/bcel/util/ClassLoaderRepository.class
+SHA1-Digest: hfGHb+rPf5nUxmjZLaz3aH7zpv4=
+
+Name: org/aspectj/apache/bcel/classfile/SimpleConstant.class
+SHA1-Digest: I6zFYJRNcripehTewByKy3nJ3X4=
+
+Name: org/aspectj/runtime/reflect/UnlockSignatureImpl.class
+SHA1-Digest: qhs62s2iMZy3C5leOfaecAkh2bI=
+
+Name: org/aspectj/weaver/patterns/IfPointcut.class
+SHA1-Digest: V6ufJJUzLVKJZU40O+dJFQKLOCU=
+
+Name: org/aspectj/apache/bcel/generic/ReferenceType.class
+SHA1-Digest: N5AYmqsxzCd1xTOsjhuANh17vbY=
+
+Name: org/aspectj/apache/bcel/classfile/Utility$ResultHolder.class
+SHA1-Digest: a78fIIPvC1FmAX32eRy9NaSbu/Q=
+
+Name: org/aspectj/bridge/MessageUtil$3.class
+SHA1-Digest: 8kiXaBKaTY686KHYdMH0+vCUCI8=
+
+Name: org/aspectj/weaver/patterns/WithinPointcut.class
+SHA1-Digest: +nAU0zEi2HFOrdwmEuWJhC0mea4=
+
+Name: org/aspectj/weaver/Iterators$1.class
+SHA1-Digest: QqZuh6TyvNvMmyDraXksjrtyC9A=
+
+Name: org/aspectj/weaver/tools/FuzzyBoolean.class
+SHA1-Digest: HsccMIOYSK+BEvlaXBcVafPSTSE=
+
+Name: org/aspectj/weaver/bcel/BcelTypeMunger.class
+SHA1-Digest: yq7lLO2jwaH/j9uO9yIXf+ZEwmI=
+
+Name: org/aspectj/weaver/BCException.class
+SHA1-Digest: pKzu3+6FUv22OL1X1jUPMn6y+bY=
+
+Name: org/aspectj/weaver/AbstractAnnotationAJ.class
+SHA1-Digest: AOYfJcdUlmelm0cuZrLnpoTajag=
+
+Name: org/aspectj/runtime/reflect/CatchClauseSignatureImpl.class
+SHA1-Digest: wb9krNd9Bz+OJw0j1MFMxGSbRk0=
+
+Name: org/aspectj/weaver/bcel/UnwovenClassFileWithThirdPartyManagedByt
+ ecode$IByteCodeProvider.class
+SHA1-Digest: gTDKvIcQ4VGGs35p5Xi5UOUv+ZI=
+
+Name: org/aspectj/weaver/PerObjectInterfaceTypeMunger.class
+SHA1-Digest: UJKIKE9wrOesul8XZI16miXVh5I=
+
+Name: org/aspectj/weaver/reflect/ShadowMatchImpl$RuntimeTestEvaluator.
+ class
+SHA1-Digest: ib+tdmoXZ4wP+tRtwxnvT51vOY4=
+
+Name: org/aspectj/runtime/reflect/MethodSignatureImpl.class
+SHA1-Digest: mnkv6gT0GC+q+X2BbefmwJVhwCc=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadCounterImpl11$Coun
+ ter.class
+SHA1-Digest: gXiGnDyLMreLQK1bHtQQNcvOYFI=
+
+Name: org/aspectj/weaver/AjAttribute$AdviceAttribute.class
+SHA1-Digest: UrFj5NxDa5Faz3eP2BMGTr5scdI=
+
+Name: org/aspectj/apache/bcel/generic/InstructionShort.class
+SHA1-Digest: 6RlovAyyIvsd0+pyGJL/MnGlY0k=
+
+Name: org/aspectj/apache/bcel/generic/BasicType.class
+SHA1-Digest: 9d39dVv12fdfgAYNuFuACdxCyow=
+
+Name: org/aspectj/weaver/internal/tools/PointcutDesignatorHandlerBased
+ Pointcut.class
+SHA1-Digest: d3wkM1rs3u6ox22SYKjZ4jSKDac=
+
+Name: org/aspectj/weaver/patterns/PerFromSuper.class
+SHA1-Digest: vUHRpplaNX0pxX8yFKkCv/nBNSg=
+
+Name: org/aspectj/bridge/AbortException.class
+SHA1-Digest: QrvvUC1Ezuf04wRNr6WwiF/lCDo=
+
+Name: org/aspectj/lang/annotation/DeclareError.class
+SHA1-Digest: yDXulO+chpRgBVY/bW+4oEPZkCU=
+
+Name: org/aspectj/weaver/patterns/ExactAnnotationFieldTypePattern.clas
+ s
+SHA1-Digest: nSe/NLnDTDRhsWULmEjXWixbQUg=
+
+Name: org/aspectj/weaver/CompressingDataOutputStream.class
+SHA1-Digest: /SlmgiBxpVgy6CkbJahjS7GhKzc=
+
+Name: org/aspectj/weaver/patterns/NotAnnotationTypePattern.class
+SHA1-Digest: XN2SiaFIEfHtEWJM7OvuWRyvSHs=
+
+Name: org/aspectj/weaver/reflect/Java15AnnotationFinder.class
+SHA1-Digest: nJTGq9ZnGs20n4yTV+Tr7j6UEQw=
+
+Name: org/aspectj/apache/bcel/classfile/InnerClasses.class
+SHA1-Digest: um8zZxYckbJE/fUE8+V4fR5/gR4=
+
+Name: org/aspectj/weaver/bcel/ClassPathManager$Entry.class
+SHA1-Digest: j4Z9spoo/biCggH0sh7aLKQCwwE=
+
+Name: org/aspectj/weaver/ResolvedType$PointcutGetter.class
+SHA1-Digest: tZZfKD5W7L8kTBY+o1dKz//bdqU=
+
+Name: org/aspectj/weaver/patterns/PatternNodeVisitor.class
+SHA1-Digest: K2JiS819a0pbDeMIJ96vrXfdzN4=
+
+Name: org/aspectj/weaver/ast/HasAnnotation.class
+SHA1-Digest: yxkzsN4UKuJJpfa3bOR3NSl0zG8=
+
+Name: org/aspectj/weaver/bcel/BcelCflowAccessVar.class
+SHA1-Digest: FqrSLdU6YuYTcLtmptZ9ZbIuvVc=
+
+Name: org/aspectj/weaver/patterns/ExactTypePattern.class
+SHA1-Digest: 6U18znGsjM9p8YH6P2lhCgLozzI=
+
+Name: org/aspectj/weaver/tools/Jdk14Trace.class
+SHA1-Digest: kYygjqsolWU8CrqRAfBhifpJKxw=
+
+Name: org/aspectj/weaver/bcel/LazyClassGen$1.class
+SHA1-Digest: oanhDyeemmwMvL9nW0LtUApHfqw=
+
+Name: org/aspectj/apache/bcel/util/ClassLoaderRepository$SoftHashMap$S
+ pecialValue.class
+SHA1-Digest: 00FGXbU3yBe8hi8vNMhoXvGxC7Q=
+
+Name: org/aspectj/weaver/patterns/PatternNode.class
+SHA1-Digest: 4BhHmnC2jk6gjhwv/rpXInNd48Q=
+
+Name: org/aspectj/bridge/ISourceLocation.class
+SHA1-Digest: rY9a0Y7CljdRAF+er6+SwI6yDkI=
+
+Name: org/aspectj/bridge/IMessageHandler$1.class
+SHA1-Digest: 2Bh7xQEYfbByh2TLnEQFQRsn5hE=
+
+Name: org/aspectj/lang/reflect/AjTypeSystem.class
+SHA1-Digest: Iq1y0fGjygrAxVV23JxHQwrAQ9k=
+
+Name: org/aspectj/weaver/PerTypeWithinTargetTypeMunger.class
+SHA1-Digest: M95zUNI9UQCdco/nrfiIeki9rlA=
+
+Name: org/aspectj/weaver/patterns/TypeVariablePattern.class
+SHA1-Digest: gemXB+KbjPHaShedjTTL2W1QD64=
+
+Name: org/aspectj/weaver/patterns/TypePatternList.class
+SHA1-Digest: Nc5eJM2sbpGP8ul8SYIJQ/Rq9AA=
+
+Name: org/aspectj/weaver/patterns/WildTypePattern$VerifyBoundsForTypeP
+ attern.class
+SHA1-Digest: 5+uHXcI/dO2Sx1Jfh3FF/5yMu30=
+
+Name: org/aspectj/weaver/ArrayReferenceType.class
+SHA1-Digest: 4aPDIFAM/jzOuLqzi3dFZlfFKHc=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadStackImpl11.class
+SHA1-Digest: fr1Ukaaq8pDBLVUPV6oCZ+GVSmg=
+
+Name: org/aspectj/weaver/JoinPointSignature.class
+SHA1-Digest: JI7gQ01qBiU9JWRcJPSRpgrbUDM=
+
+Name: org/aspectj/weaver/bcel/ShadowRange.class
+SHA1-Digest: kPAkrjdL5WZSzsQEJSODF0qhE6c=
+
+Name: org/aspectj/weaver/tools/PointcutDesignatorHandler.class
+SHA1-Digest: g2FpT8iS6o06kkfStfRt3ng1QmE=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadStackFactoryImpl11
+ .class
+SHA1-Digest: Wy0bo1Iqe59jY1W697qDtzKWPa0=
+
+Name: org/aspectj/weaver/internal/tools/StandardPointcutExpressionImpl
+ $Handler.class
+SHA1-Digest: 3kDEhwCZ59zODv/Wwa+iRE/ilZM=
+
+Name: org/aspectj/weaver/ResolvedMemberImpl.class
+SHA1-Digest: nfcgPohHm68iu5LF8q36uBAJPus=
+
+Name: org/aspectj/apache/bcel/classfile/Synthetic.class
+SHA1-Digest: 9vfiNENo4WLAG90xng5eCoC++60=
+
+Name: org/aspectj/asm/AsmManager$CanonicalFilePathMap.class
+SHA1-Digest: yrYe208+/KEeJcyxhPCHKeCO4Dk=
+
+Name: org/aspectj/weaver/IWeavingSupport.class
+SHA1-Digest: xmDHCvwe3FsCtAhq1cc/ptGoVOk=
+
+Name: org/aspectj/weaver/Iterators$1$1.class
+SHA1-Digest: Gaj3XZtY5QeFs6OzZwkwD1XW0Sw=
+
+Name: org/aspectj/apache/bcel/generic/LocalVariableTag.class
+SHA1-Digest: Tw7s3Mm9wvDwZzmapkJzjhsMCjs=
+
+Name: org/aspectj/asm/IHierarchyListener.class
+SHA1-Digest: 9ID0OIkqtPDmMGSWrxKtMgtejJg=
+
+Name: org/aspectj/util/LangUtil$StringChecker.class
+SHA1-Digest: TzGptjpJgfl/eF9Od8pw16FhmMc=
+
+Name: org/aspectj/weaver/reflect/StandardShadowMatchImpl.class
+SHA1-Digest: tQl/ilxRf5RCox88eH40mmHMGPE=
+
+Name: org/aspectj/apache/bcel/generic/LocalVariableGen.class
+SHA1-Digest: V9m3qUslsx8uhMq1S1yOreDhpK4=
+
+Name: org/aspectj/lang/annotation/SuppressAjWarnings.class
+SHA1-Digest: 40YC624+3kOz4o3obkIEw+fEojk=
+
+Name: org/aspectj/apache/bcel/util/ClassPath.class
+SHA1-Digest: bbK+QtVgt7MJ+nTav4gJwTfuY7w=
+
+Name: org/aspectj/weaver/patterns/ExposedState.class
+SHA1-Digest: diweaoH+d2KSgBloTxu9iwKJHC4=
+
+Name: org/aspectj/weaver/NameMangler.class
+SHA1-Digest: TGuG7dj8DIXFm4h8dPsct1N1iFQ=
+
+Name: org/aspectj/apache/bcel/util/ClassPath$PathEntry.class
+SHA1-Digest: 6klbbqsxBVUhNRjjczffaixsatM=
+
+Name: org/aspectj/lang/reflect/PerClause.class
+SHA1-Digest: 9Z/3YQ1lrIqxhp5/erxWspitaYE=
+
+Name: org/aspectj/weaver/CrosscuttingMembersSet.class
+SHA1-Digest: mFmRxr6puCuUYGLVDo+8yLpfGmw=
+
+Name: org/aspectj/weaver/reflect/ReflectionBasedReferenceTypeDelegate.
+ class
+SHA1-Digest: C8kTVkp3Ftbm8abj5XtHwpdL2YI=
+
+Name: org/aspectj/weaver/patterns/NotPointcut.class
+SHA1-Digest: XzpxTJwkNryjqJeHXpAUV1TuKwE=
+
+Name: org/aspectj/apache/bcel/generic/InstructionFactory.class
+SHA1-Digest: +V+kKsXyXHdAUzhLln5QOSRanZE=
+
+Name: org/aspectj/apache/bcel/classfile/AttributeUtils.class
+SHA1-Digest: rAvTz9NkyJbpKNT/6UjrtgEITH4=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantInterfaceMethodref.cla
+ ss
+SHA1-Digest: ddqMBxEpD8uGLF3s6rsXoTc7v6s=
+
+Name: org/aspectj/weaver/Dump$INode.class
+SHA1-Digest: gqp+lNdLyaxT/nel+Cm1wQ5Ra+0=
+
+Name: org/aspectj/weaver/patterns/ThrowsPattern.class
+SHA1-Digest: bFp4L3u2o9XB7Pe7tYyESdw6PWY=
+
+Name: org/aspectj/weaver/bcel/BcelWeaver$4.class
+SHA1-Digest: LMycdM/REosqr/FXMENzmH05gUA=
+
+Name: org/aspectj/weaver/patterns/ParserException.class
+SHA1-Digest: A0lvDv5Qzyl2fHpQRcGbbrn6Jgo=
+
+Name: org/aspectj/lang/reflect/DeclareAnnotation.class
+SHA1-Digest: heyGCbJn1Tnh3H5YqLWmDi9UdiU=
+
+Name: org/aspectj/apache/bcel/generic/InstructionBranch.class
+SHA1-Digest: UtQl44VVFGW5wHL/8AJ7EDgJ/3M=
+
+Name: org/aspectj/internal/lang/reflect/AdviceImpl.class
+SHA1-Digest: /An1VeWjOYzUDbZihJjKf7UkE4w=
+
+Name: org/aspectj/weaver/bcel/BcelWeaver.class
+SHA1-Digest: EtdjXL5BrR5hvP4bXpn5EBOwv1U=
+
+Name: org/aspectj/lang/reflect/UnlockSignature.class
+SHA1-Digest: dk8QOhjuYujeF3L2p/qHJWA44oU=
+
+Name: org/aspectj/weaver/WeaverMessages.class
+SHA1-Digest: BL4M++0zvAEKbVBFEVDniIJrgK8=
+
+Name: org/aspectj/weaver/ltw/LTWWorld.class
+SHA1-Digest: mVqSUzgbjAhN10dz9B/PYnEYNSY=
+
+Name: org/aspectj/util/FileUtil$Pipe.class
+SHA1-Digest: w4JAsDB6tmOGxl9qijmHv1BnqxE=
+
+Name: org/aspectj/weaver/TemporaryTypeMunger.class
+SHA1-Digest: kTCJfF/p+RrweayUfBCgBU8zNWg=
+
+Name: org/aspectj/weaver/patterns/AnyAnnotationTypePattern.class
+SHA1-Digest: 0imEXj1BauLUZns8IN9FFvaeSdg=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadStackFactory.class
+SHA1-Digest: 2GkgQGi3v5Wo9b84w94loXIi5h8=
+
+Name: org/aspectj/weaver/loadtime/JRockitAgent$1.class
+SHA1-Digest: AuN2M+ub6LVo6MzK0KcBm+eiAkE=
+
+Name: org/aspectj/weaver/ReferenceTypeDelegate.class
+SHA1-Digest: BY72C25XTc5G8NNK9nv/O1BZbFE=
+
+Name: org/aspectj/weaver/patterns/OrPointcut.class
+SHA1-Digest: gF3zgm3Ahglyn1kzFyJugHW7za4=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes.class
+SHA1-Digest: /mFrfTOwPKBSJTMyKtXlGNOS9i8=
+
+Name: org/aspectj/weaver/loadtime/JRockitAgent.class
+SHA1-Digest: 8Hj75bN2jvl471/WXx9KzUcm7cM=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes$ThrownFormalNotDeclaredIn
+ AdviceSignatureException.class
+SHA1-Digest: C+XPfHK2KEPO3zyalVLZjlTieT4=
+
+Name: org/aspectj/lang/reflect/FieldSignature.class
+SHA1-Digest: ycJXyoUs063NcGNNpEp2PBmpz68=
+
+Name: org/aspectj/weaver/AjAttribute$DeclareAttribute.class
+SHA1-Digest: 3RLI8mR4FlUbVghs8kCq549TEOQ=
+
+Name: org/aspectj/asm/internal/RelationshipMap.class
+SHA1-Digest: kiLxDN2X2O5jBEvLspVu+SWcXGM=
+
+Name: org/aspectj/weaver/World$TimeCollector.class
+SHA1-Digest: O4YC6ZhZoeYGQtAlN5beO446ZW4=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantNameAndType.class
+SHA1-Digest: 6lC7a13pnO+wBVfYlloomTh5T64=
+
+Name: org/aspectj/weaver/ResolvedType$MethodGetterIncludingItds.class
+SHA1-Digest: HH2P2p6V7gWrUECsVpgp3Weomqo=
+
+Name: org/aspectj/bridge/MessageUtil$2.class
+SHA1-Digest: czEcOuzNArmdiv31OAjTEtNCZfk=
+
+Name: org/aspectj/bridge/MessageUtil$KindSelector.class
+SHA1-Digest: F1HlpcfgcVjDJ64qtDfo8r1qfNQ=
+
+Name: org/aspectj/bridge/MessageUtil$5.class
+SHA1-Digest: 7BHVUCUcljFJWL0sKIP+DNdTuGQ=
+
+Name: org/aspectj/util/LangUtil$ProcessController.class
+SHA1-Digest: lCxinYNVvRJteqiTJti8KGObGx0=
+
+Name: org/aspectj/weaver/Lint$Kind.class
+SHA1-Digest: IU3P4/y8nZKGEDEn3OBMf5rD4lo=
+
+Name: org/aspectj/weaver/internal/tools/PointcutExpressionImpl.class
+SHA1-Digest: Zxml4Le9WhxwmykvPKiLyVkxoZQ=
+
+Name: org/aspectj/weaver/internal/tools/StandardPointcutExpressionImpl
+ .class
+SHA1-Digest: JiSVk+mRBh7jXsSCWiTMOluUf5w=
+
+Name: org/aspectj/weaver/bcel/BcelShadow$UsesTargetVisitor.class
+SHA1-Digest: rYhD11nNcF/D6EyOmAhoV07TC3A=
+
+Name: org/aspectj/runtime/reflect/JoinPointImpl$EnclosingStaticPartImp
+ l.class
+SHA1-Digest: Fpad+GMptHI+2b0EbAhlDeNjyxo=
+
+Name: org/aspectj/weaver/patterns/FastMatchInfo.class
+SHA1-Digest: U6iekX2iv3i70rJvK28OEcsvWw4=
+
+Name: org/aspectj/weaver/IntMap.class
+SHA1-Digest: uJBs5vjuyEecVHqF5zizWBB0Hf4=
+
+Name: org/aspectj/weaver/patterns/AbstractPatternNodeVisitor.class
+SHA1-Digest: uoGW4GffZFUZjau87APZqvCXsbE=
+
+Name: org/aspectj/lang/reflect/InterTypeConstructorDeclaration.class
+SHA1-Digest: B+YzE3zMmm2sEmVM8b2V1AUeXXE=
+
+Name: org/aspectj/weaver/reflect/ReflectionBasedResolvedMemberImpl.cla
+ ss
+SHA1-Digest: bY7VlY+bmfM3bsxnkLKWG4B0tnE=
+
+Name: org/aspectj/asm/AsmManager.class
+SHA1-Digest: PsbNcJNSGJPO4+de0sLYp11ENQY=
+
+Name: org/aspectj/apache/bcel/generic/InstructionSelect.class
+SHA1-Digest: JLJZBef232xZXjw3lyf7u0Ny5Mo=
+
+Name: org/aspectj/bridge/IMessage$Kind$1.class
+SHA1-Digest: SdHyaqvfFGzTjlclTL4CX2W2C1s=
+
+Name: org/aspectj/lang/reflect/InterTypeMethodDeclaration.class
+SHA1-Digest: FblL+I7vJ3FzUDeGGQt2FdLdONY=
+
+Name: org/aspectj/internal/lang/annotation/ajcITD.class
+SHA1-Digest: M6U81C2tIohO7IU2K+2mbRlEDsU=
+
+Name: org/aspectj/weaver/ResolvedType$FieldGetter.class
+SHA1-Digest: DblkRO0WSJTqdjzhofKfzK6VsLo=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadStackFactoryImpl$1
+ .class
+SHA1-Digest: JxjQGLuCRsMcuhRjloiu5mMv4hQ=
+
+Name: org/aspectj/apache/bcel/generic/Type$2.class
+SHA1-Digest: xRy0PX/MffiJ1Uvbrp/0EYrOeOk=
+
+Name: org/aspectj/apache/bcel/classfile/Constant.class
+SHA1-Digest: BzAqQDf06Z4pdKckAepb3sR4C1U=
+
+Name: org/aspectj/bridge/context/PinpointingMessageHandler.class
+SHA1-Digest: Sr8Sye8uyIrMckEy2kvhyHeGEGg=
+
+Name: org/aspectj/weaver/NewConstructorTypeMunger.class
+SHA1-Digest: Av+YXFFd0dcmIUt6AcqEX9h6NfI=
+
+Name: org/aspectj/util/FuzzyBoolean$NeverFuzzyBoolean.class
+SHA1-Digest: vyxZXvHeymzjie3zO3TGkPHuMkg=
+
+Name: org/aspectj/util/LangUtil$ProcessController$1.class
+SHA1-Digest: jIFW0OZwxXiO8kgZXN2NjiBufQY=
+
+Name: org/aspectj/weaver/bcel/BcelGenericSignatureToTypeXConverter.cla
+ ss
+SHA1-Digest: 0NKE+dR43w7Oi2NqQNOBTc5C+UM=
+
+Name: org/aspectj/bridge/context/ContextToken.class
+SHA1-Digest: zYVonu1eYb06SYOkYa14cBWmAMs=
+
+Name: org/aspectj/weaver/patterns/PatternParser.class
+SHA1-Digest: vCtHuE2yC36sY03y4Mhi1R62r34=
+
+Name: org/aspectj/weaver/bcel/LazyMethodGen$1.class
+SHA1-Digest: /CVLPo8Dlmiv/H7zPUbQzN5k04c=
+
+Name: org/aspectj/weaver/tools/PointcutPrimitive.class
+SHA1-Digest: dK1zkXxtgujhgWe2OUj9IicLeHw=
+
+Name: org/aspectj/runtime/reflect/SignatureImpl$CacheImpl.class
+SHA1-Digest: oOqCvEXpRguyM8mgmwzRJn069U8=
+
+Name: org/aspectj/apache/bcel/classfile/Attribute.class
+SHA1-Digest: rhnNspu/RODZLiaquHlMKM+tktU=
+
+Name: org/aspectj/weaver/model/AsmRelationshipProvider.class
+SHA1-Digest: prrWO2nSz9NATDNebAWIiINGIGA=
+
+Name: org/aspectj/bridge/context/CompilationAndWeavingContext$ContextT
+ okenImpl.class
+SHA1-Digest: BdzWjrlsqMP8OUTQIlLZluhpWfM=
+
+Name: org/aspectj/weaver/bcel/Utility.class
+SHA1-Digest: Y/1vOg3MAnK1/VjMnvki6zcGEu4=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/ClassElementValue.c
+ lass
+SHA1-Digest: Xfi623TZ1oZe3V1a5DYGLW3jcdQ=
+
+Name: org/aspectj/runtime/reflect/LockSignatureImpl.class
+SHA1-Digest: n0Pgupw/A560yJy7p/0dIIMys0o=
+
+Name: org/aspectj/weaver/BoundedReferenceTypeDelegate.class
+SHA1-Digest: FrewY6j+LcVoY7lsLd0gO0Yv5dI=
+
+Name: org/aspectj/weaver/Iterators$5.class
+SHA1-Digest: Ru19bwHd91DbpfjV6XsYtX0EtI0=
+
+Name: org/aspectj/weaver/GeneratedReferenceTypeDelegate.class
+SHA1-Digest: cFdgWy0Zm4DDmNvSsokEA1jcGMg=
+
+Name: org/aspectj/apache/bcel/generic/LineNumberGen.class
+SHA1-Digest: 3SjrDpyh8Imm5Fe1nJMzpFB2dHo=
+
+Name: org/aspectj/asm/internal/ProgramElement.class
+SHA1-Digest: AKDDcCMr6LZWehL274Uo6jW6eH0=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadStackFactoryImpl$T
+ hreadCounterImpl$Counter.class
+SHA1-Digest: WAekCMMAQ/QdgCfy6Xxa62Tnguc=
+
+Name: org/aspectj/weaver/Member.class
+SHA1-Digest: lkOGfiWrN++3HcURvNTHDw4T6TE=
+
+Name: org/aspectj/internal/lang/reflect/InterTypeMethodDeclarationImpl
+ .class
+SHA1-Digest: XXW7m9Dau3KWO9SJ6UqlYSyI1pA=
+
+Name: org/aspectj/bridge/SourceLocation.class
+SHA1-Digest: 4V4gkwph0qR7Kx3v9YbtzgoALtE=
+
+Name: org/aspectj/weaver/patterns/PerClause.class
+SHA1-Digest: 0GOJoDntlcUA8zBu5TrElPiue00=
+
+Name: org/aspectj/apache/bcel/generic/ObjectType.class
+SHA1-Digest: BJiyNOJt2rdJ/DHWbdadMZKaH8U=
+
+Name: org/aspectj/bridge/context/CompilationAndWeavingContext$ContextS
+ tackEntry.class
+SHA1-Digest: YXfO0hurP0nbOCOPvy1NbNVd2oA=
+
+Name: org/aspectj/weaver/bcel/BcelWorld.class
+SHA1-Digest: 6S5WehV2y6iK0ySTn5HwoWur5xA=
+
+Name: org/aspectj/util/PartialOrder$Token.class
+SHA1-Digest: y3hSfxW8asHUY5ROe37rMSV65RM=
+
+Name: org/aspectj/weaver/loadtime/Options.class
+SHA1-Digest: 6FKvtjMBcPVT0bqKJBrbvPZTmgw=
+
+Name: org/aspectj/runtime/reflect/FieldSignatureImpl.class
+SHA1-Digest: 8mrb/KpnAO8tNTNiMqnUjfRoMAQ=
+
+Name: org/aspectj/util/FuzzyBoolean$NoFuzzyBoolean.class
+SHA1-Digest: OZ7d8JFtncLXixDNPg+SpxcVWaE=
+
+Name: org/aspectj/weaver/AjAttribute$WeaverVersionInfo.class
+SHA1-Digest: zt9a4wVGdETQ3+Re1NGVmhdW0II=
+
+Name: org/aspectj/apache/bcel/classfile/LocalVariableTypeTable.class
+SHA1-Digest: nJdBPqqbDyHqZ8oW/qAhaMUUN7s=
+
+Name: org/aspectj/weaver/reflect/DeferredResolvedPointcutDefinition.cl
+ ass
+SHA1-Digest: h/VLmB7hqZFpelzj9m3/5a+Iy6o=
+
+Name: org/aspectj/weaver/NewMethodTypeMunger.class
+SHA1-Digest: 0cBijYEwMqeDuPPr0Ufz7ocHyVs=
+
+Name: org/aspectj/apache/bcel/generic/TABLESWITCH.class
+SHA1-Digest: F1SiKMInHCQB62IAt7bsicdUZxg=
+
+Name: org/aspectj/bridge/Version.class
+SHA1-Digest: xumDYtGHCCG5018FZxVRRHr+rH4=
+
+Name: org/aspectj/weaver/patterns/KindedPointcut.class
+SHA1-Digest: tBcdf8NYpXW6HDzaqOMBXybaoZM=
+
+Name: org/aspectj/util/FileUtil$2.class
+SHA1-Digest: /cgTqDENWcZp+dvW8x/E3hPxsqw=
+
+Name: org/aspectj/weaver/MemberImpl.class
+SHA1-Digest: x0RK2GR9TWup1YF+3RcMCdY8iSc=
+
+Name: org/aspectj/weaver/loadtime/ClassPreProcessorAgentAdapter.class
+SHA1-Digest: j+laz04N/Cz+rnNTdDatkhuPWmY=
+
+Name: org/aspectj/apache/bcel/generic/ArrayType.class
+SHA1-Digest: 2cBzcMDUbiyThR3FZ84gWUIcgW0=
+
+Name: org/aspectj/weaver/ResolvedTypeMunger$Kind.class
+SHA1-Digest: 2E5J+4Ym7n6hR8iu1xeG5WVEKzs=
+
+Name: org/aspectj/weaver/patterns/IfPointcut$IfTruePointcut.class
+SHA1-Digest: tby6Ynw4fY3qZN6WFx3VPQfKhu4=
+
+Name: org/aspectj/weaver/tools/GeneratedClassHandler.class
+SHA1-Digest: cEs/F1YmcWcsff06cjFXT0mhZKI=
+
+Name: org/aspectj/util/GenericSignature$TypeVariableSignature.class
+SHA1-Digest: r2XKpEHbjyjG9X/rhFEIRgjUAjA=
+
+Name: org/aspectj/lang/reflect/InitializerSignature.class
+SHA1-Digest: nLnFRlY9BeD38ArmDUY9P8kQBlM=
+
+Name: org/aspectj/weaver/patterns/SignaturePattern$TypePatternVisitor.
+ class
+SHA1-Digest: A8qpkYfCl/C2Ni91yKlQ8oZblpE=
+
+Name: org/aspectj/weaver/patterns/AnyWithAnnotationTypePattern.class
+SHA1-Digest: cfJsPxnSV+Q7IWpG1B+mhxVAf4k=
+
+Name: org/aspectj/internal/lang/reflect/AjTypeImpl.class
+SHA1-Digest: b1K0fQffNQRv7ijOigEKNFZefXI=
+
+Name: org/aspectj/weaver/LintMessage.class
+SHA1-Digest: yQtuE9dsDvPXxhr+9+CcihcgRXU=
+
+Name: org/aspectj/lang/annotation/Pointcut.class
+SHA1-Digest: M7G98s65IcceR6anr2ACkWcz5d0=
+
+Name: org/aspectj/apache/bcel/classfile/Deprecated.class
+SHA1-Digest: 1Vx+2vyCeXfB3Y7bmAbv6+pXc84=
+
+Name: org/aspectj/weaver/ResolvedType$2.class
+SHA1-Digest: Bi2Z4cWnf891SlvnSzpgN7Zbvvk=
+
+Name: org/aspectj/lang/annotation/Around.class
+SHA1-Digest: 6Q68Duk0BJrLE9GPqoJSumeOySY=
+
+Name: org/aspectj/weaver/tools/Traceable.class
+SHA1-Digest: fyTtu1Hh4muortcUWOHdWU6H6/k=
+
+Name: org/aspectj/weaver/CrosscuttingMembers.class
+SHA1-Digest: lAsc+7EPyGLKBY1fZcNjFU8IG1w=
+
+Name: org/aspectj/weaver/Iterators$7.class
+SHA1-Digest: lL5FmxCTnETjpfSsuaXNVTXdHkI=
+
+Name: org/aspectj/weaver/reflect/JoinPointMatchImpl.class
+SHA1-Digest: H0PpyTqTm27EEsIwhz09Vkesptw=
+
+Name: org/aspectj/asm/internal/Relationship.class
+SHA1-Digest: 3aYCJhMFBf47wQVFqmXVrDS7GCE=
+
+Name: org/aspectj/util/FuzzyBoolean$MaybeFuzzyBoolean.class
+SHA1-Digest: 4NP1HHRY85nImvPyDokMp1iNWrc=
+
+Name: org/aspectj/weaver/Iterators$Getter.class
+SHA1-Digest: dRDMRRhVohhQWQQZtCdHrr9BmrA=
+
+Name: org/aspectj/weaver/patterns/BindingPattern.class
+SHA1-Digest: 7DVqC6NhWfiDiE+W4wXE8RDivuw=
+
+Name: org/aspectj/weaver/bcel/BcelWeaver$3.class
+SHA1-Digest: /aZXLxyD9OR8k+S6TQh9n7U7R7I=
+
+Name: org/aspectj/apache/bcel/generic/InstructionConstants.class
+SHA1-Digest: RIyart+zdsVj+GBdfWLEM9sT+fs=
+
+Name: org/aspectj/weaver/AnnotationAJ.class
+SHA1-Digest: XWIp9RnMpw0J/Pi1yGKQtJL3aw4=
+
+Name: org/aspectj/weaver/Iterators$2.class
+SHA1-Digest: Z7kHISvK2n4oUhr0oWZ0AVKNayo=
+
+Name: org/aspectj/weaver/tools/TypePatternMatcher.class
+SHA1-Digest: C22nLeZTq7fhlCg6Oy9HAwp6IzI=
+
+Name: org/aspectj/weaver/World$AspectPrecedenceCalculator.class
+SHA1-Digest: Q0wXaSyRC/RSMlytomMbZeh3zTE=
+
+Name: org/aspectj/asm/internal/NameConvertor.class
+SHA1-Digest: ld6v3GdDiB1XILRq97wLhb9fGgQ=
+
+Name: org/aspectj/weaver/tools/ISupportsMessageContext.class
+SHA1-Digest: sV0FDQ0Xca5JwbtLL4kvEDarchg=
+
+Name: org/aspectj/util/GenericSignature$MethodTypeSignature.class
+SHA1-Digest: KulCtuDfNa7ycnEYGm+RQ9jUvCI=
+
+Name: org/aspectj/apache/bcel/classfile/AnnotationDefault.class
+SHA1-Digest: Pu9DeHNXiOhCuksU8dstFNL24n0=
+
+Name: org/aspectj/bridge/MessageUtil$IMessageRenderer.class
+SHA1-Digest: vhYk30c8rZ/ztAwGSXg9aehHuxw=
+
+Name: org/aspectj/util/GenericSignatureParser.class
+SHA1-Digest: fqtgPbJE85P2UPGZ8emMF4oIKYM=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantInteger.class
+SHA1-Digest: Q9u4KyB1lfbi4YDI8SvaKPpIaM8=
+
+Name: org/aspectj/weaver/tools/PointcutParameter.class
+SHA1-Digest: GeOAzmP2tZj5zW3NQeHoSWxvu20=
+
+Name: org/aspectj/apache/bcel/generic/ReturnaddressType.class
+SHA1-Digest: ddrTR0j7uH3V9uB0uHIZZstf2Wk=
+
+Name: org/aspectj/util/LangUtil.class
+SHA1-Digest: vmH/wRjvDmJ4AnBCvxwARc5keOc=
+
+Name: org/aspectj/apache/bcel/generic/Instruction.class
+SHA1-Digest: IQhzxvFxGa6ZvI84f7Noy4XH4/8=
+
+Name: org/aspectj/apache/bcel/generic/ClassGen$ConstructorComparator.c
+ lass
+SHA1-Digest: 8Yg3Vzhcua0pM0SMukp97e+7eWU=
+
+Name: org/aspectj/apache/bcel/Constants.class
+SHA1-Digest: /7mWLjAlr7JPHMrz1Bdi0ZPqROA=
+
+Name: org/aspectj/internal/lang/reflect/SignaturePatternImpl.class
+SHA1-Digest: 7OsBgfHgN/VIJYlblYUo/fI+ydE=
+
+Name: org/aspectj/weaver/ArrayAnnotationValue.class
+SHA1-Digest: Qo8sPl2Ku9GqmiarZxPrtNt2VLU=
+
+Name: org/aspectj/apache/bcel/classfile/Unknown.class
+SHA1-Digest: kEoI2veaOt1mhFxpS0yhefoYLJQ=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/ArrayElementValue.c
+ lass
+SHA1-Digest: XSE9vQGM6F4SGJL1I5PVPqPTmU4=
+
+Name: org/aspectj/weaver/AjAttribute$MethodDeclarationLineNumberAttrib
+ ute.class
+SHA1-Digest: fVgIt9qWuB9YAqKQhkccLWm6IM0=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantFloat.class
+SHA1-Digest: LqWlOBb7J2FGe3c4O2Q7Ds6oS1U=
+
+Name: org/aspectj/weaver/ExposeTypeMunger.class
+SHA1-Digest: D0Nc0c8mrUJhqw4zIPF1xAiIP/s=
+
+Name: org/aspectj/weaver/tools/WeavingAdaptor.class
+SHA1-Digest: Haiu6Yow8ctJd8HdJ7j6SdiGC9g=
+
+Name: org/aspectj/weaver/patterns/ConcreteCflowPointcut.class
+SHA1-Digest: DoakG3AbzIwuyy3Sa5kX/moPa/s=
+
+Name: org/aspectj/internal/lang/reflect/TypePatternBasedPerClauseImpl.
+ class
+SHA1-Digest: fpkHky552Ai0prjmjtJOq7iIkFM=
+
+Name: org/aspectj/weaver/TypeVariable.class
+SHA1-Digest: WHTo396MJxObZeTfZ+v36S9lC20=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/ElementValue.class
+SHA1-Digest: uEl+Vlw0gCXsOAxhYUhLRD7qu1A=
+
+Name: org/aspectj/util/GenericSignature$SimpleClassTypeSignature.class
+SHA1-Digest: x2IMaWQrlOtwvKodtewWT3j0Ke0=
+
+Name: org/aspectj/weaver/patterns/BindingAnnotationFieldTypePattern.cl
+ ass
+SHA1-Digest: ySHsKsXf9qAg5AnM/72L81qaLmE=
+
+Name: org/aspectj/bridge/context/PinpointingMessageHandler$1.class
+SHA1-Digest: QjovLBV+x3iXPl2ha6EpIexXozY=
+
+Name: org/aspectj/apache/bcel/Repository.class
+SHA1-Digest: 02ZppMDS2MpmT8XFnTZwHD1d2P4=
+
+Name: org/aspectj/weaver/TypeVariableReferenceType.class
+SHA1-Digest: NT5VxBRF4VTL4kBLLsJO3RzxhPk=
+
+Name: org/aspectj/apache/bcel/generic/RET.class
+SHA1-Digest: 51jYzInvU+qpAjW5l+pgKBG5HXQ=
+
+Name: org/aspectj/util/FuzzyBoolean$YesFuzzyBoolean.class
+SHA1-Digest: B52t/9PH5eDJFc1dgzs5dT70RP8=
+
+Name: org/aspectj/bridge/MessageWriter.class
+SHA1-Digest: Tlyt/r5p+XSrQc3a2EVtfLpH/JA=
+
+Name: org/aspectj/lang/reflect/InterTypeDeclaration.class
+SHA1-Digest: drShTsWwWD3BWQXCfkKoGAskAuc=
+
+Name: org/aspectj/weaver/Lint.class
+SHA1-Digest: s8nHCYM/LposPskEx1P/pUXTCxE=
+
+Name: org/aspectj/apache/bcel/classfile/Code.class
+SHA1-Digest: oCMPjcoMhBNoNMQ26nloPhWgp9c=
+
+Name: org/aspectj/runtime/internal/CFlowStack.class
+SHA1-Digest: hNPzIMxcg0QbsFX+hAQSLnV6GA4=
+
+Name: org/aspectj/weaver/World.class
+SHA1-Digest: jMdQyfw0kAq22OwGEf36Md+l2C8=
+
+Name: org/aspectj/weaver/Iterators$ResolvedTypeArrayIterator.class
+SHA1-Digest: M7TeK+yk2Agm5/Ht1SvKU+FKtSU=
+
+Name: org/aspectj/bridge/ReflectionFactory.class
+SHA1-Digest: bz6Ymxz93Zs8x8K5HbST1Byko3g=
+
+Name: org/aspectj/weaver/ResolvedType$SuperInterfaceWalker.class
+SHA1-Digest: oJQmMcCZqkOKpBpdSAo+w16bDac=
+
+Name: org/aspectj/weaver/patterns/ArgsPointcut.class
+SHA1-Digest: mav2RUAjOBypN4NX2WrnustaGxM=
+
+Name: org/aspectj/weaver/Dump$IVisitor.class
+SHA1-Digest: VtQX44AMQdW0xCB3czc9F64RYls=
+
+Name: org/aspectj/weaver/patterns/AnnotationPointcut.class
+SHA1-Digest: h3fdj6m2qBat7SyygkH/+ca37UA=
+
+Name: org/aspectj/weaver/NewMemberClassTypeMunger.class
+SHA1-Digest: fAhqRlCFSCu9z136wco4JMVGjrU=
+
+Name: org/aspectj/weaver/patterns/PerTypeWithin.class
+SHA1-Digest: g45gdxj5fO2K9bANsGEGr0ianeI=
+
+Name: org/aspectj/apache/bcel/generic/InstructionHandle.class
+SHA1-Digest: 6wnPncaPT3jvFxfuk5iD3iD5tlw=
+
+Name: org/aspectj/weaver/patterns/AnnotationTypePattern.class
+SHA1-Digest: 6+PozJldtIZkSaqFEdfr5FimL5w=
+
+Name: org/aspectj/internal/lang/annotation/ajcDeclareParents.class
+SHA1-Digest: fkk4dS1clrHcdj78Fd/hvISPNzA=
+
+Name: org/aspectj/weaver/tools/WeavingAdaptor$WeavingAdaptorMessageHol
+ der.class
+SHA1-Digest: InlweyhBOvzNOtOIYUlVUVezp6U=
+
+Name: org/aspectj/weaver/AjAttribute$AjSynthetic.class
+SHA1-Digest: Zz2QjfAAOtG68pr4IvvEThroCPI=
+
+Name: org/aspectj/weaver/AjAttribute$PrivilegedAttribute.class
+SHA1-Digest: bzCuOwCsPo8OTlQQImlZNysn7/k=
+
+Name: org/aspectj/util/FileUtil$4.class
+SHA1-Digest: yY2R9SxsM+ugJYFXCG9tzDEJqBs=
+
+Name: org/aspectj/weaver/patterns/TypePatternQuestions.class
+SHA1-Digest: H/RXLOUu0OVURHz2Vi/RqQ+6zO8=
+
+Name: org/aspectj/internal/lang/reflect/InterTypeConstructorDeclaratio
+ nImpl.class
+SHA1-Digest: SmXl0Y7NAgZ0IMxfGKRSFywz/hY=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadStackFactoryImpl$T
+ hreadCounterImpl.class
+SHA1-Digest: MD1Aoy0CPm1eBuOIyAUZXKcjDsU=
+
+Name: org/aspectj/weaver/bcel/asm/StackMapAdder$AspectJConnectClassWri
+ ter.class
+SHA1-Digest: hTuasJDS4vTSy1NZmAgwJNUX3QU=
+
+Name: org/aspectj/apache/bcel/util/ByteSequence.class
+SHA1-Digest: J2J2LcI4FNRtLnLmDNPOrmGOLUY=
+
+Name: org/aspectj/weaver/internal/tools/PointcutExpressionImpl$HasPoss
+ ibleDynamicContentVisitor.class
+SHA1-Digest: z/yr8BWQLAnTj5ADaeZi0715+lU=
+
+Name: org/aspectj/weaver/patterns/PointcutRewriter.class
+SHA1-Digest: JH4PX16eAHVRETe669i2+7nY5xE=
+
+Name: org/aspectj/runtime/reflect/CodeSignatureImpl.class
+SHA1-Digest: LHEIbfCJsjFlS7oB+q7KiDYiWQc=
+
+Name: org/aspectj/lang/reflect/SignaturePattern.class
+SHA1-Digest: Xhzfls7nYOOhQd9LUbS2T3w5NtA=
+
+Name: org/aspectj/bridge/context/PinpointingMessageHandler$MessageIssu
+ ed.class
+SHA1-Digest: uZYbIL7npbi0rCWh0/5ub0XCDLs=
+
+Name: org/aspectj/lang/reflect/ConstructorSignature.class
+SHA1-Digest: ZgNYiKSPRA5s7ntOYs2PagE1Ro0=
+
+Name: org/aspectj/weaver/CustomMungerFactory.class
+SHA1-Digest: tcOiaaY0M0NpO/vhQBVKbCMiiUQ=
+
+Name: org/aspectj/util/TypeSafeEnum.class
+SHA1-Digest: q+BWKybx8hY93IGPXMykSWd5c34=
+
+Name: org/aspectj/weaver/loadtime/Aj$WeaverContainer.class
+SHA1-Digest: w/cOsf/L7J1MXVcJxF52AKgmun8=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/AnnotationGen.class
+SHA1-Digest: s8Ty5SBUVGHma08EWQ1QkGOj0qI=
+
+Name: org/aspectj/weaver/patterns/WithinCodeAnnotationPointcut.class
+SHA1-Digest: sMxTh7VvrAHBFpB6dwENVCmeZTU=
+
+Name: org/aspectj/asm/IRelationship$Kind.class
+SHA1-Digest: AgMNtzKBcZV/FiM5WrBib3t41eo=
+
+Name: org/aspectj/apache/bcel/classfile/Signature$MyByteArrayInputStre
+ am.class
+SHA1-Digest: i9nsmW3x2TIGdRvFa02lLb9Hfz0=
+
+Name: org/aspectj/weaver/ast/Call.class
+SHA1-Digest: L3rylJbUO1EGosWhzdHMUtgrew0=
+
+Name: org/aspectj/bridge/MessageUtil$4.class
+SHA1-Digest: OP26mFB4ViUjJDpJx2HoxfN6zWI=
+
+Name: org/aspectj/weaver/loadtime/Aj$AdaptorKey.class
+SHA1-Digest: vQByfeYox/twbFeOqSqrpoS7els=
+
+Name: org/aspectj/bridge/MessageUtil$1.class
+SHA1-Digest: Sf89QfcAg+iDUvSe3jm3wIkOp6I=
+
+Name: org/aspectj/runtime/internal/Conversions.class
+SHA1-Digest: 85pegWBfTwpmN0263ZKKCqUFkTs=
+
+Name: org/aspectj/lang/annotation/DeclareAnnotation.class
+SHA1-Digest: NgIpSqv+pUpO4h10Zk3kf+l8N2Y=
+
+Name: org/aspectj/weaver/patterns/HasMemberTypePatternFinder.class
+SHA1-Digest: qzZPfOgOJBlZEA9dGYkA1DCdxGM=
+
+Name: org/aspectj/weaver/patterns/SimpleScope.class
+SHA1-Digest: C+O18neUkOJ1IaDkLVC+Pd03It8=
+
+Name: org/aspectj/weaver/loadtime/Aj.class
+SHA1-Digest: 61CdS+Hl0nhIpAyqrOZZSEnehPw=
+
+Name: org/aspectj/weaver/patterns/Bindings.class
+SHA1-Digest: /ZpoUqehp5enoYju1IBsl6MUZzw=
+
+Name: org/aspectj/runtime/reflect/JoinPointImpl.class
+SHA1-Digest: YTNN9BRlMQDAuwyaTvI4GKmj/HU=
+
+Name: org/aspectj/weaver/IClassFileProvider.class
+SHA1-Digest: /5UV3dzXtVPXcBFTkVTPqe0FcY8=
+
+Name: org/aspectj/weaver/IClassWeaver.class
+SHA1-Digest: NEEk82GYpFKN6x/rsD3JHISIcfI=
+
+Name: org/aspectj/weaver/patterns/CflowPointcut.class
+SHA1-Digest: zlpKA501eaqaaL22BvTAR7x22FU=
+
+Name: org/aspectj/lang/reflect/NoSuchPointcutException.class
+SHA1-Digest: 1vxCBbyzgXB6iCzB16tVs3CKAxI=
+
+Name: org/aspectj/weaver/bcel/AtAjAttributes$1.class
+SHA1-Digest: ccrFXTvRoXwr2hPB+rDeaAwNixU=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantObject.class
+SHA1-Digest: S7Mtfn8dwJi84fnounwJi2hLi0E=
+
+Name: org/aspectj/weaver/patterns/WithincodePointcut.class
+SHA1-Digest: wTYBbS/8D7Gxroeo0LnrR5pZazY=
+
+Name: org/aspectj/apache/bcel/generic/InstructionTargeter.class
+SHA1-Digest: JcZeiuueV9zMBejIiEHvolAaj9o=
+
+Name: org/aspectj/apache/bcel/util/SyntheticRepository.class
+SHA1-Digest: 0ERcS7nH84y0+WKrdZvl4gZH0Dk=
+
+Name: org/aspectj/weaver/patterns/BindingAnnotationTypePattern.class
+SHA1-Digest: n5zyvJTOoVfIyVK1IyTQDJuz8OE=
+
+Name: org/aspectj/weaver/patterns/HasThisTypePatternTriedToSneakInSome
+ GenericOrParameterizedTypePatternMatchingStuffAnywhereVisitor.class
+SHA1-Digest: CDG4gumQfRBFgX0960QZNv3mahc=
+
+Name: org/aspectj/weaver/World$TypeMap.class
+SHA1-Digest: GiMErAoHhB+XhC1UEa7GZfxffng=
+
+Name: org/aspectj/apache/bcel/classfile/annotation/RuntimeVisAnnos.cla
+ ss
+SHA1-Digest: gsb9TsNWMvWGNFPZTUTKb9CPKms=
+
+Name: org/aspectj/bridge/CountingMessageHandler.class
+SHA1-Digest: hj7oz3ojJOocI3v9zAUbemerqCU=
+
+Name: org/aspectj/weaver/patterns/PerClause$Kind.class
+SHA1-Digest: 80YeSkb8be/fFkh3icbUvPLsfAY=
+
+Name: org/aspectj/apache/bcel/classfile/LineNumber.class
+SHA1-Digest: 2EfUoXxe/OrN+Qu+P23Zs8WgAI0=
+
+Name: org/aspectj/weaver/tools/Trace.class
+SHA1-Digest: FdtUYGxroTAaxT5+XN2QRIg2au0=
+
+Name: org/aspectj/util/LangUtil$1.class
+SHA1-Digest: 2halHff7gVyxZP6W986GBjx1NNA=
+
+Name: org/aspectj/util/PartialOrder$PartialComparable.class
+SHA1-Digest: 46OSehup2eogJ54NpJopS6A9oRc=
+
+Name: org/aspectj/weaver/IWeaveRequestor.class
+SHA1-Digest: wnS9lXFOz+JbxE27iJcYK5HBbI8=
+
+Name: org/aspectj/weaver/tools/AbstractTrace.class
+SHA1-Digest: nBPpJeuEa5HIhxS8LyxBOEjBTpM=
+
+Name: org/aspectj/weaver/internal/tools/StandardPointcutExpressionImpl
+ $HasPossibleDynamicContentVisitor.class
+SHA1-Digest: 2wig9YwmktCbMbr5M9zuRbncATo=
+
+Name: org/aspectj/weaver/reflect/InternalUseOnlyPointcutParser.class
+SHA1-Digest: iqDUK6dSlsUCczO2/xAmbcU/eaM=
+
+Name: org/aspectj/runtime/internal/cflowstack/ThreadStackFactoryImpl$T
+ hreadStackImpl.class
+SHA1-Digest: OMUl9XDtx+7Tuz4ml0XaktHHMzk=
+
+Name: org/aspectj/apache/bcel/generic/FieldGen.class
+SHA1-Digest: RJV/zND5yf9vzdEGXgKgx3HebO4=
+
+Name: org/aspectj/lang/reflect/CatchClauseSignature.class
+SHA1-Digest: FEiaF7FFixSLGmHkUCN7gXXcHiI=
+
+Name: org/aspectj/apache/bcel/generic/InstructionList.class
+SHA1-Digest: 8UA5QBnUVfHwaPt3Qnvl9wC76dI=
+
+Name: org/aspectj/weaver/ast/Instanceof.class
+SHA1-Digest: 0VGF0Lz67dGHZzVSPK37u9niRRw=
+
+Name: org/aspectj/weaver/bcel/LazyClassGen$InlinedSourceFileInfo.class
+SHA1-Digest: JmvolzOhb6mW4mqOlIKZTTxhKSU=
+
+Name: org/aspectj/lang/ProceedingJoinPoint.class
+SHA1-Digest: re0lSCpTyjXv17aVrkEnG+Yk5fg=
+
+Name: org/aspectj/apache/bcel/classfile/ConstantDouble.class
+SHA1-Digest: VjHWrjvAwBD+gLYpwqINsxIHGNk=
+
+Name: org/aspectj/weaver/patterns/PerSingleton.class
+SHA1-Digest: y3jCniJZVsJIbTBF2bKtkGA+E5s=
+
+Name: org/aspectj/weaver/World$AspectPrecedenceCalculator$PrecedenceCa
+ cheKey.class
+SHA1-Digest: +sNpiYMzG1O5UG3u/r2e8VpNCFI=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 6mDW8kS/T9pK7w1by/wcxy21Z20=
+
+Name: org/aspectj/lang/reflect/MethodSignature.class
+SHA1-Digest: JNz6fqpg4eNheSbK0lxwG8/+Oo8=
+
+Name: org/aspectj/lang/annotation/AfterThrowing.class
+SHA1-Digest: 4G1cFL4Veu7+okfhjGHwM+hlY+w=
+
+Name: org/aspectj/weaver/patterns/DeclareParents.class
+SHA1-Digest: oeBChsTAafffDl5RcPIw/JVY/Vs=
+
+Name: org/aspectj/weaver/ResolvedType$Primitive.class
+SHA1-Digest: e8LuuJ5/UplYB9MfewtR+HyKpBs=
+
+Name: org/aspectj/apache/bcel/util/NonCachingClassLoaderRepository$Sof
+ tHashMap.class
+SHA1-Digest: bIxL1Bf/ed9vI/kIY8NI+i+s0gM=
+
+Name: org/aspectj/weaver/loadtime/definition/Definition$Pointcut.class
+SHA1-Digest: EhmmUV3hcoye4yx3zmB7NLjtmpA=
+
+Name: org/aspectj/weaver/patterns/FormalBinding.class
+SHA1-Digest: OvCr8wIgiqaxQ4JQcutBEHH/rTU=
+
+Name: org/aspectj/runtime/reflect/InitializerSignatureImpl.class
+SHA1-Digest: GJ2gHrE9ltNG/3tzRQ/6OhSB5zc=
+
+Name: org/aspectj/asm/IElementHandleProvider.class
+SHA1-Digest: j3NATqbZuksKZ7Twe9tubsj45YI=
+
+Name: org/aspectj/weaver/patterns/ThisOrTargetPointcut.class
+SHA1-Digest: er3Yu++UfZLkp4jR0czOli4gtaQ=
+

@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Created-By: 1.6.0_27-b07 (Sun Microsystems Inc.)
+Require-Bundle: org.eclipse.ui.ide,org.eclipse.core.runtime,org.eclips
+ e.core.resources,org.eclipse.ui,org.eclipse.jdt.core,org.eclipse.ajdt
+ .core
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: ajdtExamples.jar
+Bundle-Version: 2.2.0.e37x-20120427-1300
+Bundle-Localization: plugin
+Bundle-Name: AspectJ Examples
+Bundle-Activator: org.eclipse.ajdt.examples.AspectJExamplePlugin
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.eclipse.ajdt.examples; singleton:=true
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+

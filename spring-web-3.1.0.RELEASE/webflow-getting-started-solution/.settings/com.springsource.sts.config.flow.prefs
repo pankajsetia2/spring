@@ -1,0 +1,2 @@
+//com.springsource.sts.config.flow.coordinates\:http\://www.springframework.org/schema/webflow\:/webflow-getting-started-solution/src/main/webapp/WEB-INF/rewards/newReward/newReward-flow.xml=<?xml version\="1.0" encoding\="UTF-8"?>\n<graph>\n<element clazz\="ViewStateModelElement" type\="view-state">\n<structure end\="409" endstart\="396" start\="301" startend\="341"/>\n<bounds height\="86" width\="90" x\="19" y\="17"/>\n</element>\n</graph>
+eclipse.preferences.version=1

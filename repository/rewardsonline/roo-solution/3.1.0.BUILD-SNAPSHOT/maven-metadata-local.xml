@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>rewardsonline</groupId>
+  <artifactId>roo-solution</artifactId>
+  <version>3.1.0.BUILD-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <localCopy>true</localCopy>
+    </snapshot>
+    <lastUpdated>20120716170135</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>3.1.0.BUILD-SNAPSHOT</value>
+        <updated>20120716170135</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>3.1.0.BUILD-SNAPSHOT</value>
+        <updated>20120716170135</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

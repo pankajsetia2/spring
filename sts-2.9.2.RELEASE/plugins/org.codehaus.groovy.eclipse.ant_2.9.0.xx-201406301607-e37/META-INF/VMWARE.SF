@@ -1,0 +1,25 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: n0yVIclqvQLDR2AYdL1LOeRWk8Y=
+Created-By: 1.6.0_45 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: eCKJ74rwMvRo86f6DqU16Vqj6DY=
+
+Name: META-INF/maven/org.codehaus.groovy.eclipse/org.codehaus.groovy.e
+ clipse.ant/pom.properties
+SHA1-Digest: 2QoNI0O6qlHJ6I2ca2PG6TE0H1M=
+
+Name: org/codehaus/groovy/eclipse/ant/Activator.class
+SHA1-Digest: 49QGpBDMa6knI9forhg1F4w0R/0=
+
+Name: groovyAntEclipse.jar
+SHA1-Digest: xFaX55qcVcD+fMn16SRoN7HFsi8=
+
+Name: META-INF/maven/org.codehaus.groovy.eclipse/org.codehaus.groovy.e
+ clipse.ant/pom.xml
+SHA1-Digest: m4jT20vsUFbYi3b9okrm8eLsuV8=
+
+Name: plugin.xml
+SHA1-Digest: KaZucPO6BSEitNkn9b5ApQ4Nk1g=
+
+Name: about.html
+SHA1-Digest: px02CKbKGZKNMYbB0m1gJDJtR8Q=
+

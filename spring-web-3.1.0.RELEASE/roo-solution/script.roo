@@ -1,0 +1,16 @@
+project --topLevelPackage rewardsonline --projectName rewardsonline
+persistence setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+entity jpa --class ~accounts.Account --testAutomatically 
+field string --fieldName name --notNull 
+field string --fieldName number --unique --permitReservedWords 
+entity jpa --class ~accounts.Beneficiary
+field string --fieldName name --notNull
+field number --fieldName savings --type java.math.BigDecimal --decimalMin 0
+field reference --fieldName account --type ~accounts.Account
+focus --class ~accounts.Account
+field set --fieldName beneficiaries --type ~accounts.Beneficiary --cardinality ONE_TO_MANY 
+// add @RooPlural to Beneficiary first! (ROO-869)
+q
+web mvc setup 
+web mvc all --package ~web  
+// now customize converters and views (but beware of ROO-2593)

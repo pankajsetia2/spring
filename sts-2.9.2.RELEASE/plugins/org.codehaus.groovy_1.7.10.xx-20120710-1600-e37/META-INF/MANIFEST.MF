@@ -1,0 +1,57 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Created-By: 1.5.0_15-b04 (Sun Microsystems Inc.)
+Groovy-Runtime-Jars: groovy.jar
+Bundle-Activator: org.codehaus.groovy.activator.GroovyActivator
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Eclipse-BuddyPolicy: registered
+Export-Package: antlr,antlr.ASdebug,antlr.actions.cpp,antlr.actions.cs
+ harp,antlr.actions.java,antlr.actions.python,antlr.build,antlr.collec
+ tions,antlr.collections.impl,antlr.debug,antlr.debug.misc,antlr.prepr
+ ocessor,groovy.beans,groovy.grape,groovy.inspect,groovy.inspect.swing
+ ui,groovy.io,groovy.jmx.builder,groovy.lang,groovy.mock.interceptor,g
+ roovy.model,groovy.security,groovy.servlet,groovy.sql,groovy.swing,gr
+ oovy.swing.binding,groovy.swing.factory,groovy.swing.impl,groovy.text
+ ,groovy.time,groovy.transform,groovy.ui,groovy.ui.icons,groovy.ui.tex
+ t,groovy.ui.view,groovy.util,groovy.util.slurpersupport,groovy.xml,gr
+ oovy.xml.dom,groovy.xml.streamingmarkupsupport,org.apache.bsf,org.apa
+ che.bsf.engines.jacl,org.apache.bsf.engines.javascript,org.apache.bsf
+ .engines.jython,org.apache.bsf.engines.netrexx,org.apache.bsf.engines
+ .xslt,org.apache.bsf.util,org.apache.bsf.util.cf,org.apache.bsf.util.
+ event,org.apache.bsf.util.event.adapters,org.apache.bsf.util.event.ge
+ nerator,org.apache.bsf.util.type,org.apache.commons.cli,org.codehaus.
+ greclipse,org.codehaus.groovy,org.codehaus.groovy.activator,org.codeh
+ aus.groovy.ant,org.codehaus.groovy.antlr,org.codehaus.groovy.antlr.ja
+ va,org.codehaus.groovy.antlr.parser,org.codehaus.groovy.antlr.treewal
+ ker,org.codehaus.groovy.ast,org.codehaus.groovy.ast.builder,org.codeh
+ aus.groovy.ast.expr,org.codehaus.groovy.ast.stmt,org.codehaus.groovy.
+ binding,org.codehaus.groovy.bsf,org.codehaus.groovy.classgen,org.code
+ haus.groovy.control,org.codehaus.groovy.control.customizers,org.codeh
+ aus.groovy.control.io,org.codehaus.groovy.control.messages,org.codeha
+ us.groovy.eclipse,org.codehaus.groovy.groovydoc,org.codehaus.groovy.r
+ eflection,org.codehaus.groovy.reflection.stdclasses,org.codehaus.groo
+ vy.runtime,org.codehaus.groovy.runtime.callsite,org.codehaus.groovy.r
+ untime.dgmimpl,org.codehaus.groovy.runtime.dgmimpl.arrays,org.codehau
+ s.groovy.runtime.metaclass,org.codehaus.groovy.runtime.typehandling,o
+ rg.codehaus.groovy.runtime.wrappers,org.codehaus.groovy.syntax,org.co
+ dehaus.groovy.tools,org.codehaus.groovy.tools.ast,org.codehaus.groovy
+ .tools.groovydoc,org.codehaus.groovy.tools.groovydoc.gstringTemplates
+ ,org.codehaus.groovy.tools.gse,org.codehaus.groovy.tools.javac,org.co
+ dehaus.groovy.tools.shell,org.codehaus.groovy.tools.shell.commands,or
+ g.codehaus.groovy.tools.shell.util,org.codehaus.groovy.tools.xml,org.
+ codehaus.groovy.transform,org.codehaus.groovy.transform.powerassert,o
+ rg.codehaus.groovy.util,org.codehaus.groovy.vmplugin,org.codehaus.gro
+ ovy.vmplugin.v4,org.codehaus.groovy.vmplugin.v5,org.codehaus.groovy.v
+ mplugin.v6,org.objectweb.asm,org.objectweb.asm.signature,org.objectwe
+ b.asm.tree
+Bundle-Version: 1.7.10.xx-20120710-1600-e37
+Bundle-Name: Groovy Runtime Plug-in
+Bundle-ClassPath: groovy-eclipse.jar,lib/asm-3.2.jar,lib/asm-tree-3.2.
+ jar,lib/antlr-2.7.7.jar,lib/ivy-2.2.0.jar,lib/commons-cli-1.2.jar,lib
+ /bsf-2.4.0.jar,lib/groovy-1.7.10.jar,eclipse-trace.jar
+Bundle-ManifestVersion: 2
+Bundle-Vendor: Codehaus.org
+Bundle-SymbolicName: org.codehaus.groovy
+Require-Bundle: org.apache.ant,org.junit,org.eclipse.core.runtime
+

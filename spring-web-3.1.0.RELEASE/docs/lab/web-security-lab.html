@@ -1,0 +1,170 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>web-security: Secure Your Web Application With Spring Security</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.70.0"><link rel="start" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="up" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="prev" href="webflow-actions-2-lab.html" title="webflow-actions-2: Web Flow Actions 2 Lab"><link rel="next" href="roo-lab.html" title="roo: Getting Started with Spring Roo"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns="http://www.w3.org/TR/xhtml1/transitional" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="http://www.springframework.org/" title="The Spring Framework"><img style="border:none;" src="images/xdev-spring_logo.jpg"></img></a><a style="border:none;" href="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="images/springsource-banner-rhs.jpg"></img></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="web-security-lab"></a>web-security: Secure Your Web Application With Spring Security</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="web-security-lab-introduction"></a>1.&nbsp;Introduction</h2></div></div></div><p>
+            In this lab you ensure users have signed in before they can access the application. 
+            After signing in, regular users are allowed to browse but not edit any data. 
+            Users with administrative privileges on the other hand can edit existing accounts and create new rewards.
+        </p><div class="orderedlist"><p class="title"><b>What you will learn:</b></p><ol type="1"><li><p>How to deploy Spring Security with a servlet filter</p></li><li><p>How to configure Spring Security to protect specific URL patterns</p></li><li><p>How to configure a form-based login</p></li><li><p>How to use the Spring Security custom tag library for conditional rendering</p></li></ol></div><p>Estimated time to complete: 45 minutes</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="web-security-lab-instructions"></a>2.&nbsp;Instructions</h2></div></div></div><p>
+            The instructions in this lab are divided into 2 parts. 
+            In the first part you will deploy and configure Spring Security. 
+            In the second part you will protect account editing and new reward creation with administrative privileges.
+        </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web-security-configure-spring-security"></a>2.1.&nbsp;Deploy and Configure Spring Security</h3></div></div></div><p>
+                Spring Security protects web applications using a chain of standard servlet filters. 
+                The Spring Security filter chain is initialized in a Spring application context. 
+                Creating the filters in a context is better than declaring them in web.xml because Spring provides much more flexibility in how filters are to be initialized, what dependencies they should have, and so on. 
+                Spring offers a class called <code class="classname">DelegatingFilterProxy</code>, which can help with that.
+            </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3669"></a>2.1.1.&nbsp;Declare the DelegatingFilterProxy in web.xml</h4></div></div></div><p>
+                    Open <code class="filename">web.xml</code> (Ctrl+Shift+R) and add a new filter of type <code class="classname">org.springframework.web.filter.DelegatingFilterProxy</code> with the filter name <code class="literal">springSecurityFilterChain</code>.
+                    Map this filter to all incoming requests using the /* pattern.
+                    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>
+                            The DelegatingFilterProxy works by delegating to a Spring-managed bean that implements the Filter interface. The filter name should match to the bean name in the Spring application context. All calls to the filter proxy will then be delegated to that bean in the Spring context.
+                        </p></td></tr></table></div><p>
+                    Now that we've deployed the filter let's see what it'll do. 
+                    Click and drag the project to the server. 
+                    If you try to accessing any application pages you'll see a 404 error. 
+                    That's because the filter is deployed but fails to find a bean named <code class="literal">springSecurityFilterChain</code> in the Spring configuration.
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3690"></a>2.1.2.&nbsp;Configure The Spring Security Filter Chain</h4></div></div></div><p>
+                    Enabling the Spring Security filter chain is quite easy and we can do so from a Spring application context using Spring Security's custom XML namespace. 
+                </p><p>
+			        In <code class="filename">web.xml</code> notice the <code class="code">contextConfigLocation</code> context parameter near the top specifying Spring configuration files to be loaded into the root Application Context at startup. 
+			        This should list <code class="code">/WEB-INF/spring/security-config.xml</code> only. 
+			        Navigate to that file and open it. 
+			        The file should be mostly empty except and not have any security configuration yet. 
+                </p><p>
+                    Insert a new line somewhere between the opening and the closing &lt;beans:beans&gt; root element and press Ctrl+Space. 
+                    STS has knowedge of the Spring Security namespace and will offer typing suggestions. 
+                    Begin typing or scroll down to the &lt;http&gt; element and select it. 
+                    The &lt;http&gt; element has an attribute called <code class="literal">auto-config</code>. 
+                    Use Ctrl+Space to add this attribute and set its value to 'true'. Also, turn on support for Spring Security SpEL expressions by adding the attribute
+					<code class="literal">use-expressions="true"</code>
+                    </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+                            As the name suggests, setting auto-config to true configures a filter chain with a default set of services. Move your mouse over the auto-config attribute to get some more information on what these default services are or refer back to the presentation.
+                        </p></td></tr></table></div><p>
+					After you save your changes restart the server. 
+					Once server startup is complete, you will still get a 404, but there will be a new error in the console. 
+					This time you will get the following exception:
+                    </p><pre class="programlisting">No bean named 'org.springframework.security.authenticationManager' is defined</pre><p>
+                    This exception is coming when Spring tries to set up Spring Security. 
+                    It's telling us we need to provide an Authentication Manager (the source of user information). 
+                    Fortunately this is also easy to do.
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3721"></a>2.1.3.&nbsp;Configure an In-Memory User Details Service</h4></div></div></div><p>
+                    For this lab we will use an in-memory user details service.
+                    However, we could have also used one that goes to a database or an LDAP repository instead. 
+                </p><p>
+                    In <code class="filename">security-config.xml</code> use Ctrl+Space to add &lt;authentication-manager&gt;, &lt;authentication-provider&gt;, and &lt;user-service&gt; elements all nested within each other. 
+                    Within &lt;user-service&gt; insert a &lt;user&gt; element setting its user name to 'joe', the password to 'spring', and the authorities to 'ROLE_USER' . 
+                    You now have a declared a simple in-memory user service with a single user.
+                </p><p>
+                    After the server has restarted, verify that application pages are displayed correctly. 
+                    They are protected with Spring Security's chain of filters, but we have not yet defined any specific URL patterns that need to be protected.
+                </p><p>
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3735"></a>2.1.4.&nbsp;Specify URL Patterns To Protect</h4></div></div></div><p>
+                    In <code class="filename">security-config.xml</code> find the &lt;http auto-config="true" use-expressions="true"&gt; element and insert a &lt;intercept-url&gt; element inside of it. 
+                    Set the pattern attribute of this element to "/**" and the access attribute to <code class="literal">hasRole('ROLE_USER')</code>. 
+                    This indicates that every URL of the application now requires the specified role. 
+                </p><p>
+                    Restart the server and try to access the application pages. You should see the following:
+                    </p><div class="mediaobject" align="center"><img src="images/web-security/defaultLoginPage.jpg" align="middle"><div class="caption"><p>Figure 1: Default Spring Security Login Page</p></div></div><p>
+                    This is the default Login page generated by Spring Security. 
+                    Use it to login and you should be able to succeed. 
+                    This works but what you'll probably want to do is provide Spring Security with your own login page that looks a little more like the rest of your application.
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3757"></a>2.1.5.&nbsp;Configure Form-Based Login</h4></div></div></div><p>
+                    Open <code class="filename">login.jsp</code> and review its content. 
+                    This page is functionally identical to the one Spring Security generated automatically but it has styles added to it.
+                </p><p>
+                    In <code class="filename">security-config.xml</code> insert another line with the &lt;form-login&gt; element (right below the &lt;intercept-url&gt;) and set its <code class="literal">login-page</code> attribute to <code class="literal">/login</code>. 
+                    Restart the server.
+                </p><p>
+                	When Spring Security logged you in previously, it added a cookie to your session with your login information.
+                	Even if you restart the server, this will retain your credentials, preventing the login page from being displayed.
+                	Make sure you clear this cookie out of your session by selecting "Clear Session Cookies" from the "Cookies" menu of the Web Developer Toolbar.
+                </p><p>
+                    Now try to access the default page of the application. 
+                    If you're using Firefox you will likely see the following:
+                    </p><div class="mediaobject" align="center"><img src="images/web-security/redirectLoopMessage.jpg" align="middle"><div class="caption"><p>Figure 1: Redirect Loop Message In Firefox</p></div></div><p>
+                    This one is a bit harder to explain, although if you look through your security configuration and think it over you might be able to guess what's going on. 
+                    Or if you'd rather read about it, then just keep on.
+                </p><p>
+                    The problem is that we've protected all pages that match "/**" - that includes the login page too. 
+                    Now that we've provided Spring Security with a login page, each time Spring Security tries to go there it fails because it's protected, and redirects to the login page so the user can authenticate. 
+                    The result is a loop that doesn't end. 
+                </p><p>
+                    To fix this add another URL pattern that looks like this:
+                    </p><pre class="programlisting">&lt;intercept-url pattern="/login*" access="isAnonymous()" /&gt;</pre><p>
+                    <code class="literal">isAnonymous()</code> is a Spring Security SpEL expression identifying anonymous users. 
+                    If you recall one of the default services in the Spring Security filter chain assigns an anonymous identity to incoming requests if they are not yet authenticated.
+                     </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+                    		If you still get the "Redirect Loop" message, remember that intercept-urls are matched <span class="emphasis"><em>in the order listed</em></span>.
+                    		If /** is first, it will match all URLs, regardless of whether other matches exist. 
+                    	</p></td></tr></table></div><p>
+                </p><p>
+                    Try one more time. 
+                    This time the login page should appear although it won't be appear to be properly styled.
+                    Perhaps you've guessed the problem.
+                    You need to allow access to static resources.
+                    Modify the security configuration and add the following additional &lt;http&gt; elements:
+                    </p><pre class="programlisting">&lt;http pattern="/images/**" security="none" /&gt;
+&lt;http pattern="/styles/**" security="none" /&gt;
+&lt;http pattern="/resources/**" security="none" /&gt;
+</pre><p>
+                    Try out your changes.
+                    You should see a properly styled login page that allows you to enter and use the application.
+                </p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e3811"></a>2.1.5.1.&nbsp;Logging Out and Dealing With Login Errors</h5></div></div></div><p>
+                        How do you log out after you've logged in? Try this URL:
+                        </p><pre class="programlisting">http://localhost:8080/websecurity/j_spring_security_logout" /&gt;</pre><p>
+                    </p><p>
+                        What we'd like to do is make that easier for the user. 
+                        Open <code class="filename">standard.jsp</code>, find the div with id "nav". 
+                        Within it is an unordered list of navigation items. 
+                        The last item with the TODO is where you can add the Logout link. 
+                        The link could look like this:
+                        </p><pre class="programlisting">&lt;a href="&lt;c:url value="/j_spring_security_logout"/&gt;"&gt;Logout&lt;/a&gt;</pre><p>
+                        Go ahead and test it out. 
+                        Also notice the use of the Spring Security tag called authorize, which renders the logout link only if the current user does not have the anonymous role.
+                    </p><p>
+                        For one last bit before moving to the next section, what happens if you fail to login? 
+                        Clear your cookies again, try it out, and see for yourself. 
+                        We'd like to render an error when the login fails.
+                        Check the login page to see how the login error is rendered.
+                        If the page is triggered with the parameter <code class="literal">login_error</code> a message will be rendered.
+                        We can force this error by adding a "authentication-failure-url" attribute to the login-form tag.
+                        Set that attribute to the value "/login?login_error=1
+                    </p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web-security-admin-privileges"></a>2.2.&nbsp;Protect Parts of the Application With Administrative Privileges</h3></div></div></div><p>
+            </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3837"></a>2.2.1.&nbsp;Add User With Admin Role</h4></div></div></div><p>
+                    In <code class="filename">security-config.xml</code> add a new user called "admin" and password "springsource" having the authority "ROLE_ADMIN". 
+                    Note that while we could have named the authority anything we like, the only requirement is that it starts with "ROLE_" so that Spring Security understands this authority is a role it can vote on.
+                </p><p>
+                    Next add two more &lt;intercept-url&gt; elements to protect <code class="filename">/rewards/newReward</code> and HTTP PUT requests for <code class="filename">/accounts/*</code> with "hasRole('ROLE_ADMIN')". 
+                    The former is the URL of the flow for creating a new reward. 
+                    The latter is the URL for submitting account changes. 
+                    We want both of these to be limited to admin users.
+                    </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+                            Remember that the order of the intercept-urls is important. 
+                            More specific URL patterns precede more general ones.
+                        </p></td></tr></table></div><p>
+                    Try to login as the user "joe". 
+                    You should be able to browse the application, but will get a 403 (Access Denied) error if you try to create a reward or save account changes. 
+                    That's because those operations require ROLE_ADMIN.
+                    Now try logging in as "admin". 
+                    This time you'll see a 403 error when accessing the home page.
+                    That's because /** is protected with ROLE_USER.
+                    Tweak the intercept URL patterns.
+                    You're done when users with "ROLE_ADMIN" can browse and edit everything.
+                    Users with "ROLE_USER" can browse but not edit anything.
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3857"></a>2.2.2.&nbsp;Use Spring Security Tags For Conditional JSP Page Rendering</h4></div></div></div><p>
+                    You've probably noticed that even as a regular user you can still get to the Edit Account page. 
+                    There is no harm in that but it would be better if the Edit link was indeed hidden. 
+                    Similarly, there is no point in showing the New Reward link if we don't have the rights to use it.
+                </p><p>
+                    Open <code class="filename">accounts/show.jsp</code>. 
+                    Find the Edit link and surround it with a &lt;security:authorize&gt; element. 
+                    Set its access attribute to "hasRole('ROLE_ADMIN')". Now this link will only be rendered for admin users. 
+                    Go to the Edit Account page as a regular user (or refresh it if already there). 
+                    This time you should not see the link.
+                </p><p>
+                    Open <code class="filename">standard.jsp</code>. 
+                    Find the link for creating new rewards and repeat the same steps as above. 
+                    Refresh and verify the link is not shown for regular users.
+                </p><p>
+                    You've now completed this lab.
+                </p></div></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="webflow-actions-2-lab.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="roo-lab.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">webflow-actions-2: Web Flow Actions 2 Lab&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="http://www.springsource.com/" title="SpringSource">By SpringSource</a></span></td><td width="40%" align="right" valign="top">&nbsp;roo: Getting Started with Spring Roo</td></tr></table></div></body></html>

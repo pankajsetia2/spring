@@ -1,0 +1,159 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>webflow-actions-2: Web Flow Actions 2 Lab</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.70.0"><link rel="start" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="up" href="index.html" title="Spring Web Training - Lab Documentation"><link rel="prev" href="webflow-actions-1-lab.html" title="webflow-actions-1: Web Flow Actions 1 Lab"><link rel="next" href="web-security-lab.html" title="web-security: Secure Your Web Application With Spring Security"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div xmlns="http://www.w3.org/TR/xhtml1/transitional" style="background-color:white;border:none;height:73px;border:1px solid black;"><a style="border:none;" href="http://www.springframework.org/" title="The Spring Framework"><img style="border:none;" src="images/xdev-spring_logo.jpg"></img></a><a style="border:none;" href="http://www.springsource.com/" title="SpringSource"><img style="border:none;position:absolute;padding-top:5px;right:42px;" src="images/springsource-banner-rhs.jpg"></img></a></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="webflow-actions-2-lab"></a>webflow-actions-2: Web Flow Actions 2 Lab</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="webflow-actions-2-lab-introduction"></a>1.&nbsp;Introduction</h2></div></div></div><p>
+        	In the previous lab you learned how to make flows dynamic with the help of actions.
+        	In this lab you will work on more advanced scenarios with actions including exception handling.
+        </p><div class="orderedlist"><p class="title"><b>What you will learn:</b></p><ol type="1"><li><p>Deal with exceptions using a MultiAction</p></li><li><p>Reuse a sequence of actions with an action state</p></li><li><p>Add decisions to flow's algorithm</p></li></ol></div><p>Estimated time to complete: 60 minutes</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="webflow-actions-2-lab-instructions"></a>2.&nbsp;Instructions</h2></div></div></div><p>
+            This lab is divided into several sections. 
+            In the first section you'll review the goals for this lab.  
+            Subsequent sections will guide you through the details of the implementation.
+        </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="webflow-actions-2-requirements"></a>2.1.&nbsp;Existing Code and New Requirements</h3></div></div></div><p>
+                Begin by deploying the <code class="code">com.springsource.training.webflowactions2</code> project to the SpringSource tc Server.
+            </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3412"></a>2.1.1.&nbsp;Flow definition</h4></div></div></div><p>
+                    Open <code class="filename">newReward-flow.xml</code>. 
+                    As you recall the flow declares a <code class="classname">DiningForm</code> variable and binds it to the "Enter Dining Information" view. 
+                    This enables data binding and validation.
+                    In addition the flow also invokes several actions.
+                    It loads restaurants when the initial view is rendered.
+                    It calculates contributions before getting to the review page.
+                    Lastly it creates the reward upon confirmation.
+	            </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3423"></a>2.1.2.&nbsp;Invalid credit card exceptions</h4></div></div></div><p>
+                    One of the things to consider when invoking actions is how to deal with exceptions. 
+                    To illustrate this go to your browser, create a new reward, and enter an invalid credit card number (e.g. 1234123412341233). 
+                    Press the Reward button and examine the resulting exception.
+                    It is <code class="classname">ActionExecutionException</code> and it's thrown while evaluating the expression <code class="code">rewardNetwork.calculateContributionFor</code>. 
+                    Scroll further down and see that the root cause is an <code class="classname">InvalidCreditCardException</code>. 
+                    The flow currently does not attempt to deal with this expected exception. 
+                 </p><p>
+                    After some consideration it has been decided how to address the issue.
+                    The application must catch the exception, record an error message, return to the Enter Dining Information page and show the error next to the Credit Card Number field. 
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3439"></a>2.1.3.&nbsp;New application requirements</h4></div></div></div><p>
+                    After reviewing the results from the last iteration, the business users have formulated two new enhancement requests. 
+                    The first is to add a checkbox on the "Enter Dining Information" page.
+                    The idea is to allow advanced users to skip the "Review Reward" stage and proceed directly to create the reward.
+                </p><p>
+                    The second request is to enhance the Review Reward screen to make it easy for users to correct dining information
+                    They should see recalculated amounts without going back and without reloading the current page.
+                </p><p>
+                    Now that you have your goals set, the remaining sections will guide you through the implementation.
+                </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="webflow-actions-2-invalid-credit-card"></a>2.2.&nbsp;Handle the InvalidCreditCardException</h3></div></div></div><p>
+                You're already familiar with the issue. 
+                The approach you'll use will be to wrap the RewardNetwork call with a thin layer of Java code.
+                The goal is to stop the exception, record a field-specific error and remain in the same view.
+            </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3453"></a>2.2.1.&nbsp;Introduce a MultiAction </h4></div></div></div><p>
+                    Web Flow provides a base class called <code class="classname">MultiAction</code>, which can be used for web layer logic.
+                    A <code class="classname">MultiAction</code> has one or more methods with a signature similar to the one below:
+                    </p><pre class="programlisting">public Event someMethod(RequestContext context) {
+    try {
+        ...
+        return success();
+    } catch (SomeException e) {
+        ...
+        return error();
+    }
+}
+</pre><p>                    
+                    Go ahead and create a class with a method that will wrap the invocation to the RewardNetwork to calculate the contributions.
+                    Call the class <code class="classname">NewRewardActions</code> and add it to the package <code class="classname">rewardsonline.rewards.newreward</code>.
+                    The method needs to obtain the diningForm, invoke the RewardNetwork, and store the result as a flow scoped variable.
+                    It should also catch <code class="classname">InvalidCreditCardException</code> and add a field specific error.
+                    Below is an example of recording a field-specific error:
+                    </p><pre class="programlisting">context.getMessageContext().addMessage(
+    new MessageBuilder().error().source("fieldName").defaultText("Text to display").build()); 
+</pre><p>                    
+                    Remember to configure the new class as a Spring bean and also to dependency-inject it with a RewardNetwork instance.
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3479"></a>2.2.2.&nbsp;Confirm the bug is fixed</h4></div></div></div><p>
+                    When the method is ready, go back to <code class="filename">newReward-flow.xml</code> and replace the call to <code class="code">RewardNetwork.calculateContributionFor()</code>.  Rather than using an <code class="code">action-state</code>, simply call the method directly for now.  We'll add action states later.
+                    Lastly use the browser to verify the change. 
+                    Using an invalid credit card number should keep you on the same page and show the error message.  
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3493"></a>2.2.3.&nbsp;Add method to wrap the rewardAccountFor() method</h4></div></div></div><p>
+                    Now that you've done this once, use the same approach to wrap the other service-layer invocation.
+                    That's the call to the <code class="code">RewardNetwork.rewardAccountFor()</code> in the final transition.
+                    This method invocation is exposed to the same issue.  
+                </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="webflow-actions-2-one-click-reward"></a>2.3.&nbsp;One-Click Reward</h3></div></div></div><p>
+                Currently the flow assumes the reward will be created in two steps.
+                For example when dining information is submitted, the transition calculates the contribution amounts. 
+                To support the new requirement you will need to add a checkbox to the view and at the same time introduce a decision point in the flow definition.
+            </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3506"></a>2.3.1.&nbsp;Add a checkbox to the view</h4></div></div></div><p>
+                    Open <code class="classname">DiningForm.java</code> and verify it already contains the field <code class="code">oneClickReward</code>.
+                    Next open <code class="filename">enterDiningInformation.jsp</code> and create a checkbox using the Spring form tags and bind it to the <code class="code">oneClickReward</code> field.  
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3523"></a>2.3.2.&nbsp;Add a decision state and action states</h4></div></div></div><p>
+                    Open <code class="filename">newReward-flow.xml</code>. 
+                    Your goal is to introduce a decision state between the <code class="filename">enterDiningInformation</code> and the <code class="filename">reviewReward</code> states.
+                    The decision state should test the <code class="code">diningForm.oneClickReward</code> field and result in one of two outcomes.
+                    Either reward the account for the dining event and proceed to the end state.
+                    Or calculate the account contribution amounts and proceed to the <code class="filename">reviewReward</code> state.
+                    </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+                            You will need to define action states to model those outcomes.
+                            Actions states can contain one or more actions and also deal with standard success or error events as follows:
+                            </p><pre class="programlisting">&lt;action-state id="..."&gt;
+    ...
+    &lt;transition on="success" to="abc" /&gt;
+    &lt;transition on="error" to="xyz" /&gt;
+&lt;/action-state&gt;
+</pre><p>                    
+                        </p></td></tr></table></div><p>
+                    When you're done making the change test it in the browser.
+					</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>
+						    If your flow still goes to the review reward 
+							page even when the checkbox is selected, make 
+							sure you added a binder statement to the 
+							enterDiningInformation state for the new field.
+					    </p></td></tr></table></div><p>
+                </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="webflow-actions-2-recalculate-reward"></a>2.4.&nbsp;Re-Calculate the reward on the Review Reward page</h3></div></div></div><p>
+            	To fulfill this requirement you need to add the dining form to the review page.
+            	Open <code class="filename">reviewReward.jsp</code>.
+            	Right now it contains a single, read-only form with contribution amounts.
+            	It needs to have a second form with the dining information.
+            </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3562"></a>2.4.1.&nbsp;Add the dining form to the reviewReward.jsp</h4></div></div></div><p>
+                	Use &lt;tiles:insertTemplate&gt; to insert <code class="filename">enterDiningInformation.jsp</code> at the bottom of <code class="filename">reviewReward.jsp</code>.
+                	After that go back to the browser and navigate to the review page.
+                	The dining form should display but the date will not be decorated correctly and the restaurant drop-down will be empty.
+                	There is a different reason for each of these problems. 
+                	The date fails because the data binding is not set up in the reviewReward view state.
+                	The restaurant drop-down fails because the list of restaurants has not been loaded.
+                	Open <code class="filename">newReward-flow.xml</code>, correct both issues, and verify the fix the browser. 
+                </p><p>
+                	Now that the form is displaying correctly focus on the Reward button.
+                	The text "Reward" makes sense on the first page but here it should probably be "Recalculate".
+                	Open <code class="filename">enterDiningInformation.jsp</code> and find the button.
+                	Notice it has been parameterized so you can influence the text of the button and the event it generates through request attributes.
+                	Go back to <code class="filename">reviewReward.jsp</code> and add the following before the dining form is inserted:
+					</p><pre class="programlisting">&lt;c:set var="rewardButtonEvent" value="recalculateReward" scope="request" /&gt;
+&lt;fmt:message key="command.recalculateReward" var="rewardButtonText" scope="request" /&gt;
+</pre><p>                	
+					Refresh the page in the browser. 
+					The button is now called "Recalculate Reward" and the event it submits is "recalculateReward".
+                </p><p>
+				    Note that when you view the page, the One-Click reward 
+					button is present.  While this is important for the 
+					Enter Dining Information page, it is fairly meaningless 
+					in the review reward page.  Modify 
+					<code class="filename">editDiningInformation.jsp</code> to not 
+					display the button in this case (you should be able to 
+					use the value or lack thereof of 
+					<code class="code">rewardButtonEvent</code> to determine this)
+			    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3595"></a>2.4.2.&nbsp;Re-calculate the contribution amounts</h4></div></div></div><p>
+                	Now that the form is ready change the amount and submit.
+                	You will the see the error message:  
+					</p><pre class="programlisting">No transition found on occurrence of event 'recalculateReward' in state 'reviewReward'.</pre><p>
+					Analyze the message and fix the flow definition accordingly.
+					When you have the right fix the page will correctly display the re-calculated contribution amounts.
+                </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3603"></a>2.4.3.&nbsp;Simplify the Review Reward view</h4></div></div></div><p>
+				    Your new Review Reward page now has two distinct headers 
+					- "Review Reward" and "Reward Account for Dining".
+					This is a bit messy, and ideally we'd like to remove the 
+					second header.  To do so, create a new file (call it 
+					<code class="filename">diningForm.jsp</code>) and move the dining 
+					form from <code class="filename">editDiningInformation.jsp</code> 
+					into it.  Now use Use &lt;tiles:insertTemplate&gt; to 
+					insert <code class="filename">diningForm.jsp</code> into 
+					<code class="filename">editDiningInformation.jsp</code>.  
+					Finally, just insert <code class="filename">diningForm.jsp</code> 
+					(instead of 
+					<code class="filename">editDiningInformation.jsp</code>) into 
+					<code class="filename">reviewReward.jsp</code>.
+					When this is done verify both pages still load correctly.
+				</p><p>
+					You've now completed this lab.
+				</p></div></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="webflow-actions-1-lab.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="web-security-lab.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">webflow-actions-1: Web Flow Actions 1 Lab&nbsp;</td><td width="20%" align="center"><span style="color:white;font-size:90%;"><a href="http://www.springsource.com/" title="SpringSource">By SpringSource</a></span></td><td width="40%" align="right" valign="top">&nbsp;web-security: Secure Your Web Application With Spring Security</td></tr></table></div></body></html>

@@ -1,0 +1,15 @@
+<aspectj>
+<aspects>
+<aspect name="rewardsonline.accounts.Beneficiary_Roo_JavaBean"/>
+<aspect name="rewardsonline.accounts.Beneficiary_Roo_Jpa_Entity"/>
+<aspect name="rewardsonline.accounts.Account_Roo_Jpa_ActiveRecord"/>
+<aspect name="rewardsonline.accounts.Account_Roo_JavaBean"/>
+<aspect name="rewardsonline.accounts.Beneficiary_Roo_Configurable"/>
+<aspect name="rewardsonline.accounts.Account_Roo_Jpa_Entity"/>
+<aspect name="rewardsonline.accounts.Beneficiary_Roo_ToString"/>
+<aspect name="rewardsonline.accounts.Account_Roo_Configurable"/>
+<aspect name="rewardsonline.accounts.Account_Roo_ToString"/>
+<aspect name="rewardsonline.accounts.Beneficiary_Roo_Jpa_ActiveRecord"/>
+</aspects>
+</aspectj>
+

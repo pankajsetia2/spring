@@ -1,0 +1,18 @@
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-10 13:37:24
+hint
+project --topLevelPackage rewardsonline --projectName rewardsonline
+persistence setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+entity jpa --class ~accounts.Account --testAutomatically 
+field string --fieldName name --notNull 
+field string --fieldName number --unique --permitReservedWords 
+entity jpa --class ~accounts.Beneficiary
+field string --fieldName name --notNull
+field number --fieldName savings --type java.math.BigDecimal --decimalMin 0
+field reference --fieldName account --type ~accounts.Account
+focus --class ~accounts.Account
+field set --fieldName beneficiaries --type ~accounts.Beneficiary --cardinality ONE_TO_MANY 
+q
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-05-10 13:37:45
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-05-10 13:37:45
+// script script.roo
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-05-10 13:37:45
